@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bad5nytk5iv33"]
+[gd_scene load_steps=10 format=3 uid="uid://dchuplryrbqu4"]
 
-[ext_resource type="Script" path="res://scripts/Characters/shadow.gd" id="1_fgaap"]
+[ext_resource type="Script" path="res://scripts/shadow.gd" id="1_fgaap"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_jo8ej"]
 [ext_resource type="Script" path="res://scenes/LightRayCast.gd" id="3_eqo6u"]
 
@@ -103,4 +103,3 @@ libraries = {
 
 [node name="LightRayCast" type="RayCast2D" parent="."]
 script = ExtResource("3_eqo6u")
-[connection signal="input_event" from="." to="." method="_on_input_event"]
