@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xcgrkn6x8nar"
+path="res://.godot/imported/Atmosphere music wrap.mp3-098b893598714fd034b6f86ec20d9b0d.mp3str"
+
+[deps]
+
+source_file="res://sounds/music/Atmosphere music wrap.mp3"
+dest_files=["res://.godot/imported/Atmosphere music wrap.mp3-098b893598714fd034b6f86ec20d9b0d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

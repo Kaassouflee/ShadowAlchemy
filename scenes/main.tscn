@@ -270,6 +270,8 @@ sources/0 = SubResource("TileSetAtlasSource_r7s07")
 script = ExtResource("1_1j54n")
 
 [node name="TileMap" type="TileMap" parent="."]
+modulate = Color(0.462745, 0.462745, 0.462745, 1)
+light_mask = 2
 tile_set = SubResource("TileSet_8q7wt")
 format = 2
 layer_0/name = "floor"
