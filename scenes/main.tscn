@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nnjkpa1rm758"]
+[gd_scene load_steps=10 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
@@ -6,10 +6,17 @@
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="3_tye71"]
 [ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="4_sx2i0"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mlonh"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_btse8"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r7s07"]
 texture = ExtResource("3_nuk7a")
 texture_region_size = Vector2i(64, 64)
 4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_mlonh")
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -38,6 +45,7 @@ texture_region_size = Vector2i(64, 64)
 12:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 12:0/0/physics_layer_0/angular_velocity = 0.0
 4:1/0 = 0
+4:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_btse8")
 4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:1/0/physics_layer_0/angular_velocity = 0.0
 5:1/0 = 0
@@ -265,9 +273,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_8q7wt"]
 tile_size = Vector2i(64, 64)
-uv_clipping = true
-occlusion_layer_0/light_mask = 2
-occlusion_layer_0/sdf_collision = true
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_r7s07")
 
