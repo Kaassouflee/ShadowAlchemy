@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b0wysm6c2nqgj"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_26y8w"]
+[ext_resource type="Script" path="res://scripts/Characters/player.gd" id="1_26y8w"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_47llq"]
 [ext_resource type="Texture2D" uid="uid://bra4k0kg2xeoa" path="res://assets/light.png" id="3_aj7kj"]
 

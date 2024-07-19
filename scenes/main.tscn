@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://nnjkpa1rm758"]
+[gd_scene load_steps=8 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
-[ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/player.tscn" id="2_ia34y"]
+[ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
 [ext_resource type="Texture2D" uid="uid://cibcntstf71xs" path="res://assets/sokoban_tilesheet.png" id="3_nuk7a"]
-[ext_resource type="PackedScene" uid="uid://dnssolm5n02dq" path="res://scenes/shadow.tscn" id="4_sx2i0"]
+[ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="3_tye71"]
+[ext_resource type="PackedScene" uid="uid://dnssolm5n02dq" path="res://scenes/Characters/shadow.tscn" id="4_sx2i0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r7s07"]
 texture = ExtResource("3_nuk7a")
@@ -281,9 +282,11 @@ layer_1/name = "walls"
 layer_1/tile_data = PackedInt32Array(0, 262144, 0, 1, 262144, 0, 2, 262144, 0, 3, 262144, 0, 4, 262144, 0, 5, 262144, 0, 6, 262144, 0, 7, 262144, 0, 8, 262144, 0, 9, 262144, 0, 10, 262144, 0, 11, 262144, 0, 12, 262144, 0, 13, 262144, 0, 14, 262144, 0, 15, 262144, 0, 16, 262144, 0, 17, 262144, 0, 65553, 262144, 0, 131089, 262144, 0, 196625, 262144, 0, 262161, 262144, 0, 327697, 262144, 0, 393233, 262144, 0, 458769, 262144, 0, 524305, 262144, 0, 589841, 262144, 0, 589824, 262144, 0, 589825, 262144, 0, 589826, 262144, 0, 589827, 262144, 0, 589828, 262144, 0, 589829, 262144, 0, 589830, 262144, 0, 589831, 262144, 0, 589832, 262144, 0, 589833, 262144, 0, 589834, 262144, 0, 589835, 262144, 0, 589836, 262144, 0, 589837, 262144, 0, 589838, 262144, 0, 589839, 262144, 0, 589840, 262144, 0, 65536, 262144, 0, 131072, 262144, 0, 196608, 262144, 0, 262144, 262144, 0, 327680, 262144, 0, 393216, 262144, 0, 458752, 262144, 0, 524288, 262144, 0, 65543, 262144, 0, 131079, 262144, 0, 196615, 262144, 0, 196616, 262144, 0, 196617, 262144, 0, 393221, 262144, 0, 393222, 262144, 0, 393223, 262144, 0, 393224, 262144, 0, 393225, 262144, 0, 458759, 262144, 0, 524295, 262144, 0, 262157, 262144, 0, 262158, 262144, 0, 262159, 262144, 0, 262160, 262144, 0)
 
 [node name="Characters" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_tye71")
 
 [node name="Player" parent="Characters" instance=ExtResource("2_ia34y")]
-position = Vector2(350, 251)
+position = Vector2(93, 354)
 
 [node name="Shadow" parent="Characters" instance=ExtResource("4_sx2i0")]
-position = Vector2(798, 291)
+position = Vector2(94, 289)

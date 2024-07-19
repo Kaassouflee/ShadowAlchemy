@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnssolm5n02dq"]
+[gd_scene load_steps=10 format=3 uid="uid://b0wysm6c2nqgj"]
 
-[ext_resource type="Script" path="res://scripts/shadow.gd" id="1_fgaap"]
-[ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_jo8ej"]
+[ext_resource type="Script" path="res://scripts/Characters/player.gd" id="1_26y8w"]
+[ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_47llq"]
+[ext_resource type="Texture2D" uid="uid://bra4k0kg2xeoa" path="res://assets/light.png" id="3_aj7kj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfavh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tia2a"]
 size = Vector2(32, 32)
 
 [sub_resource type="Animation" id="Animation_c7mrc"]
@@ -78,18 +79,26 @@ _data = {
 "up": SubResource("Animation_1mx5g")
 }
 
-[node name="Shadow" type="Area2D"]
-script = ExtResource("1_fgaap")
+[node name="Player" type="Area2D"]
+script = ExtResource("1_26y8w")
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 1)
-texture = ExtResource("2_jo8ej")
+texture = ExtResource("2_47llq")
 hframes = 6
 vframes = 4
 frame = 6
 
+[node name="SpriteLight" type="PointLight2D" parent="Sprite2d"]
+shadow_enabled = true
+texture = ExtResource("3_aj7kj")
+
+[node name="ShadowLight" type="PointLight2D" parent="Sprite2d"]
+range_item_cull_mask = 2
+shadow_enabled = true
+texture = ExtResource("3_aj7kj")
+
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_kfavh")
+shape = SubResource("RectangleShape2D_tia2a")
 
 [node name="RayCast2d" type="RayCast2D" parent="."]
 collide_with_areas = true
