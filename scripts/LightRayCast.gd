@@ -2,6 +2,8 @@ extends RayCast2D
 
 @export var max_distance: float = 100  # Maximum range to detect light sources
 
+@onready var shadow = $".."
+
 func _ready():
 	enabled = true
 
@@ -26,6 +28,7 @@ func update_raycast(nearest_light):
 		pass
 		#print("Light source is out of range.")
 	else:
+		shadow.reset_to_spawnpoint()
 		print("Ray is hitting the light source.")
 
 func get_all_lights_in_tree(node):

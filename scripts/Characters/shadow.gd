@@ -4,6 +4,7 @@ extends Area2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var ray = $RayCast2d
 @onready var characters = %Characters
+@onready var spawnpoint = %Spawnpoint
 
 var is_moving = false
 var movement_direction = ""
@@ -33,7 +34,7 @@ func _process(delta):
 	if is_moving:
 		return
 	animated_sprite.stop()
-	if (!characters.is_turn_player):
+	if (characters.is_player == 2):
 		if Input.is_action_pressed("up"):
 			movement_direction = "up"
 			move(Vector2.UP)
@@ -56,8 +57,6 @@ func move(direction: Vector2):
 		current_tile.x + direction.x,
 		current_tile.y + direction.y,
 	)
-	# Get custom data layer from the target tile
-	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
 	
 	ray.target_position = direction * tile_size
 	ray.force_raycast_update()
@@ -80,3 +79,7 @@ func move(direction: Vector2):
 	
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
+func reset_to_spawnpoint():
+	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)
+	animated_sprite.stop()
+	global_position = tile_map.map_to_local(target_tile)

@@ -33,5 +33,5 @@ func _on_area_2d_area_entered(area):
 	
 	# TODO: add next level button that works and points to the next level
 
-	characters.is_turn_player = 0
+	characters.is_player = 0
 	

@@ -33,7 +33,7 @@ func _process(delta):
 	if is_moving:
 		return
 	animated_sprite.stop()
-	if (characters.is_turn_player):
+	if (characters.is_player == 1):
 		if Input.is_action_pressed("up"):
 			movement_direction = "up"
 			move(Vector2.UP)

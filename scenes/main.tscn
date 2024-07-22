@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg2df1bk8u2jy"]
+[gd_scene load_steps=16 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="6_4f632"]
 [ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="7_x0sa1"]
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_epu25"]
+[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mlonh"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -306,7 +307,7 @@ script = ExtResource("3_tye71")
 position = Vector2(96, 352)
 
 [node name="Shadow" parent="Characters" instance=ExtResource("4_sx2i0")]
-position = Vector2(88, 160)
+position = Vector2(96, 160)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -334,5 +335,9 @@ max_polyphony = 2
 [node name="CurrentMemory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_sijgh")
+
+[node name="Spawnpoint" parent="." instance=ExtResource("10_xfyi0")]
+unique_name_in_owner = true
+position = Vector2(96, 96)
 
 [connection signal="area_entered" from="MemoryItem/Area2D" to="." method="_on_area_2d_area_entered"]
