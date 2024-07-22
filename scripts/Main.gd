@@ -2,6 +2,7 @@ extends Node2D
 var MemoryUI = preload("res://scenes/UI/memory.tscn")
 @onready var characters = %Characters
 @onready var current_memory = %CurrentMemory
+@onready var memory_pickup = %MemoryPickup
 
 func _draw():
 	for x in range(0, 1152, 64):
@@ -12,6 +13,7 @@ func _draw():
 
 # Opening memory ui and configuring it based on the CurrentMemory in this scene
 func _on_area_2d_area_entered(area):
+	memory_pickup.play()
 	var memoryUi = MemoryUI.instantiate()
 	get_tree().root.add_child(memoryUi)
 	var base = memoryUi.get_node("CanvasLayer/ColorRect/VBoxContainer")
