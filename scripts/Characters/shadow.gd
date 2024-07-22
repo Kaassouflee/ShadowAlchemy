@@ -9,6 +9,8 @@ extends Area2D
 @onready var timer = $Timer
 
 var is_moving = false
+var is_timing = false
+var is_black = true
 var movement_direction = ""
 var tile_size = 64
 
@@ -84,19 +86,25 @@ func move(direction: Vector2):
 func reset_to_spawnpoint():
 	shadow_death.play()
 	# Turn shadow white and back to black
-	var is_black = true
-	timer.start(3)
-	while timer.time_left > 0:
+	if is_timing:
 		if is_black:
 			$ShadowSprite.material.set("shader_param/solid_color", Color.WHITE)
 			is_black = false
 		else:
 			$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
 			is_black = true
+	else:
+		is_timing = true
+		timer.wait_time = 1.0
+		timer.one_shot = true
+		print("Timer started")
+		timer.start()
 	
 
 func _on_timer_timeout():
-	print("Time has passed")
 	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)
 	animated_sprite.stop()
 	global_position = tile_map.map_to_local(target_tile)
+	is_timing = false
+	is_black = true
+	print("Time has passed")
