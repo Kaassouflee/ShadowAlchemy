@@ -22,7 +22,7 @@ func _unhandled_input(event):
 		return
 	for dir in inputs.keys():
 		if event.is_action(dir):
-			if characters.is_turn_player:
+			if characters.is_turn_player == 1:
 				move(dir)
 			
 func move(dir):

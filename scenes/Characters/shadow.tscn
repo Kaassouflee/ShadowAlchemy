@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Characters/shadow.gd" id="1_fgaap"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_jo8ej"]
-[ext_resource type="Script" path="res://scenes/LightRayCast.gd" id="3_eqo6u"]
+[ext_resource type="Script" path="res://scripts/LightRayCast.gd" id="3_eqo6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfavh"]
 size = Vector2(32, 32)
@@ -103,4 +103,5 @@ libraries = {
 
 [node name="LightRayCast" type="RayCast2D" parent="."]
 script = ExtResource("3_eqo6u")
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]

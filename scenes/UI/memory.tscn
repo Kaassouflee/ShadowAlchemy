@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://ge4amcb4lbo8"]
+
+[ext_resource type="Script" path="res://scripts/MemoryText.gd" id="1_knhlb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2ujc"]
+font_size = 27
+shadow_size = 2
+
+[node name="Memory" type="Control"]
+light_mask = 4
+visibility_layer = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+top_level = true
+light_mask = 4
+visibility_layer = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 7.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.384314, 0.384314, 0.384314, 0.266667)
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/ColorRect"]
+light_mask = 4
+visibility_layer = 4
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -146.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 3
+
+[node name="Main menu" type="Button" parent="CanvasLayer/ColorRect/GridContainer"]
+light_mask = 4
+visibility_layer = 4
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+text = "Back to menu"
+
+[node name="Level select" type="Button" parent="CanvasLayer/ColorRect/GridContainer"]
+light_mask = 4
+visibility_layer = 4
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+text = "Level select"
+
+[node name="Next level" type="Button" parent="CanvasLayer/ColorRect/GridContainer"]
+light_mask = 4
+visibility_layer = 4
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+text = "Next level"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+light_mask = 4
+visibility_layer = 4
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -538.0
+offset_right = 538.0
+offset_bottom = 489.0
+grow_horizontal = 2
+
+[node name="MemoryImage" type="TextureRect" parent="CanvasLayer/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+light_mask = 4
+visibility_layer = 4
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MemoryTitle" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+light_mask = 4
+visibility_layer = 4
+layout_mode = 2
+label_settings = SubResource("LabelSettings_p2ujc")
+horizontal_alignment = 1
+
+[node name="MemoryText" type="RichTextLabel" parent="CanvasLayer/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+light_mask = 4
+visibility_layer = 4
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_knhlb")
+
+[connection signal="gui_input" from="CanvasLayer/ColorRect/VBoxContainer/MemoryText" to="CanvasLayer/ColorRect/VBoxContainer/MemoryText" method="_on_gui_input"]
