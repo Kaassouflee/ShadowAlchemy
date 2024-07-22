@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://nnjkpa1rm758"]
+[gd_scene load_steps=17 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="7_x0sa1"]
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_epu25"]
 [ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
+[ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="11_wad4f"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mlonh"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -339,5 +340,15 @@ script = ExtResource("2_sijgh")
 [node name="Spawnpoint" parent="." instance=ExtResource("10_xfyi0")]
 unique_name_in_owner = true
 position = Vector2(96, 96)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 322)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("11_wad4f")]
+visible = false
+offset_left = 57.0
+offset_top = 5.0
+offset_right = 57.0
+offset_bottom = 5.0
 
 [connection signal="area_entered" from="MemoryItem/Area2D" to="." method="_on_area_2d_area_entered"]
