@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ge4amcb4lbo8"]
+[gd_scene load_steps=4 format=3 uid="uid://ge4amcb4lbo8"]
 
+[ext_resource type="Script" path="res://scripts/memory.gd" id="1_7t7mp"]
 [ext_resource type="Script" path="res://scripts/MemoryText.gd" id="1_knhlb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2ujc"]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7t7mp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -111,4 +113,7 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_knhlb")
 
+[connection signal="pressed" from="CanvasLayer/ColorRect/GridContainer/Main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/GridContainer/Level select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/GridContainer/Next level" to="." method="_on_next_level_pressed"]
 [connection signal="gui_input" from="CanvasLayer/ColorRect/VBoxContainer/MemoryText" to="CanvasLayer/ColorRect/VBoxContainer/MemoryText" method="_on_gui_input"]

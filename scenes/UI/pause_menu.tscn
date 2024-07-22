@@ -9,6 +9,7 @@ shader_parameter/amount = 3.0
 
 [sub_resource type="SystemFont" id="SystemFont_l2rdf"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3

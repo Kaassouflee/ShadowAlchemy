@@ -6,7 +6,6 @@ extends Control
 func _on_resume_pressed():
 	main.pauseMenu()
 
-#TODO: add main menu functionality
 func _on_main_menu_pressed():
 	Engine.time_scale = 1
 	get_tree().change_scene_to_file(main_menu)
