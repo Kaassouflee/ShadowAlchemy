@@ -6,19 +6,24 @@ var MemoryUI = preload("res://scenes/UI/memory.tscn")
 @onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
 var is_paused = false
 var is_active_memory = false
+var last_player_before_pause = 1
+
+func _ready():
+	characters.is_player = 1
 
 func _process(delta):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_released("pause"):
 		pauseMenu()
 
 func pauseMenu():
 	if is_paused && !is_active_memory:
 		pause_menu.show()
+		last_player_before_pause = characters.is_player
 		characters.is_player = 0
 		Engine.time_scale = 0
 	else:
 		pause_menu.hide()
-		characters.is_player = 1
+		characters.is_player = last_player_before_pause
 		Engine.time_scale = 1
 	
 	is_paused = !is_paused

@@ -1,6 +1,6 @@
 extends Node
 
-@export var is_player = 1 # Start as character
+@export var is_player = 1 # Start as character (default)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
