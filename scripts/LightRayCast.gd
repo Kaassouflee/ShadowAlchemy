@@ -29,7 +29,7 @@ func update_raycast(nearest_light):
 		#print("Light source is out of range.")
 	else:
 		shadow.reset_to_spawnpoint()
-		print("Ray is hitting the light source.")
+		#print("Ray is hitting the light source.")
 
 func get_all_lights_in_tree(node):
 	var lights = []

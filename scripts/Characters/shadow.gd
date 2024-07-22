@@ -6,6 +6,7 @@ extends Area2D
 @onready var characters = %Characters
 @onready var spawnpoint = %Spawnpoint
 @onready var shadow_death = $ShadowDeath
+@onready var timer = $Timer
 
 var is_moving = false
 var movement_direction = ""
@@ -83,11 +84,19 @@ func move(direction: Vector2):
 func reset_to_spawnpoint():
 	shadow_death.play()
 	# Turn shadow white and back to black
-	$ShadowSprite.material.set("shader_param/solid_color", Color.WHITE)
-	await get_tree().create_timer(.1).timeout
-	$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
+	var is_black = true
+	timer.start(3)
+	while timer.time_left > 0:
+		if is_black:
+			$ShadowSprite.material.set("shader_param/solid_color", Color.WHITE)
+			is_black = false
+		else:
+			$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
+			is_black = true
 	
+
+func _on_timer_timeout():
+	print("Time has passed")
 	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)
 	animated_sprite.stop()
 	global_position = tile_map.map_to_local(target_tile)
-	
