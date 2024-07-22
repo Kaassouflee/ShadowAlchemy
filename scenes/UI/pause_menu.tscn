@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfc0erykqg0dd"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_uqlji"]
-[ext_resource type="Shader" path="res://scenes/UI/pause_menu.gdshader" id="2_www80"]
+[ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="2_dwvs3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_woa76"]
-shader = ExtResource("2_www80")
+shader = ExtResource("2_dwvs3")
 shader_parameter/amount = 3.0
 
 [sub_resource type="SystemFont" id="SystemFont_l2rdf"]
@@ -47,27 +47,27 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_l2rdf")
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
-[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_l2rdf")
 theme_override_font_sizes/font_size = 32
-text = "Main menu"
+text = "Main Menu"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_l2rdf")
 theme_override_font_sizes/font_size = 32
-text = "Quit"
+text = "Exit Game"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_quit_pressed"]
