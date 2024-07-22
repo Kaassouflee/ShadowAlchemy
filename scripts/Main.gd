@@ -3,7 +3,7 @@ var MemoryUI = preload("res://scenes/UI/memory.tscn")
 @onready var characters = %Characters
 @onready var current_memory = %CurrentMemory
 @onready var memory_pickup = %MemoryPickup
-@onready var pause_menu = $Camera2D/PauseMenu
+@onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
 var is_paused = false
 var is_active_memory = false
 
