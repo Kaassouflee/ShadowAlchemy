@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg2df1bk8u2jy"]
+[gd_scene load_steps=24 format=3 uid="uid://d127vyh7xerqr"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
@@ -9,11 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="6_4f632"]
 [ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="7_x0sa1"]
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_epu25"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
 [ext_resource type="PackedScene" uid="uid://dt2lsihteaegx" path="res://scenes/light.tscn" id="10_i4aws"]
 [ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
-[ext_resource type="Texture2D" uid="uid://digoerg7p0kg0" path="res://assets/ingredients/berry.png" id="11_om1h3"]
-[ext_resource type="Texture2D" uid="uid://c4mke2jcxpm3f" path="res://assets/ingredients/berry_n.png" id="12_2feej"]
+[ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/ingredients/berry.png" id="11_om1h3"]
+[ext_resource type="Texture2D" uid="uid://cw8lejtt1cios" path="res://assets/ingredients/berry_n.png" id="12_2feej"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_2e3wr"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="15_52j6s"]
 
@@ -384,17 +383,17 @@ position = Vector2(96, 96)
 
 [node name="Godrays" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_igg71")
-offset_left = -560.0
-offset_top = 48.0
-offset_right = -96.0
-offset_bottom = 416.0
+offset_left = -672.0
+offset_top = -248.0
+offset_right = -208.0
+offset_bottom = 120.0
 
 [node name="Rain" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_8vmbv")
-offset_left = -480.0
-offset_top = -224.0
-offset_right = -128.0
-offset_bottom = -16.0
+offset_left = -256.0
+offset_top = -232.0
+offset_right = 96.0
+offset_bottom = -24.0
 color = Color(1, 1, 1, 0)
 
 [connection signal="area_entered" from="MemoryItem/Area2D" to="." method="_on_area_2d_area_entered"]
