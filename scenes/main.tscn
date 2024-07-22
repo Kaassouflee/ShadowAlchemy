@@ -288,6 +288,7 @@ radius = 8.06226
 script = ExtResource("1_1j54n")
 
 [node name="TileMap" type="TileMap" parent="."]
+unique_name_in_owner = true
 modulate = Color(0.462745, 0.462745, 0.462745, 1)
 light_mask = 2
 tile_set = SubResource("TileSet_8q7wt")
@@ -302,7 +303,7 @@ unique_name_in_owner = true
 script = ExtResource("3_tye71")
 
 [node name="Player" parent="Characters" instance=ExtResource("2_ia34y")]
-position = Vector2(93, 354)
+position = Vector2(96, 352)
 
 [node name="Shadow" parent="Characters" instance=ExtResource("4_sx2i0")]
 position = Vector2(88, 160)
