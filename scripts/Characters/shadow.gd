@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var tile_map = %TileMap
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite = $ShadowSprite
 @onready var ray = $RayCast2d
 @onready var characters = %Characters
 @onready var spawnpoint = %Spawnpoint
@@ -80,6 +80,12 @@ func move(direction: Vector2):
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
 func reset_to_spawnpoint():
+	# Turn shadow white and back to black
+	$ShadowSprite.material.set("shader_param/solid_color", Color.WHITE)
+	await get_tree().create_timer(.1).timeout
+	$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
+	
 	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)
 	animated_sprite.stop()
 	global_position = tile_map.map_to_local(target_tile)
+	
