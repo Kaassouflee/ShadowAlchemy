@@ -1,6 +1,6 @@
 extends RayCast2D
 
-@export var max_distance: float = 100  # Maximum range to detect light sources
+@export var max_distance: float = 95  # Maximum range to detect light sources
 
 @onready var shadow = $".."
 
@@ -24,7 +24,7 @@ func update_raycast(nearest_light):
 		if collider is StaticBody2D or collider is TileMap:  # Check if the collider is a StaticBody2D
 			pass
 		#print("Ray is blocked by: ", collider)
-	elif global_position.distance_to(nearest_light.global_position) > max_distance:
+	elif global_position.distance_to(nearest_light.global_position) >= max_distance:
 		pass
 		#print("Light source is out of range.")
 	else:
