@@ -99,6 +99,7 @@ func reset_to_spawnpoint():
 		timer.one_shot = true
 		print("Timer started")
 		timer.start()
+		characters.is_player = 0
 	
 
 func _on_timer_timeout():
@@ -107,4 +108,5 @@ func _on_timer_timeout():
 	global_position = tile_map.map_to_local(target_tile)
 	is_timing = false
 	is_black = true
+	characters.is_player = 2
 	print("Time has passed")
