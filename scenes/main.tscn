@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg2df1bk8u2jy"]
+[gd_scene load_steps=15 format=3 uid="uid://dg2df1bk8u2jy"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
+[ext_resource type="Script" path="res://scripts/CurrentMemory.gd" id="2_sijgh"]
 [ext_resource type="Texture2D" uid="uid://cibcntstf71xs" path="res://assets/sokoban_tilesheet.png" id="3_nuk7a"]
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="3_tye71"]
 [ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="4_sx2i0"]
 [ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="6_4f632"]
+[ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="7_x0sa1"]
+[ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_epu25"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mlonh"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -278,6 +281,9 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_r7s07")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2s3n"]
+radius = 8.06226
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1j54n")
 
@@ -299,10 +305,33 @@ script = ExtResource("3_tye71")
 position = Vector2(93, 354)
 
 [node name="Shadow" parent="Characters" instance=ExtResource("4_sx2i0")]
-position = Vector2(94, 289)
+position = Vector2(88, 160)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_4f632")
 volume_db = -4.559
 autoplay = true
+
+[node name="MemoryItem" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(224, 416)
+texture = ExtResource("7_x0sa1")
+
+[node name="Area2D" type="Area2D" parent="MemoryItem"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MemoryItem/Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_k2s3n")
+
+[node name="MemoryPickup" type="AudioStreamPlayer" parent="MemoryItem/Area2D"]
+unique_name_in_owner = true
+stream = ExtResource("9_epu25")
+volume_db = -13.372
+max_polyphony = 2
+
+[node name="CurrentMemory" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_sijgh")
+
+[connection signal="area_entered" from="MemoryItem/Area2D" to="." method="_on_area_2d_area_entered"]

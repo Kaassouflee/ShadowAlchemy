@@ -101,7 +101,6 @@ texture = ExtResource("3_aj7kj")
 shape = SubResource("RectangleShape2D_tia2a")
 
 [node name="RayCast2d" type="RayCast2D" parent="."]
-collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../RayCast2d")
