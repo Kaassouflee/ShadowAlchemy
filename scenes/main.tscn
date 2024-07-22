@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=16 format=3 uid="uid://nnjkpa1rm758"]
-=======
 [gd_scene load_steps=24 format=3 uid="uid://dg2df1bk8u2jy"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
@@ -13,16 +9,13 @@
 [ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="6_4f632"]
 [ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="7_x0sa1"]
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_epu25"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
-=======
 [ext_resource type="PackedScene" uid="uid://dt2lsihteaegx" path="res://scenes/light.tscn" id="10_i4aws"]
 [ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
 [ext_resource type="Texture2D" uid="uid://digoerg7p0kg0" path="res://assets/ingredients/berry.png" id="11_om1h3"]
 [ext_resource type="Texture2D" uid="uid://c4mke2jcxpm3f" path="res://assets/ingredients/berry_n.png" id="12_2feej"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_2e3wr"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="15_52j6s"]
->>>>>>> Stashed changes
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mlonh"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -298,8 +291,6 @@ sources/0 = SubResource("TileSetAtlasSource_r7s07")
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2s3n"]
 radius = 8.06226
 
-<<<<<<< Updated upstream
-=======
 [sub_resource type="CanvasTexture" id="CanvasTexture_y2n1j"]
 diffuse_texture = ExtResource("11_om1h3")
 normal_texture = ExtResource("12_2feej")
@@ -329,7 +320,6 @@ shader_parameter/blur = 0.0015
 shader_parameter/colour = Color(1, 1, 1, 1)
 shader_parameter/size = Vector2(0.005, 0.2)
 
->>>>>>> Stashed changes
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1j54n")
 
@@ -381,8 +371,6 @@ max_polyphony = 2
 unique_name_in_owner = true
 script = ExtResource("2_sijgh")
 
-<<<<<<< Updated upstream
-=======
 [node name="Light" parent="." instance=ExtResource("10_i4aws")]
 position = Vector2(672, 417)
 
@@ -390,7 +378,6 @@ position = Vector2(672, 417)
 position = Vector2(352, 352)
 texture = SubResource("CanvasTexture_y2n1j")
 
->>>>>>> Stashed changes
 [node name="Spawnpoint" parent="." instance=ExtResource("10_xfyi0")]
 unique_name_in_owner = true
 position = Vector2(96, 96)
