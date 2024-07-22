@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_epu25"]
 [ext_resource type="PackedScene" uid="uid://dt2lsihteaegx" path="res://scenes/light.tscn" id="10_i4aws"]
 [ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
+[ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="11_wad4f"]
 [ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/ingredients/berry.png" id="11_om1h3"]
 [ext_resource type="Texture2D" uid="uid://cw8lejtt1cios" path="res://assets/ingredients/berry_n.png" id="12_2feej"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_2e3wr"]
@@ -381,6 +382,15 @@ texture = SubResource("CanvasTexture_y2n1j")
 unique_name_in_owner = true
 position = Vector2(96, 96)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 322)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("11_wad4f")]
+visible = false
+offset_left = 57.0
+offset_top = 5.0
+offset_right = 57.0
+offset_bottom = 5.0
 [node name="Godrays" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_igg71")
 offset_left = -672.0
