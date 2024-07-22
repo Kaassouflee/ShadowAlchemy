@@ -200,7 +200,7 @@ script = ExtResource("1_26y8w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uj0kk")
-animation = &"default_up"
+animation = &"Idle"
 
 [node name="SpriteLight" type="PointLight2D" parent="AnimatedSprite2D"]
 shadow_enabled = true

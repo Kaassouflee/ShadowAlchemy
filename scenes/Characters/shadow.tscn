@@ -1,8 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://bad5nytk5iv33"]
+[gd_scene load_steps=28 format=3 uid="uid://bad5nytk5iv33"]
 
 [ext_resource type="Script" path="res://scripts/Characters/shadow.gd" id="1_fgaap"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_jo8ej"]
+[ext_resource type="Shader" path="res://shaders/shadow.gdshader" id="2_u0w8p"]
 [ext_resource type="Script" path="res://scripts/LightRayCast.gd" id="3_eqo6u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7re7"]
+shader = ExtResource("2_u0w8p")
+shader_parameter/solid_color = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0osrh"]
 atlas = ExtResource("2_jo8ej")
@@ -198,8 +203,9 @@ size = Vector2(32, 32)
 [node name="Shadow" type="Area2D"]
 script = ExtResource("1_fgaap")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="ShadowSprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_o7re7")
 sprite_frames = SubResource("SpriteFrames_f7f6d")
 animation = &"default_up"
 
