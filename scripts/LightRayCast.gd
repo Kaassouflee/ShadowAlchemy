@@ -20,7 +20,7 @@ func update_raycast(nearest_light):
 	if is_colliding():
 		var collider = get_collider()
 		if collider is StaticBody2D or collider is TileMap:  # Check if the collider is a StaticBody2D
-			print("Ray is blocked by a wall")
+			pass
 		#print("Ray is blocked by: ", collider)
 	elif global_position.distance_to(nearest_light.global_position) > max_distance:
 		pass

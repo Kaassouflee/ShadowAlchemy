@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0wysm6c2nqgj"]
+[gd_scene load_steps=26 format=3 uid="uid://b0wysm6c2nqgj"]
 
 [ext_resource type="Script" path="res://scripts/Characters/player.gd" id="1_26y8w"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_47llq"]
@@ -67,6 +67,22 @@ region = Rect2(256, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8c1u"]
 atlas = ExtResource("2_47llq")
 region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn114"]
+atlas = ExtResource("2_47llq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62g8b"]
+atlas = ExtResource("2_47llq")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlcsp"]
+atlas = ExtResource("2_47llq")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83yq4"]
+atlas = ExtResource("2_47llq")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj0kk"]
 animations = [{
@@ -142,6 +158,38 @@ animations = [{
 "loop": true,
 "name": &"Up",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn114")
+}],
+"loop": true,
+"name": &"default_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62g8b")
+}],
+"loop": true,
+"name": &"default_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlcsp")
+}],
+"loop": true,
+"name": &"default_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83yq4")
+}],
+"loop": true,
+"name": &"default_up",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tia2a"]
@@ -152,7 +200,7 @@ script = ExtResource("1_26y8w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uj0kk")
-animation = &"Right"
+animation = &"default_up"
 
 [node name="SpriteLight" type="PointLight2D" parent="AnimatedSprite2D"]
 shadow_enabled = true

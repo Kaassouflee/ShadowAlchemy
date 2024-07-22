@@ -6,7 +6,7 @@ extends Area2D
 @onready var characters = %Characters
 
 var is_moving = false
-var direction = ""
+var movement_direction = ""
 var tile_size = 64
 
 func _physics_process(delta):
@@ -16,7 +16,7 @@ func _physics_process(delta):
 	if global_position == animated_sprite.global_position:
 		is_moving = false
 		return
-	match direction:
+	match movement_direction:
 		"up":
 			animated_sprite.play("Up")
 		"down":
@@ -35,16 +35,16 @@ func _process(delta):
 	animated_sprite.stop()
 	if (characters.is_turn_player):
 		if Input.is_action_pressed("up"):
-			direction = "up"
+			movement_direction = "up"
 			move(Vector2.UP)
 		elif Input.is_action_pressed("down"):
-			direction = "down"
+			movement_direction = "down"
 			move(Vector2.DOWN)
 		elif Input.is_action_pressed("left"):
-			direction = "left"
+			movement_direction = "left"
 			move(Vector2.LEFT)
 		elif Input.is_action_pressed("right"):
-			direction = "right"
+			movement_direction = "right"
 			move(Vector2.RIGHT)
 		
 
@@ -62,7 +62,18 @@ func move(direction: Vector2):
 	ray.target_position = direction * tile_size
 	ray.force_raycast_update()
 	if ray.is_colliding():
+		match movement_direction:
+			"up":
+				animated_sprite.play("default_up")
+			"down":
+				animated_sprite.play("default_down")
+			"left":
+				animated_sprite.play("default_left")
+			"right":
+				animated_sprite.play("default_right")
+		animated_sprite.stop
 		return
+		
 	# Move player
 	is_moving = true
 	
