@@ -4,21 +4,24 @@ var MemoryUI = preload("res://scenes/UI/memory.tscn")
 @onready var current_memory = %CurrentMemory
 @onready var memory_pickup = %MemoryPickup
 @onready var pause_menu = $Camera2D/PauseMenu
-var paused = false
+var is_paused = false
+var is_active_memory = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
 
 func pauseMenu():
-	if paused:
-		pause_menu.hide()
-		Engine.time_scale = 1
-	else:
+	if is_paused && !is_active_memory:
 		pause_menu.show()
+		characters.is_player = 0
 		Engine.time_scale = 0
+	else:
+		pause_menu.hide()
+		characters.is_player = 1
+		Engine.time_scale = 1
 	
-	paused = !paused
+	is_paused = !is_paused
 
 func _draw():
 	for x in range(0, 1152, 64):
@@ -26,10 +29,10 @@ func _draw():
 	for y in range(0, 640, 64):
 		draw_line(Vector2(0, y), Vector2(1152, y), Color8(0, 0, 0), 2)
 
-
 # Opening memory ui and configuring it based on the CurrentMemory in this scene
 func _on_area_2d_area_entered(area):
 	memory_pickup.play()
+	is_active_memory = true
 	var memoryUi = MemoryUI.instantiate()
 	get_tree().root.add_child(memoryUi)
 	var base = memoryUi.get_node("CanvasLayer/ColorRect/VBoxContainer")
@@ -50,4 +53,3 @@ func _on_area_2d_area_entered(area):
 	# TODO: add next level button that works and points to the next level
 
 	characters.is_player = 0
-	
