@@ -5,6 +5,7 @@ extends Area2D
 @onready var ray = $RayCast2d
 @onready var characters = %Characters
 @onready var spawnpoint = %Spawnpoint
+@onready var shadow_death = $ShadowDeath
 
 var is_moving = false
 var movement_direction = ""
@@ -80,6 +81,7 @@ func move(direction: Vector2):
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
 func reset_to_spawnpoint():
+	shadow_death.play()
 	# Turn shadow white and back to black
 	$ShadowSprite.material.set("shader_param/solid_color", Color.WHITE)
 	await get_tree().create_timer(.1).timeout
