@@ -1,6 +1,6 @@
 extends Control
-@onready var next_level = $"CanvasLayer/ColorRect/GridContainer/Next level"
 
+@onready var next_level = $"CanvasLayer/ColorRect/GridContainer/Next level"
 @onready var main_menu = "res://scenes/UI/main_menu.tscn"
 var MemoryUI
 var current_memory
@@ -27,4 +27,3 @@ func _on_next_level_pressed():
 	print("res://scenes/levels/" + current_memory.memory["next_level"])
 	get_tree().change_scene_to_file("res://scenes/levels/" + current_memory.memory["next_level"] + ".tscn")
 	get_tree().root.remove_child(MemoryUI)
-	

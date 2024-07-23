@@ -1,4 +1,5 @@
 extends Node2D
+
 @onready var characters = %Characters
 @onready var current_memory = %LevelMemory
 @onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
@@ -6,7 +7,6 @@ extends Node2D
 @export var current_level = 1
 var is_paused = false
 var last_player_before_pause = 1
-
 
 func _ready():
 	characters.is_player = 1

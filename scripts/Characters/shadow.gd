@@ -51,7 +51,6 @@ func _process(_delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-		
 
 func move(direction: Vector2i):
 	# Get Current tile Vector2i
@@ -77,11 +76,8 @@ func move(direction: Vector2i):
 		return
 	# Move player
 	is_moving = true
-	
 	global_position = tile_map.map_to_local(target_tile)
-	
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
-	
 
 func reset_to_spawnpoint():
 	if !last_player_before_death:

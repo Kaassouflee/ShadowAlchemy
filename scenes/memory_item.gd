@@ -1,10 +1,8 @@
 extends Sprite2D
 
+@onready var memory_pickup = %MemoryPickup
 @export var is_active_memory = false
 var MemoryUI = preload("res://scenes/UI/memory.tscn")
-
-
-@onready var memory_pickup = %MemoryPickup
 
 func _on_area_2d_area_entered(area):
 	var characters = get_tree().root.get_node("Level/Characters")
