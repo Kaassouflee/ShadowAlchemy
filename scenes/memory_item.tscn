@@ -8,7 +8,7 @@
 radius = 8.06226
 
 [node name="MemoryItem" type="Sprite2D"]
-position = Vector2(1056, 416)
+position = Vector2(32, 32)
 texture = ExtResource("1_26tfr")
 script = ExtResource("2_lw2qt")
 

@@ -9,7 +9,6 @@ var MemoryUI = preload("res://scenes/UI/memory.tscn")
 func _on_area_2d_area_entered(area):
 	var characters = get_tree().root.get_node("Level/Characters")
 	var current_memory = get_tree().root.get_node("Level/LevelMemory")
-
 	memory_pickup.play()
 	characters.is_player = 0
 	is_active_memory = true

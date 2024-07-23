@@ -1,7 +1,6 @@
 extends Node2D
 @onready var characters = %Characters
-@onready var current_memory = %CurrentMemory
-@onready var memory_pickup = %MemoryPickup
+@onready var current_memory = %LevelMemory
 @onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
 @onready var memory_item = $MemoryItem
 @export var current_level = 1

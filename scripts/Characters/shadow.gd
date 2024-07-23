@@ -12,6 +12,7 @@ var is_timing = false
 var is_black = true
 var movement_direction = ""
 var tile_size = 64
+var last_player_before_death
 
 func _physics_process(_delta):
 	if !is_moving:
@@ -80,8 +81,12 @@ func move(direction: Vector2i):
 	global_position = tile_map.map_to_local(target_tile)
 	
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
+	
 
 func reset_to_spawnpoint():
+	if !last_player_before_death:
+		last_player_before_death = characters.is_player
+	print(last_player_before_death)
 	# Turn shadow white and back to black
 	if is_timing:
 		if is_black:
@@ -98,7 +103,6 @@ func reset_to_spawnpoint():
 		print("Timer started")
 		timer.start()
 		characters.is_player = 0
-	
 
 func _on_timer_timeout():
 	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)
@@ -106,5 +110,6 @@ func _on_timer_timeout():
 	global_position = tile_map.map_to_local(target_tile)
 	is_timing = false
 	is_black = true
-	characters.is_player = 2
+	characters.is_player = last_player_before_death
+	last_player_before_death = null
 	print("Time has passed")
