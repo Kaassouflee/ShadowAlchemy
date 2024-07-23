@@ -213,9 +213,6 @@ animation = &"default_up"
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kfavh")
 
-[node name="RayCast2d" type="RayCast2D" parent="."]
-collide_with_areas = true
-
 [node name="LightRayCast" type="RayCast2D" parent="."]
 script = ExtResource("3_eqo6u")
 

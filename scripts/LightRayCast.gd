@@ -7,7 +7,7 @@ extends RayCast2D
 func _ready():
 	enabled = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var nearest_light = get_nearest_light()
 	
 	if nearest_light:

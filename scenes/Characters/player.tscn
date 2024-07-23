@@ -214,6 +214,4 @@ texture = ExtResource("3_aj7kj")
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tia2a")
 
-[node name="RayCast2d" type="RayCast2D" parent="."]
-
 [connection signal="input_event" from="." to="." method="_on_input_event"]
