@@ -34,7 +34,7 @@ func _physics_process(_delta):
 		_:
 			animated_sprite.play("Idle")
 	animated_sprite.global_position = await animated_sprite.global_position.move_toward(global_position, speed)
-	
+		
 func _process(_delta):
 	if is_moving:
 		return

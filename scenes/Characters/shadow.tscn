@@ -214,6 +214,7 @@ animation = &"default_up"
 shape = SubResource("RectangleShape2D_kfavh")
 
 [node name="LightRayCast" type="RayCast2D" parent="."]
+hit_from_inside = true
 script = ExtResource("3_eqo6u")
 
 [node name="ShadowDeath" type="AudioStreamPlayer2D" parent="."]

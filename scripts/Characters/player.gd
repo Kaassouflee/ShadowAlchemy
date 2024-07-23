@@ -3,6 +3,8 @@ extends Area2D
 @onready var tile_map = %TileMap
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var characters = %Characters
+@onready var sprite_light = $AnimatedSprite2D/SpriteLight
+
 
 var is_moving = false
 var movement_direction = ""
@@ -80,4 +82,4 @@ func move(direction: Vector2i):
 
 
 func _ready():
-	animated_sprite.set_meta("max_distance", 96)
+	sprite_light.set_meta("max_distance", 95)

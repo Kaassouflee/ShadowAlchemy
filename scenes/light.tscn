@@ -19,12 +19,12 @@ script = ExtResource("1_ndteu")
 modulate = Color(0.741176, 0.631373, 0.168627, 1)
 material = SubResource("ShaderMaterial_wxyou")
 texture = ExtResource("1_0x22f")
-metadata/isLight = true
-metadata/max_distance = 0
 
 [node name="SpriteLight" type="PointLight2D" parent="LightSprite"]
 shadow_enabled = true
 texture = ExtResource("2_m7tnb")
+metadata/is_light = true
+metadata/max_distance = 0
 
 [node name="ShadowLight" type="PointLight2D" parent="LightSprite"]
 range_item_cull_mask = 2
