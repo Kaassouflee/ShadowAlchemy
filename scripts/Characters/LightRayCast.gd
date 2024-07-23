@@ -4,12 +4,14 @@ extends RayCast2D
 
 @onready var shadow = $".."
 
+var player = null
+
 func _ready():
 	enabled = true
 
 func _physics_process(_delta):
 	var nearest_light = get_nearest_light()
-	
+	#print("Nearest light: " + str(nearest_light))
 	if nearest_light:
 		var direction = nearest_light.global_position - global_position
 		target_position = direction.normalized() * max_distance
@@ -21,7 +23,8 @@ func _physics_process(_delta):
 func update_raycast(nearest_light):
 	if is_colliding():
 		var collider = get_collider()
-		if collider is StaticBody2D or collider is TileMap:  # Check if the collider is a StaticBody2D
+		if collider is StaticBody2D or collider is TileMap:
+			# Check if the collider is a StaticBody2D
 			pass
 		#print("Ray is blocked by: ", collider)
 	elif global_position.distance_to(nearest_light.global_position) >= max_distance:
@@ -34,9 +37,17 @@ func update_raycast(nearest_light):
 func get_all_lights_in_tree(node):
 	var lights = []
 	
-	if node is Light2D:
-		lights.append(node)
-
+	if node is Sprite2D:
+		if node.has_meta("isLight"):
+			var meta = node.get_meta("isLight", null)
+			if meta != null and meta:
+				lights.append(node)
+	if node is AnimatedSprite2D:
+		if node.has_meta("isPlayer"):
+			var meta = node.get_meta("isPlayer", null)
+			if meta != null and meta:
+				player = node
+				
 	for child in node.get_children():
 		lights += get_all_lights_in_tree(child)
 
@@ -54,5 +65,12 @@ func get_nearest_light():
 		if distance < nearest_distance:
 			nearest_distance = distance
 			nearest_light = light
-
+			max_distance = light.get_meta("max_distance")
+			
+	var distance = global_position.distance_to(player.global_position)
+	if distance < nearest_distance:
+		nearest_distance = distance
+		nearest_light = player
+		max_distance = player.get_meta("max_distance")
+	
 	return nearest_light

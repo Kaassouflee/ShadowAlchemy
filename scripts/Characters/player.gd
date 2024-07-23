@@ -8,6 +8,8 @@ var is_moving = false
 var movement_direction = ""
 var tile_size = 64
 
+
+
 func _physics_process(_delta):
 	if !is_moving:
 		return
@@ -72,8 +74,10 @@ func move(direction: Vector2i):
 		
 	# Move player
 	is_moving = true
-	
 	global_position = tile_map.map_to_local(target_tile)
-	
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
+
+
+func _ready():
+	animated_sprite.set_meta("max_distance", 96)

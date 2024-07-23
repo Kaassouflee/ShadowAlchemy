@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Characters/shadow.gd" id="1_fgaap"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_jo8ej"]
 [ext_resource type="Shader" path="res://shaders/shadow.gdshader" id="2_u0w8p"]
-[ext_resource type="Script" path="res://scripts/LightRayCast.gd" id="3_eqo6u"]
+[ext_resource type="Script" path="res://scripts/Characters/LightRayCast.gd" id="3_eqo6u"]
 [ext_resource type="AudioStream" uid="uid://c1v5lquw7520y" path="res://sounds/SFX/Shadow_Death.ogg" id="5_mr7va"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7re7"]
