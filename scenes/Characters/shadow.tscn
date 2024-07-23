@@ -213,9 +213,6 @@ animation = &"default_up"
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kfavh")
 
-[node name="RayCast2d" type="RayCast2D" parent="."]
-collide_with_areas = true
-
 [node name="LightRayCast" type="RayCast2D" parent="."]
 script = ExtResource("3_eqo6u")
 
@@ -226,4 +223,8 @@ pitch_scale = 1.55
 attenuation = 0.353554
 panning_strength = 1.57
 
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
