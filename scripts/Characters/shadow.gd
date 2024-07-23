@@ -86,7 +86,6 @@ func move(direction: Vector2i):
 func reset_to_spawnpoint():
 	if !last_player_before_death:
 		last_player_before_death = characters.is_player
-	print(last_player_before_death)
 	# Turn shadow white and back to black
 	if is_timing:
 		if is_black:
@@ -100,7 +99,6 @@ func reset_to_spawnpoint():
 		is_timing = true
 		timer.wait_time = 1.0
 		timer.one_shot = true
-		print("Timer started")
 		timer.start()
 		characters.is_player = 0
 
@@ -112,4 +110,3 @@ func _on_timer_timeout():
 	is_black = true
 	characters.is_player = last_player_before_death
 	last_player_before_death = null
-	print("Time has passed")
