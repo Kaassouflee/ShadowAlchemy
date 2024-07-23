@@ -106,3 +106,4 @@ func _on_timer_timeout():
 	is_black = true
 	characters.is_player = last_player_before_death
 	last_player_before_death = null
+	$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
