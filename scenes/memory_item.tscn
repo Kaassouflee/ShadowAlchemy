@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy0rdwr1vqbh"]
+
+[ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="1_26tfr"]
+[ext_resource type="Script" path="res://scenes/memory_item.gd" id="2_lw2qt"]
+[ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="2_xql2p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mg2nn"]
+radius = 8.06226
+
+[node name="MemoryItem" type="Sprite2D"]
+position = Vector2(1056, 416)
+texture = ExtResource("1_26tfr")
+script = ExtResource("2_lw2qt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_mg2nn")
+
+[node name="MemoryPickup" type="AudioStreamPlayer" parent="Area2D"]
+unique_name_in_owner = true
+stream = ExtResource("2_xql2p")
+volume_db = -13.372
+max_polyphony = 2
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

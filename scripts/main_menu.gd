@@ -4,7 +4,7 @@ extends Control
 @onready var start_button = $MarginContainer/HBoxContainer/VBoxContainer/StartButton as Button
 @onready var exit_button = $MarginContainer/HBoxContainer/VBoxContainer/ExitButton as Button
 @onready var level_select_button = $MarginContainer/HBoxContainer/VBoxContainer/LevelSelectButton as Button
-@onready var start_level = "res://scenes/main.tscn"
+@onready var start_level = "res://scenes/levels/main.tscn"
 
 #TODO: add functionality for the level select button
 
