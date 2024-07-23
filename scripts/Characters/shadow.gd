@@ -84,7 +84,6 @@ func move(direction: Vector2):
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
 func reset_to_spawnpoint():
-	shadow_death.play()
 	# Turn shadow white and back to black
 	if is_timing:
 		if is_black:
@@ -94,6 +93,7 @@ func reset_to_spawnpoint():
 			$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
 			is_black = true
 	else:
+		shadow_death.play()
 		is_timing = true
 		timer.wait_time = 1.0
 		timer.one_shot = true
