@@ -13,9 +13,10 @@ func _ready():
 func _process(delta):
 	pass
 
-func update_radius(distance):
-	var d2 = distance - 32
-	_max_distance = sqrt((d2 * d2) + (d2 * d2))
+func update_radius(tile_range):
+	var tilesize = 64
+	var distance = tilesize * tile_range + (tilesize / 2 - 1)
+	_max_distance = sqrt(distance * distance * 2)
 	light_sprite.set_meta("max_distance", _max_distance)
 	var scale = distance / 96.0
 	var transform = shadow_light.transform

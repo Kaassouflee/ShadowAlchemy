@@ -6,10 +6,12 @@ extends Area2D
 @onready var spawnpoint = %Spawnpoint
 @onready var shadow_death = $ShadowDeath
 @onready var timer = $Timer
+@onready var ray = $LightRayCast
 
 var is_moving = false
 var is_timing = false
 var is_black = true
+var speed = 4
 var movement_direction = ""
 var tile_size = 64
 var last_player_before_death
@@ -17,7 +19,6 @@ var last_player_before_death
 func _physics_process(_delta):
 	if !is_moving:
 		return
-	
 	if global_position == animated_sprite.global_position:
 		is_moving = false
 		return
@@ -32,8 +33,8 @@ func _physics_process(_delta):
 			animated_sprite.play("Right")
 		_:
 			animated_sprite.play("Idle")
-	animated_sprite.global_position = await animated_sprite.global_position.move_toward(global_position, 4)
-
+	animated_sprite.global_position = await animated_sprite.global_position.move_toward(global_position, speed)
+	
 func _process(_delta):
 	if is_moving:
 		return
@@ -58,8 +59,7 @@ func move(direction: Vector2i):
 	# Get target tile Vector2i
 	var target_tile: Vector2i = Vector2i(
 		current_tile.x + direction.x,
-		current_tile.y + direction.y,
-	)
+		current_tile.y + direction.y)
 	
 	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
 	
