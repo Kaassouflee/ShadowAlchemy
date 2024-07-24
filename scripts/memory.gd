@@ -2,6 +2,7 @@ extends Control
 
 @onready var next_level = $"CanvasLayer/ColorRect/GridContainer/Next level"
 @onready var main_menu = "res://scenes/UI/main_menu.tscn"
+@onready var level_selection = "res://scenes/UI/level_select.tscn"
 var MemoryUI
 var current_memory
 
@@ -19,9 +20,9 @@ func _on_main_menu_pressed():
 	get_tree().change_scene_to_file(main_menu)
 	get_tree().root.remove_child(MemoryUI)
 
-#TODO: add level select functionality
 func _on_level_select_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file(level_selection)
+	get_tree().root.remove_child(MemoryUI)
 
 func _on_next_level_pressed():
 	print("res://scenes/levels/" + current_memory.memory["next_level"])
