@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyucs1opmmhij"]
+[gd_scene load_steps=6 format=3 uid="uid://cyucs1opmmhij"]
 
 [ext_resource type="Texture2D" uid="uid://c7aca8rb23p8s" path="res://assets/UI/PlayButton.png" id="1_2yuv2"]
 [ext_resource type="Texture2D" uid="uid://dgifarox7awc4" path="res://assets/UI/EmptyButton.png" id="1_yc3cq"]
 [ext_resource type="Texture2D" uid="uid://cs2wryd66jaxf" path="res://assets/UI/Lock.png" id="2_xd0vy"]
+[ext_resource type="Script" path="res://scripts/level_button.gd" id="4_y3jyw"]
 
 [sub_resource type="SystemFont" id="SystemFont_jglqn"]
 font_names = PackedStringArray("Impact")
@@ -13,6 +14,7 @@ offset_bottom = 40.0
 texture_normal = ExtResource("1_yc3cq")
 texture_hover = ExtResource("1_2yuv2")
 texture_disabled = ExtResource("2_xd0vy")
+script = ExtResource("4_y3jyw")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -27,3 +29,7 @@ theme_override_font_sizes/font_size = 34
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

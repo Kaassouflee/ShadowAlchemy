@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://boarpqnug1y8h"]
+[gd_scene load_steps=3 format=3 uid="uid://boarpqnug1y8h"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_a2irj"]
 
 [sub_resource type="SystemFont" id="SystemFont_fa4pk"]
 font_names = PackedStringArray("Impact")
@@ -10,6 +12,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a2irj")
+dir_path = "res://scenes/levels"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,4 +46,6 @@ vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
 columns = 4
