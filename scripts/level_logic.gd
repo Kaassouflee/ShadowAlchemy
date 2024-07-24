@@ -4,6 +4,7 @@ extends Node2D
 @onready var current_memory = %LevelMemory
 @onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
 @onready var memory_item = $MemoryItem
+@onready var ingredients = %Ingredients
 @export var current_level = 1
 var is_paused = false
 var last_player_before_pause = 1

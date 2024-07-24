@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://iidrg6xhgcfd"]
+
+[ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="1_abswo"]
+
+[node name="Ingredients" type="Node2D"]
+
+[node name="IngredientItem" parent="." instance=ExtResource("1_abswo")]
+position = Vector2(96, 416)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://nnjkpa1rm758"]
+[gd_scene load_steps=19 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_pexn3"]
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="2_bw3me"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="5_0yifg"]
 [ext_resource type="Script" path="res://scenes/levels/main_memory.gd" id="8_ym7uk"]
 [ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="9_4un6u"]
-[ext_resource type="Script" path="res://scripts/potion_logic.gd" id="9_5032e"]
+[ext_resource type="Script" path="res://scripts/potion_combinations.gd" id="9_5032e"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_s4ew6"]
 [ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_t2cf7"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://scenes/levels/main_lights.gd" id="15_77tfi"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="15_lyncd"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_qhylv"]
-[ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="17_1g4c5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_igg71"]
 shader = ExtResource("14_g0xvh")
@@ -45,6 +44,7 @@ shader_parameter/size = Vector2(0.005, 0.2)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_pexn3")
+current_level = null
 
 [node name="TileMap" parent="." instance=ExtResource("2_efoud")]
 unique_name_in_owner = true
@@ -72,11 +72,10 @@ script = ExtResource("8_ym7uk")
 [node name="MemoryItem" parent="." instance=ExtResource("15_lyncd")]
 position = Vector2(224, 352)
 
-[node name="PotionLogic" type="Node2D" parent="."]
-unique_name_in_owner = true
+[node name="Ingredients" type="Node2D" parent="."]
 script = ExtResource("9_5032e")
 
-[node name="IngredientItem" parent="PotionLogic" instance=ExtResource("9_4un6u")]
+[node name="IngredientItem" parent="Ingredients" instance=ExtResource("9_4un6u")]
 position = Vector2(96, 416)
 
 [node name="Spawnpoint" parent="." instance=ExtResource("12_6cn3o")]
@@ -113,5 +112,3 @@ script = ExtResource("15_77tfi")
 
 [node name="Light" parent="Lights" instance=ExtResource("9_s4ew6")]
 position = Vector2(672, 416)
-
-[node name="PotionUI" parent="." instance=ExtResource("17_1g4c5")]
