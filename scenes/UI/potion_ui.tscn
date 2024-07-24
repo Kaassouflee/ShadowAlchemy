@@ -1,7 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx2o1vai6jl20"]
-
-[ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/ingredients/berry.png" id="1_h21n0"]
-[ext_resource type="Texture2D" uid="uid://cix2df5nke8eh" path="res://assets/ingredients/herb.png" id="2_luu6g"]
+[gd_scene format=3 uid="uid://dx2o1vai6jl20"]
 
 [node name="PotionUI" type="Control"]
 layout_mode = 3
@@ -12,16 +9,18 @@ offset_bottom = 40.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer"]
-offset_right = 192.0
+unique_name_in_owner = true
+offset_left = 72.0
+offset_right = 264.0
 offset_bottom = 64.0
 allow_search = false
-item_count = 3
 max_columns = 3
 icon_mode = 0
 icon_scale = 0.8
-item_0/text = ""
-item_0/icon = ExtResource("1_h21n0")
-item_1/text = ""
-item_1/icon = ExtResource("2_luu6g")
-item_2/text = ""
-item_2/icon = ExtResource("1_h21n0")
+
+[node name="PotionList" type="ItemList" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_right = 72.0
+offset_bottom = 72.0
+icon_mode = 0
+icon_scale = 0.9

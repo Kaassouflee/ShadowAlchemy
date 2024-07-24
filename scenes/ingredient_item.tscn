@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc0hojvx42pl5"]
+[gd_scene load_steps=7 format=3 uid="uid://dc0hojvx42pl5"]
 
-[ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/ingredients/berry.png" id="1_pd8e4"]
-[ext_resource type="Texture2D" uid="uid://cuntaokrtphtr" path="res://assets/ingredients/berry_n.png" id="2_0ucvk"]
+[ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/alchemy/ingredients/berry.png" id="1_pd8e4"]
+[ext_resource type="Texture2D" uid="uid://cuntaokrtphtr" path="res://assets/alchemy/ingredients/berry_n.png" id="2_0ucvk"]
 [ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="3_okc18"]
+[ext_resource type="AudioStream" uid="uid://vsp5pyebc0ml" path="res://sounds/SFX/Pickup_Ingredient.ogg" id="4_l15p8"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_84wsk"]
 diffuse_texture = ExtResource("1_pd8e4")
@@ -21,5 +22,7 @@ script = ExtResource("3_okc18")
 shape = SubResource("CircleShape2D_rkv88")
 
 [node name="IngredientPickup" type="AudioStreamPlayer" parent="Area2D"]
+stream = ExtResource("4_l15p8")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="Area2D/IngredientPickup" to="." method="_on_ingredient_pickup_finished"]
