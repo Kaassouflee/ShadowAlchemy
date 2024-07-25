@@ -4,13 +4,12 @@ extends Area2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var characters = %Characters
 @onready var sprite_light = $AnimatedSprite2D/SpriteLight
+@onready var ray = $RayCast2D
 
 
 var is_moving = false
 var movement_direction = ""
 var tile_size = 64
-
-
 
 func _physics_process(_delta):
 	if !is_moving:
@@ -49,9 +48,8 @@ func _process(_delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-		
 
-func move(direction: Vector2i):
+func move(direction: Vector2):
 	# Get Current tile Vector2i
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
 	# Get target tile Vector2i
@@ -59,10 +57,10 @@ func move(direction: Vector2i):
 		current_tile.x + direction.x,
 		current_tile.y + direction.y,
 	)
-	# Get custom data layer from the target tile
-	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
 	
-	if !tile_data.get_custom_data("walkable"):
+	ray.target_position = direction * tile_size
+	ray.force_raycast_update()
+	if ray.is_colliding():
 		match movement_direction:
 			"up":
 				animated_sprite.play("default_up")
@@ -73,12 +71,10 @@ func move(direction: Vector2i):
 			"right":
 				animated_sprite.play("default_right")
 		return
-		
 	# Move player
 	is_moving = true
 	global_position = tile_map.map_to_local(target_tile)
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
-
 
 
 func _ready():
