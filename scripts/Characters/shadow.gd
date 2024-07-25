@@ -59,11 +59,12 @@ func move(direction: Vector2i):
 	# Get target tile Vector2i
 	var target_tile: Vector2i = Vector2i(
 		current_tile.x + direction.x,
-		current_tile.y + direction.y)
+		current_tile.y + direction.y,
+	)
 	
-	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
-	
-	if !tile_data.get_custom_data("walkable"):
+	ray.target_position = direction * tile_size
+	ray.force_raycast_update()
+	if ray.is_colliding():
 		match movement_direction:
 			"up":
 				animated_sprite.play("default_up")
