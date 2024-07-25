@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cljmhhx8iub81"]
+[gd_scene load_steps=17 format=3 uid="uid://cljmhhx8iub81"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_mtngo"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_15k8p"]
@@ -9,17 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="6_fuxxc"]
 [ext_resource type="Script" path="res://scenes/levels/level_2_memory.gd" id="7_njtxl"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_7s3r1"]
-[ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/ingredients/berry.png" id="10_2fivj"]
-[ext_resource type="Texture2D" uid="uid://cw8lejtt1cios" path="res://assets/ingredients/berry_n.png" id="11_k7eya"]
 [ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_06ced"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_i0joc"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="14_irnwe"]
 [ext_resource type="Script" path="res://scenes/levels/level_2_lights.gd" id="14_lejri"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_dow4e"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_1yvvp"]
-diffuse_texture = ExtResource("10_2fivj")
-normal_texture = ExtResource("11_k7eya")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bq84"]
 shader = ExtResource("14_irnwe")
@@ -75,10 +69,6 @@ script = ExtResource("7_njtxl")
 [node name="MemoryItem" parent="." instance=ExtResource("6_fuxxc")]
 unique_name_in_owner = true
 position = Vector2(1056, 480)
-
-[node name="Berry" type="Sprite2D" parent="."]
-position = Vector2(352, 352)
-texture = SubResource("CanvasTexture_1yvvp")
 
 [node name="Spawnpoint" parent="." instance=ExtResource("12_06ced")]
 unique_name_in_owner = true
