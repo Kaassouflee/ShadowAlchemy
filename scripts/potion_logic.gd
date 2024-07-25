@@ -27,11 +27,11 @@ func _process(delta):
 
 # Gets the array and combines them to check them against the recipes
 func get_combination():
-	#picked_up_ingredients = ["berry", "herb", "mushroom"]
-	print(picked_up_ingredients)
 	var combination = ""
+	# Loops through picked up ingredients and adds them to string
 	for i in range(picked_up_ingredients.size()):
 		combination += picked_up_ingredients[i]
+		# Puts a underscore between every ingredient except last one
 		if i < picked_up_ingredients.size() - 1:
 			combination += "_"
 	return combination
@@ -40,6 +40,7 @@ func craftPotion():
 	var combination = get_combination()
 	if potion_recipes.has(combination):
 		var potion_name = potion_recipes[combination]
+		print(picked_up_ingredients)
 		print("Crafted potion: " + potion_name["name"])
 		ingredients_list.clear()
 		picked_up_ingredients.clear()
@@ -58,6 +59,7 @@ func usePotion(effect: String):
 		_:
 			print("Unknown effect")
 
+# TODO: add potion effects, waiting for object in front of player detection
 func freeze():
 	pass
 func fire():
