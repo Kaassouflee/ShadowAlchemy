@@ -7,10 +7,12 @@ extends Area2D
 @onready var shadow_death = $ShadowDeath
 @onready var timer = $Timer
 @onready var ray = $LightRayCast
+@onready var label = $ShadowSprite/RichTextLabel
 
 var is_moving = false
 var is_timing = false
 var is_black = true
+
 var speed = 4
 var movement_direction = ""
 var tile_size = 64
@@ -21,6 +23,7 @@ func _physics_process(_delta):
 		return
 	if global_position == animated_sprite.global_position:
 		is_moving = false
+		_possessing_check()
 		return
 	match movement_direction:
 		"up":
@@ -34,6 +37,21 @@ func _physics_process(_delta):
 		_:
 			animated_sprite.play("Idle")
 	animated_sprite.global_position = await animated_sprite.global_position.move_toward(global_position, speed)
+	
+func _possessing_check():
+	
+	var directions = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
+	var current_tile: Vector2i = tile_map.local_to_map(global_position)
+	for direction in directions:
+		# Get target tile Vector2i
+		var target_tile: Vector2i = Vector2i(
+			current_tile.x + direction.x,
+			current_tile.y + direction.y)
+		var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
+		if tile_data.get_custom_data("possessable"):
+			label.visible = true
+			return
+		label.visible = false
 		
 func _process(_delta):
 	if is_moving:
@@ -52,7 +70,7 @@ func _process(_delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-
+			
 func move(direction: Vector2i):
 	# Get Current tile Vector2i
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
@@ -108,3 +126,7 @@ func _on_timer_timeout():
 	characters.is_player = last_player_before_death
 	last_player_before_death = null
 	$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
+
+
+func _on_ready():
+	label.visible = false
