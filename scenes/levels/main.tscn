@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_s4ew6"]
 [ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/ingredients/berry.png" id="10_i33qk"]
 [ext_resource type="Texture2D" uid="uid://cw8lejtt1cios" path="res://assets/ingredients/berry_n.png" id="11_snip0"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_t2cf7"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="14_g0xvh"]
 [ext_resource type="Script" path="res://scenes/levels/main_lights.gd" id="15_77tfi"]

@@ -10,7 +10,8 @@ var last_player_before_pause = 1
 
 func _ready():
 	characters.is_player = 1
-	
+	GlobalProgression.current_level = get_tree().current_scene.scene_file_path.get_file().split(".")[0]
+
 func _process(delta):
 	if Input.is_action_just_released("pause"):
 		pauseMenu()

@@ -25,6 +25,5 @@ func _on_level_select_pressed():
 	get_tree().root.remove_child(MemoryUI)
 
 func _on_next_level_pressed():
-	print("res://scenes/levels/" + current_memory.memory["next_level"])
 	get_tree().change_scene_to_file("res://scenes/levels/" + current_memory.memory["next_level"] + ".tscn")
 	get_tree().root.remove_child(MemoryUI)
