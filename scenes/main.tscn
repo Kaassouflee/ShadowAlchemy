@@ -1,22 +1,82 @@
-[gd_scene load_steps=26 format=3 uid="uid://nnjkpa1rm758"]
+[gd_scene load_steps=23 format=3 uid="uid://nnjkpa1rm758"]
 
-[ext_resource type="Script" path="res://scripts/Main.gd" id="1_1j54n"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="2_ia34y"]
-[ext_resource type="Script" path="res://scripts/CurrentMemory.gd" id="2_sijgh"]
+[ext_resource type="Script" path="res://scenes/levels/main_memory.gd" id="2_sijgh"]
 [ext_resource type="Texture2D" uid="uid://cibcntstf71xs" path="res://assets/sokoban_tilesheet.png" id="3_nuk7a"]
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="3_tye71"]
 [ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="4_sx2i0"]
 [ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="6_4f632"]
 [ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="7_x0sa1"]
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_epu25"]
-[ext_resource type="PackedScene" path="res://scenes/light.tscn" id="10_i4aws"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
-[ext_resource type="Texture2D" uid="uid://1thwudgk0sq7" path="res://assets/ingredients/berry.png" id="11_om1h3"]
+[ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="10_i4aws"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="10_xfyi0"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="11_wad4f"]
-[ext_resource type="Texture2D" uid="uid://cw8lejtt1cios" path="res://assets/ingredients/berry_n.png" id="12_2feej"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_2e3wr"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="15_52j6s"]
 [ext_resource type="Script" path="res://scripts/Lights.gd" id="16_xwv5o"]
+
+[sub_resource type="GDScript" id="GDScript_apyo1"]
+script/source = "extends Node2D
+var MemoryUI = preload(\"res://scenes/UI/memory.tscn\")
+@onready var characters = %Characters
+@onready var current_memory = %CurrentMemory
+@onready var memory_pickup = %MemoryPickup
+@onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
+var is_paused = false
+var is_active_memory = false
+var last_player_before_pause = 1
+
+func _ready():
+	pass
+
+func _process(_delta):
+	if Input.is_action_just_released(\"pause\"):
+		pauseMenu()
+
+func pauseMenu():
+	if is_paused && !is_active_memory:
+		pause_menu.show()
+		last_player_before_pause = characters.is_player
+		characters.is_player = 0
+		Engine.time_scale = 0
+	else:
+		pause_menu.hide()
+		characters.is_player = last_player_before_pause
+		Engine.time_scale = 1
+	
+	is_paused = !is_paused
+
+func _draw():
+	for x in range(0, 1152, 64):
+		draw_line(Vector2(x, 0), Vector2(x, 640), Color8(0, 0, 0), 1.5)
+	for y in range(0, 640, 64):
+		draw_line(Vector2(0, y), Vector2(1152, y), Color8(0, 0, 0), 2)
+
+# Opening memory ui and configuring it based on the CurrentMemory in this scene
+func _on_area_2d_area_entered(_area):
+	memory_pickup.play()
+	is_active_memory = true
+	var memoryUi = MemoryUI.instantiate()
+	get_tree().root.add_child(memoryUi)
+	var base = memoryUi.get_node(\"CanvasLayer/ColorRect/VBoxContainer\")
+	
+	# Image
+	var image = load(\"res://assets/memories/\" + current_memory.memory[\"image\"] + \".png\")
+	var memory_image = base.get_node(\"MemoryImage\")
+	memory_image.texture = image
+	
+	# Title
+	var memory_title = base.get_node(\"MemoryTitle\")
+	memory_title.text = current_memory.memory[\"title\"]
+	
+	# Text
+	var memory_text = base.get_node(\"MemoryText\")
+	memory_text.text = current_memory.memory[\"text\"]
+	
+	# TODO: add next level button that works and points to the next level
+
+	characters.is_player = 0
+"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mlonh"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -297,10 +357,6 @@ sources/0 = SubResource("TileSetAtlasSource_r7s07")
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2s3n"]
 radius = 8.06226
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_y2n1j"]
-diffuse_texture = ExtResource("11_om1h3")
-normal_texture = ExtResource("12_2feej")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_igg71"]
 shader = ExtResource("15_52j6s")
 shader_parameter/angle = -0.3
@@ -327,7 +383,7 @@ shader_parameter/colour = Color(1, 1, 1, 1)
 shader_parameter/size = Vector2(0.005, 0.2)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_1j54n")
+script = SubResource("GDScript_apyo1")
 
 [node name="TileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
@@ -376,10 +432,6 @@ max_polyphony = 2
 [node name="CurrentMemory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_sijgh")
-
-[node name="Berry" type="Sprite2D" parent="."]
-position = Vector2(352, 352)
-texture = SubResource("CanvasTexture_y2n1j")
 
 [node name="Spawnpoint" parent="." instance=ExtResource("10_xfyi0")]
 unique_name_in_owner = true
