@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dx2o1vai6jl20"]
+[gd_scene load_steps=3 format=3 uid="uid://dx2o1vai6jl20"]
+
+[ext_resource type="Texture2D" uid="uid://bdlxm02imehvs" path="res://assets/UI/ItemList.png" id="1_m6wwk"]
+[ext_resource type="AudioStream" uid="uid://bpaxsay8siegg" path="res://sounds/SFX/Use_Potion.ogg" id="2_khc2r"]
 
 [node name="PotionUI" type="Control"]
 layout_mode = 3
@@ -6,21 +9,40 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="PotionAudio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_khc2r")
+attenuation = 0.5
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer"]
+[node name="PotionListBackground" type="TextureRect" parent="CanvasLayer"]
+offset_right = 100.0
+offset_bottom = 88.0
+texture = ExtResource("1_m6wwk")
+
+[node name="PotionList" type="ItemList" parent="CanvasLayer/PotionListBackground"]
 unique_name_in_owner = true
-offset_left = 72.0
-offset_right = 264.0
+offset_right = 100.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 12
+same_column_width = true
+fixed_column_width = 98
+icon_mode = 0
+icon_scale = 0.8
+
+[node name="ItemListBackground" type="TextureRect" parent="CanvasLayer"]
+offset_left = 100.0
+offset_right = 292.0
+offset_bottom = 64.0
+texture = ExtResource("1_m6wwk")
+stretch_mode = 1
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/ItemListBackground"]
+unique_name_in_owner = true
+offset_right = 192.0
 offset_bottom = 64.0
 allow_search = false
 max_columns = 3
 icon_mode = 0
 icon_scale = 0.8
-
-[node name="PotionList" type="ItemList" parent="CanvasLayer"]
-unique_name_in_owner = true
-offset_right = 72.0
-offset_bottom = 72.0
-icon_mode = 0
-icon_scale = 0.9

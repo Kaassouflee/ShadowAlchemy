@@ -5,11 +5,13 @@ extends Area2D
 @onready var characters = %Characters
 @onready var sprite_light = $AnimatedSprite2D/SpriteLight
 @onready var ray = $RayCast2D
-
+@onready var potion_ray = $PotionRay
 
 var is_moving = false
 var movement_direction = ""
+var movement_vector
 var tile_size = 64
+var ray_collider
 
 func _physics_process(_delta):
 	if !is_moving:
@@ -50,6 +52,7 @@ func _process(_delta):
 			move(Vector2.RIGHT)
 
 func move(direction: Vector2):
+	movement_vector = direction
 	# Get Current tile Vector2i
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
 	# Get target tile Vector2i
@@ -58,8 +61,11 @@ func move(direction: Vector2):
 		current_tile.y + direction.y,
 	)
 	
+	potion_ray.target_position = direction * tile_size
+	potion_ray.force_raycast_update()
 	ray.target_position = direction * tile_size
 	ray.force_raycast_update()
+
 	if ray.is_colliding():
 		match movement_direction:
 			"up":

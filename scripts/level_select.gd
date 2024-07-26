@@ -15,7 +15,6 @@ func _ready():
 func get_levels() ->void:
 	var index = 1
 	for level in levels:
-		print(level)
 		var level_path = "res://scenes/levels/" + levels[level] + ".tscn"
 		create_lvl_button(level_path, index)
 		index += 1
