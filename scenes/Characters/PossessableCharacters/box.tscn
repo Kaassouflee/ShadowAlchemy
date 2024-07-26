@@ -25,6 +25,7 @@ region_enabled = true
 region_rect = Rect2(1072, 624, 96, 96)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
 
 [node name="Timer" type="Timer" parent="."]
 
