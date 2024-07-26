@@ -16,14 +16,16 @@ var picked_up_ingredients = []
 var potion = null
 var ingredients_list
 var potion_list
-var potion_audio
+var use_potion
+var craft_potion
 var cell_position
 var target
 
 func _ready():
 	ingredients_list = get_tree().root.get_node("Level/PotionUI/CanvasLayer/ItemListBackground/ItemList")
 	potion_list = get_tree().root.get_node("Level/PotionUI/CanvasLayer/PotionListBackground/PotionList")
-	potion_audio = get_tree().root.get_node("Level/PotionUI/PotionAudio")
+	use_potion = get_tree().root.get_node("Level/PotionUI/UsePotion")
+	craft_potion = get_tree().root.get_node("Level/PotionUI/CraftPotion")
 
 func _process(delta):
 	if picked_up_ingredients.size() == 3:
@@ -53,6 +55,7 @@ func get_combination():
 func craftPotion():
 	var combination = get_combination()
 	if potion_recipes.has(combination):
+		craft_potion.play()
 		potion = potion_recipes[combination]["name"]
 		ingredients_list.clear()
 		picked_up_ingredients.clear()
@@ -94,15 +97,15 @@ func usePotion(effect: String):
 			print("Unknown effect")
 
 func freeze(effect):
-	potion_audio.play()
+	use_potion.play()
 	set_tile_metadata("has_potion", effect)
 	
 func fire(effect):
-	potion_audio.play()
+	use_potion.play()
 	set_tile_metadata("has_potion", effect)
 	
 func darkness(effect):
-	potion_audio.play()
+	use_potion.play()
 	set_tile_metadata("has_potion", effect)
 	if target.get_meta("has_potion"):
 		if target.find_parent("LightSprite"):
@@ -118,7 +121,7 @@ func darkness(effect):
 			target.get_parent().get_node("ShadowLight").enabled = false
 	
 func wall(effect):	
-	potion_audio.play()
+	use_potion.play()
 	#TODO: maybe look at what locations are valid? No placing in walls, but I guess it's the player's responsibilty
 	#TODO: find a way to place particles on the ground
 	if !potion_raycast.get_collider():
