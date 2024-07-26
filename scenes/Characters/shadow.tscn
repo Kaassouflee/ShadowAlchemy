@@ -237,6 +237,9 @@ panning_strength = 1.57
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

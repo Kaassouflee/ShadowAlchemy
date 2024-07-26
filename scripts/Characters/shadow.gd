@@ -6,17 +6,19 @@ extends Area2D
 @onready var spawnpoint = %Spawnpoint
 @onready var shadow_death = $ShadowDeath
 @onready var timer = $Timer
-@onready var ray = $LightRayCast
+@onready var ray = $RayCast2D
 @onready var label = $ShadowSprite/RichTextLabel
 
 var is_moving = false
 var is_timing = false
 var is_black = true
+var is_possessing = false
 
 var speed = 4
 var movement_direction = ""
 var tile_size = 64
 var last_player_before_death
+var possessable_object = null
 
 func _physics_process(_delta):
 	if !is_moving:
@@ -39,22 +41,30 @@ func _physics_process(_delta):
 	animated_sprite.global_position = await animated_sprite.global_position.move_toward(global_position, speed)
 	
 func _possessing_check():
-	
 	var directions = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
 	for direction in directions:
+		ray.target_position = direction * tile_size
+		ray.force_raycast_update()
+		if ray.is_colliding():
 		# Get target tile Vector2i
-		var target_tile: Vector2i = Vector2i(
-			current_tile.x + direction.x,
-			current_tile.y + direction.y)
-		var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
-		if tile_data.get_custom_data("possessable"):
-			label.visible = true
-			return
+			var target_tile: Vector2i = Vector2i(
+				current_tile.x + direction.x,
+				current_tile.y + direction.y)
+			var node = ray.get_collider()
+			if node is CollisionObject2D:
+				if node.get_meta("possessable"):
+					label.visible = true
+					possessable_object = node
+					return
 		label.visible = false
 		
 func _process(_delta):
-	if is_moving:
+	if is_moving or is_possessing:
+		if possessable_object != null and !possessable_object.is_possessed:
+			possessable_object = null
+			visible = true
+			is_possessing = false
 		return
 	animated_sprite.stop()
 	if (characters.is_player == 2):
@@ -70,7 +80,14 @@ func _process(_delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-			
+		elif Input.is_action_pressed("trigger"):
+			if possessable_object != null:
+				possessable_object.is_possessed = true
+				label.visible= false
+				visible = false
+				is_possessing = true
+				characters.is_player = 3
+
 func move(direction: Vector2i):
 	# Get Current tile Vector2i
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
