@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bad5nytk5iv33"]
+[gd_scene load_steps=31 format=3 uid="uid://bad5nytk5iv33"]
 
 [ext_resource type="Script" path="res://scripts/Characters/shadow.gd" id="1_fgaap"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_jo8ej"]
@@ -201,6 +201,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfavh"]
 size = Vector2(32, 32)
 
+[sub_resource type="Curve" id="Curve_lt837"]
+max_value = 5.0
+_data = [Vector2(0, 4.34066), 0.0, 0.0, 0, 0, Vector2(1, 0.659341), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_pfooh"]
+offsets = PackedFloat32Array(0, 0.628019, 0.78744, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.341463, 0.341463, 0.341463, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
 [node name="Shadow" type="Area2D"]
 script = ExtResource("1_fgaap")
 
@@ -237,6 +246,24 @@ panning_strength = 1.57
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 24)
+scale = Vector2(-9.67651, 3.034)
+amount = 40
+lifetime = 1.2
+explosiveness = 0.17
+randomness = 0.15
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2(0, -120)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_lt837")
+color_ramp = SubResource("Gradient_pfooh")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [connection signal="ready" from="." to="." method="_on_ready"]

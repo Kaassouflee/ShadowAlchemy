@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy0rdwr1vqbh"]
+[gd_scene load_steps=8 format=3 uid="uid://cy0rdwr1vqbh"]
 
 [ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="1_26tfr"]
 [ext_resource type="Script" path="res://scripts/memory_item.gd" id="2_lw2qt"]
@@ -6,6 +6,20 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mg2nn"]
 radius = 8.06226
+
+[sub_resource type="Curve" id="Curve_p0h7s"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 35.6044), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_o662j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.978723, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ygs4c"]
+offsets = PackedFloat32Array(0, 0.454106, 0.710145, 1)
+colors = PackedColorArray(0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [node name="MemoryItem" type="Sprite2D"]
 position = Vector2(32, 32)
@@ -24,5 +38,22 @@ unique_name_in_owner = true
 stream = ExtResource("2_xql2p")
 volume_db = -13.372
 max_polyphony = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(4.36001, 4.04)
+amount = 100
+speed_scale = 0.5
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 0)
+radial_accel_min = 9.89
+radial_accel_max = 27.2
+angle_min = -127.5
+angle_max = 192.8
+angle_curve = SubResource("Curve_p0h7s")
+scale_amount_min = 0.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_o662j")
+color_ramp = SubResource("Gradient_ygs4c")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
