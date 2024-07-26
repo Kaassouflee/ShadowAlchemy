@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://boarpqnug1y8h"]
+[gd_scene load_steps=4 format=3 uid="uid://boarpqnug1y8h"]
 
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_a2irj"]
 
 [sub_resource type="SystemFont" id="SystemFont_fa4pk"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_rgwuc"]
 font_names = PackedStringArray("Impact")
 
 [node name="LevelSelect" type="Control"]
@@ -48,3 +51,16 @@ layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 4
+
+[node name="BackToMainMenuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 0
+offset_left = 46.0
+offset_top = 33.0
+offset_right = 305.0
+offset_bottom = 81.0
+theme_override_fonts/font = SubResource("SystemFont_rgwuc")
+theme_override_font_sizes/font_size = 32
+text = "Back to main menu"
+
+[connection signal="pressed" from="BackToMainMenuButton" to="." method="_on_back_to_main_menu_button_pressed"]
