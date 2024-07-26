@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt2lsihteaegx"]
+[gd_scene load_steps=6 format=3 uid="uid://cuq5r26worhtc"]
 
 [ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="1_0x22f"]
+[ext_resource type="Script" path="res://scripts/light.gd" id="1_ndteu"]
 [ext_resource type="Texture2D" uid="uid://bra4k0kg2xeoa" path="res://assets/light.png" id="2_m7tnb"]
 [ext_resource type="Shader" path="res://shaders/light.gdshader" id="3_y0q87"]
 
@@ -12,6 +13,7 @@ shader_parameter/darker_color = Vector4(0.64, 0.2, 0.05, 1)
 shader_parameter/spread = 0.5
 
 [node name="Light" type="Node2D"]
+script = ExtResource("1_ndteu")
 
 [node name="LightSprite" type="Sprite2D" parent="."]
 modulate = Color(0.741176, 0.631373, 0.168627, 1)
@@ -21,6 +23,8 @@ texture = ExtResource("1_0x22f")
 [node name="SpriteLight" type="PointLight2D" parent="LightSprite"]
 shadow_enabled = true
 texture = ExtResource("2_m7tnb")
+metadata/is_light = true
+metadata/max_distance = 0
 
 [node name="ShadowLight" type="PointLight2D" parent="LightSprite"]
 range_item_cull_mask = 2

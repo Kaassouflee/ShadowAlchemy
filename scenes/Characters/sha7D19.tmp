@@ -1,10 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://bad5nytk5iv33"]
+[gd_scene load_steps=28 format=3 uid="uid://bad5nytk5iv33"]
 
 [ext_resource type="Script" path="res://scripts/Characters/shadow.gd" id="1_fgaap"]
 [ext_resource type="Texture2D" uid="uid://fn3ats00hpd7" path="res://assets/sokoban_character.png" id="2_jo8ej"]
 [ext_resource type="Shader" path="res://shaders/shadow.gdshader" id="2_u0w8p"]
-[ext_resource type="Script" path="res://scripts/Characters/LightRayCast.gd" id="3_eqo6u"]
-[ext_resource type="AudioStream" uid="uid://c1v5lquw7520y" path="res://sounds/SFX/Shadow_Death.ogg" id="5_mr7va"]
+[ext_resource type="Script" path="res://scripts/LightRayCast.gd" id="3_eqo6u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7re7"]
 shader = ExtResource("2_u0w8p")
@@ -213,18 +212,14 @@ animation = &"default_up"
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kfavh")
 
+[node name="RayCast2d" type="RayCast2D" parent="."]
+collide_with_areas = true
+
 [node name="LightRayCast" type="RayCast2D" parent="."]
-hit_from_inside = true
 script = ExtResource("3_eqo6u")
 
-[node name="ShadowDeath" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_mr7va")
-volume_db = 1.075
-pitch_scale = 1.55
-attenuation = 0.353554
-panning_strength = 1.57
-
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

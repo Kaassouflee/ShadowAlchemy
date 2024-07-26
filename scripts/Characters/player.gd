@@ -2,14 +2,16 @@ extends Area2D
 
 @onready var tile_map = %TileMap
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var ray = $RayCast2d
 @onready var characters = %Characters
+@onready var sprite_light = $AnimatedSprite2D/SpriteLight
+@onready var ray = $RayCast2D
+
 
 var is_moving = false
 var movement_direction = ""
 var tile_size = 64
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !is_moving:
 		return
 	
@@ -29,7 +31,7 @@ func _physics_process(delta):
 			animated_sprite.play("Idle")
 	animated_sprite.global_position = animated_sprite.global_position.move_toward(global_position, 4)
 
-func _process(delta):
+func _process(_delta):
 	if is_moving:
 		return
 	animated_sprite.stop()
@@ -46,7 +48,6 @@ func _process(delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-		
 
 func move(direction: Vector2):
 	# Get Current tile Vector2i
@@ -56,8 +57,6 @@ func move(direction: Vector2):
 		current_tile.x + direction.x,
 		current_tile.y + direction.y,
 	)
-	# Get custom data layer from the target tile
-	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
 	
 	ray.target_position = direction * tile_size
 	ray.force_raycast_update()
@@ -71,13 +70,12 @@ func move(direction: Vector2):
 				animated_sprite.play("default_left")
 			"right":
 				animated_sprite.play("default_right")
-		animated_sprite.stop
 		return
-		
 	# Move player
 	is_moving = true
-	
 	global_position = tile_map.map_to_local(target_tile)
-	
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
+
+func _ready():
+	sprite_light.set_meta("max_distance", 95)

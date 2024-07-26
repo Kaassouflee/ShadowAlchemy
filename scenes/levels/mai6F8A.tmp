@@ -1,0 +1,114 @@
+[gd_scene load_steps=19 format=3 uid="uid://nnjkpa1rm758"]
+
+[ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_pexn3"]
+[ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="2_bw3me"]
+[ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_efoud"]
+[ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="3_556la"]
+[ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="4_cqiy6"]
+[ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="5_0yifg"]
+[ext_resource type="Script" path="res://scenes/levels/main_memory.gd" id="8_ym7uk"]
+[ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="9_4un6u"]
+[ext_resource type="Script" path="res://scripts/potion_combinations.gd" id="9_5032e"]
+[ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_s4ew6"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
+[ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_t2cf7"]
+[ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="14_g0xvh"]
+[ext_resource type="Script" path="res://scenes/levels/main_lights.gd" id="15_77tfi"]
+[ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="15_lyncd"]
+[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_qhylv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_igg71"]
+shader = ExtResource("14_g0xvh")
+shader_parameter/angle = -0.3
+shader_parameter/position = -0.2
+shader_parameter/spread = 0.372
+shader_parameter/cutoff = 0.026
+shader_parameter/falloff = 0.407
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 2.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.406
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vmbv"]
+shader = ExtResource("15_qhylv")
+shader_parameter/count = 300
+shader_parameter/slant = 0.2
+shader_parameter/speed = 50.0
+shader_parameter/blur = 0.0015
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.005, 0.2)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_pexn3")
+current_level = null
+
+[node name="TileMap" parent="." instance=ExtResource("2_efoud")]
+unique_name_in_owner = true
+
+[node name="Characters" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_bw3me")
+
+[node name="Player" parent="Characters" instance=ExtResource("3_556la")]
+position = Vector2(96, 352)
+
+[node name="Shadow" parent="Characters" instance=ExtResource("4_cqiy6")]
+position = Vector2(96, 160)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_0yifg")
+volume_db = -4.559
+autoplay = true
+
+[node name="LevelMemory" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_ym7uk")
+
+[node name="MemoryItem" parent="." instance=ExtResource("15_lyncd")]
+position = Vector2(224, 352)
+
+[node name="Ingredients" type="Node2D" parent="."]
+script = ExtResource("9_5032e")
+
+[node name="IngredientItem" parent="Ingredients" instance=ExtResource("9_4un6u")]
+position = Vector2(96, 416)
+
+[node name="Spawnpoint" parent="." instance=ExtResource("12_6cn3o")]
+unique_name_in_owner = true
+position = Vector2(96, 96)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 322)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("13_t2cf7")]
+visible = false
+offset_left = 57.0
+offset_top = 5.0
+offset_right = 57.0
+offset_bottom = 5.0
+
+[node name="Godrays" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_igg71")
+offset_left = -672.0
+offset_top = -248.0
+offset_right = -208.0
+offset_bottom = 120.0
+
+[node name="Rain" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8vmbv")
+offset_left = -256.0
+offset_top = -232.0
+offset_right = 96.0
+offset_bottom = -24.0
+color = Color(1, 1, 1, 0)
+
+[node name="Lights" type="Node" parent="."]
+script = ExtResource("15_77tfi")
+
+[node name="Light" parent="Lights" instance=ExtResource("9_s4ew6")]
+position = Vector2(672, 416)
