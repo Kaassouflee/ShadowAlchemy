@@ -1,12 +1,11 @@
-extends Area2D
+extends StaticBody2D
 
 @onready var characters = %Characters
 @onready var shadow = $"../../Characters/Shadow"
 @onready var ray = $RayCast2D
 @onready var tile_map = %TileMap
 @onready var sprite = $BoxSprite
-@onready var timer = $Timer
-@onready var spawnpoint = %Spawnpoint
+@onready var occluder = $LightOccluder2D
 
 var is_possessed = false
 var is_moving = false
@@ -25,12 +24,12 @@ func _physics_process(_delta):
 		is_moving = false
 		return
 	sprite.global_position = await sprite.global_position.move_toward(global_position, speed)
-	
+	occluder.global_position = await occluder.global_position.move_toward(global_position, speed)
 func _process(_delta):
 	if is_moving:
 		return
 	if is_possessed:
-		if (characters.is_player == 3):
+		if (characters.is_player == 2):
 			if Input.is_action_pressed("up"):
 				movement_direction = "up"
 				move(Vector2.UP)
@@ -44,8 +43,7 @@ func _process(_delta):
 				movement_direction = "right"
 				move(Vector2.RIGHT)
 			elif Input.is_action_just_pressed("trigger"):
-				is_possessed = false
-				characters.is_player = 2
+				shadow._end_possessing()
 
 func move(direction: Vector2i):
 	# Get Current tile Vector2i
@@ -64,30 +62,5 @@ func move(direction: Vector2i):
 	is_moving = true
 	global_position = tile_map.map_to_local(target_tile)
 	sprite.global_position = tile_map.map_to_local(current_tile)
-
-func reset_to_spawnpoint():
-	if !last_player_before_death:
-		last_player_before_death = characters.is_player
-	# Turn shadow white and back to black
-	if is_timing:
-		if is_black:
-			sprite.self_modulate = Color(1,1,1,1)
-			is_black = false
-		else:
-			sprite.self_modulate = Color(0,0,0,0)
-			is_black = true
-	else:
-		is_timing = true
-		timer.wait_time = 1.0
-		timer.one_shot = true
-		timer.start()
-		characters.is_player = 0
-
-func _on_timer_timeout():
-	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)
-	global_position = tile_map.map_to_local(target_tile)
-	is_timing = false
-	is_black = true
-	characters.is_player = last_player_before_death
-	last_player_before_death = null
-	sprite.self_modulate = Color(1,1,1,1)
+	occluder.global_position = tile_map.map_to_local(current_tile)
+	

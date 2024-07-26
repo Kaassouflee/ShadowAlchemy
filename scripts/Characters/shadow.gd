@@ -61,10 +61,6 @@ func _possessing_check():
 		
 func _process(_delta):
 	if is_moving or is_possessing:
-		if possessable_object != null and !possessable_object.is_possessed:
-			possessable_object = null
-			visible = true
-			is_possessing = false
 		return
 	animated_sprite.stop()
 	if (characters.is_player == 2):
@@ -80,14 +76,21 @@ func _process(_delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-		elif Input.is_action_pressed("trigger"):
-			if possessable_object != null:
-				possessable_object.is_possessed = true
-				label.visible= false
-				visible = false
-				is_possessing = true
-				characters.is_player = 3
+		elif Input.is_action_just_released("trigger"):
+			_start_possessing()
 
+func _start_possessing():
+	if possessable_object != null:
+		is_possessing = true
+		possessable_object.is_possessed = true
+		label.visible = false
+		
+func _end_possessing():	
+	visible = true
+	possessable_object.is_possessed = false
+	possessable_object = null
+	is_possessing = false
+	
 func move(direction: Vector2i):
 	# Get Current tile Vector2i
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
@@ -121,10 +124,10 @@ func reset_to_spawnpoint():
 	# Turn shadow white and back to black
 	if is_timing:
 		if is_black:
-			$ShadowSprite.material.set("shader_param/solid_color", Color.WHITE)
+			animated_sprite.material.set("shader_param/solid_color", Color.WHITE)
 			is_black = false
 		else:
-			$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
+			animated_sprite.material.set("shader_param/solid_color", Color.BLACK)
 			is_black = true
 	else:
 		shadow_death.play()
@@ -142,7 +145,7 @@ func _on_timer_timeout():
 	is_black = true
 	characters.is_player = last_player_before_death
 	last_player_before_death = null
-	$ShadowSprite.material.set("shader_param/solid_color", Color.BLACK)
+	animated_sprite.material.set("shader_param/solid_color", Color.BLACK)
 
 
 func _on_ready():
