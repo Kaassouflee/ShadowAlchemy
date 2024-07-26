@@ -79,6 +79,10 @@ func set_tile_metadata(key: String, value: Variant):
 func needsColliding(potion):
 	return potion_raycast.is_colliding() && potion_recipes[get_key_by_name(potion)]["needs_collision"]
 
+func clearPotion():
+	potion_list.clear()
+	potion = null
+	
 func usePotion(effect: String):
 	match effect:
 		"freeze":
@@ -99,10 +103,12 @@ func usePotion(effect: String):
 func freeze(effect):
 	use_potion.play()
 	set_tile_metadata("has_potion", effect)
+	clearPotion()
 	
 func fire(effect):
 	use_potion.play()
 	set_tile_metadata("has_potion", effect)
+	clearPotion()
 	
 func darkness(effect):
 	use_potion.play()
@@ -119,6 +125,7 @@ func darkness(effect):
 			target.get_parent().get_node("SpriteLight").set_meta("max_distance", 0)
 			target.get_parent().get_node("SpriteLight").enabled = false
 			target.get_parent().get_node("ShadowLight").enabled = false
+		clearPotion()
 	
 func wall(effect):	
 	use_potion.play()
@@ -135,3 +142,4 @@ func wall(effect):
 		# Gets coordinates and places wall
 		var target = tilemap.map_to_local(target_tile)
 		tilemap.set_cell(0, Vector2i(target_tile), 1, Vector2i(1, 12))
+		clearPotion()
