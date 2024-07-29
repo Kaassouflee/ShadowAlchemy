@@ -3,12 +3,14 @@ extends Sprite2D
 @onready var memory_pickup = %MemoryPickup
 @onready var player = $"../Characters/Player"
 @export var is_active_memory = false
-var MemoryUI = preload("res://scenes/UI/memory.tscn")
 var picked_up_players = {}
 var characters
+var current_memory
 
 func _ready():
 	characters = get_tree().root.get_node("Level/Characters")
+	if current_memory:
+		current_memory.queue_free()
 
 func _on_area_2d_area_entered(area):
 	if characters.is_player == 1 or characters.is_player == 2:
@@ -28,12 +30,13 @@ func update_player_count():
 			player.get_node("AnimatedSprite2D/ShadowLight").enabled = false
 	elif picked_up_players.size() == 2:
 		GlobalProgression.last_level_beat = GlobalProgression.current_level
-		var current_memory = get_tree().root.get_node("Level/LevelMemory")
+		current_memory = get_tree().root.get_node("Level/LevelMemory")
 		memory_pickup.play()
 		characters.is_player = 0
 		is_active_memory = true
 
-		var memoryUi = MemoryUI.instantiate()
+		var memoryUi = load("res://scenes/UI/memory.tscn").instantiate()
+		print(get_tree().root)
 		get_tree().root.add_child(memoryUi)
 		var base = memoryUi.get_node("CanvasLayer/ColorRect")
 
@@ -47,6 +50,7 @@ func update_player_count():
 			base.get_node("VBoxContainer/MemoryTitle").text = current_memory.memory["title"]
 			# Text
 			base.get_node("VBoxContainer/MemoryText").text = current_memory.memory["text"]
+		picked_up_players.clear()
 	else:
 		# Re-enable player lights if both are not in the area
 		player.get_node("AnimatedSprite2D/SpriteLight").set_meta("max_distance", 95)

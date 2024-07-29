@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bi1n11fpagjn5"]
+[gd_scene load_steps=19 format=3 uid="uid://bi1n11fpagjn5"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_ml7tf"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_h0wop"]
@@ -14,12 +14,6 @@
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="12_wcubs"]
 [ext_resource type="Script" path="res://scenes/levels/level_2_lights.gd" id="13_prngp"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_glquh"]
-[ext_resource type="Script" path="res://scripts/potion_logic.gd" id="15_6p3vb"]
-[ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="16_iovm8"]
-[ext_resource type="Texture2D" uid="uid://cix2df5nke8eh" path="res://assets/alchemy/ingredients/herb.png" id="17_oftyb"]
-[ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="18_qktxh"]
-[ext_resource type="Texture2D" uid="uid://c32dufyhh6unv" path="res://assets/alchemy/ingredients/mushroom.png" id="19_3wnhw"]
-[ext_resource type="Texture2D" uid="uid://btey3e1cch462" path="res://assets/alchemy/ingredients/mushroom_n.png" id="20_h4v8b"]
 [ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="21_pcxj0"]
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_0f1fg"]
 
@@ -48,14 +42,6 @@ shader_parameter/blur = 0.0015
 shader_parameter/colour = Color(1, 1, 1, 1)
 shader_parameter/size = Vector2(0.005, 0.2)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_m43et"]
-diffuse_texture = ExtResource("17_oftyb")
-normal_texture = ExtResource("18_qktxh")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_k03lr"]
-diffuse_texture = ExtResource("19_3wnhw")
-normal_texture = ExtResource("20_h4v8b")
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ml7tf")
 
@@ -83,20 +69,10 @@ autoplay = true
 [node name="LevelMemory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_mdt76")
-memory = {
-"image": "group_1",
-"next_level": "level_3",
-"text": "She held the photograph gently, her fingers tracing the edges as if afraid to smudge the captured smiles. As she looked at their faces, each one brimming with joy and excitement, she could almost hear the carefree laughter that had filled the air. 
-	
-But more than the moments themselves, it was the feeling they left behind. A sense of belonging, of being part of something beautiful and unbreakable. In those days, surrounded by her friends, the world seemed brighter, and her worries felt smaller. The weight of negative thoughts lifted, even if just for a while, replaced by the lightness of hope and the promise of new adventures. 
-	
-With a gentle smile, she tucked the photograph back into its place, her heart lighter and her spirit renewed. The road ahead was long, and there would be challenges, but she knew she wasn't alone.",
-"title": "Vacation with my friends"
-}
 
 [node name="MemoryItem" parent="." instance=ExtResource("8_gm4jt")]
 unique_name_in_owner = true
-position = Vector2(1056, 480)
+position = Vector2(288, 352)
 
 [node name="Spawnpoint" parent="." instance=ExtResource("9_y8dce")]
 unique_name_in_owner = true
@@ -135,21 +111,6 @@ position = Vector2(800, 96)
 
 [node name="Light2" parent="Lights" instance=ExtResource("14_glquh")]
 position = Vector2(416, 96)
-
-[node name="PotionLogic" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("15_6p3vb")
-
-[node name="IngredientItem" parent="PotionLogic" instance=ExtResource("16_iovm8")]
-position = Vector2(352, 352)
-
-[node name="IngredientItem2" parent="PotionLogic" instance=ExtResource("16_iovm8")]
-position = Vector2(416, 352)
-texture = SubResource("CanvasTexture_m43et")
-
-[node name="IngredientItem3" parent="PotionLogic" instance=ExtResource("16_iovm8")]
-position = Vector2(480, 352)
-texture = SubResource("CanvasTexture_k03lr")
 
 [node name="PotionUI" parent="." instance=ExtResource("21_pcxj0")]
 
