@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cix2df5nke8eh" path="res://assets/alchemy/ingredients/herb.png" id="11_uxlm4"]
 [ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="12_0y2la"]
 [ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="12_5eqhb"]
-[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
+[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_t2cf7"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="14_g0xvh"]
 [ext_resource type="Script" path="res://scenes/levels/main_lights.gd" id="15_77tfi"]

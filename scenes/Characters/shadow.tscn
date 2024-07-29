@@ -263,7 +263,7 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_lt837")
 color_ramp = SubResource("Gradient_pfooh")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="CollisionRayCast" type="RayCast2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="ready" from="." to="." method="_on_ready"]

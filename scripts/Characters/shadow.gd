@@ -6,7 +6,7 @@ extends Area2D
 @onready var spawnpoint = %Spawnpoint
 @onready var shadow_death = $ShadowDeath
 @onready var timer = $Timer
-@onready var ray = $RayCast2D
+@onready var ray = $CollisionRayCast
 @onready var label = $ShadowSprite/RichTextLabel
 
 var is_moving = false
