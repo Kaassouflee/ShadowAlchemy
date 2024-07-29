@@ -66,7 +66,6 @@ func _possessing_check():
 func _process(_delta):
 	if is_moving or is_possessing:
 		return
-	animated_sprite.stop()
 	if (characters.is_player == 2):
 		if Input.is_action_pressed("up"):
 			movement_direction = "up"
@@ -82,6 +81,8 @@ func _process(_delta):
 			move(Vector2.RIGHT)
 		elif Input.is_action_just_released("trigger"):
 			_start_possessing()
+		else:
+			animated_sprite.play("Idle")
 
 func _start_possessing():
 	if possessable_object != null:
