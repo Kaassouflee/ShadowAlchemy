@@ -70,10 +70,12 @@ func get_nearest_light():
 	for light in all_lights:
 		var distance = global_position.distance_to(light.global_position)
 		if distance < nearest_distance:
-			nearest_distance = distance
-			nearest_light = light
 			if light.has_meta("max_distance"):
 				max_distance = light.get_meta("max_distance")
+				if max_distance == 0:
+					continue
+			nearest_distance = distance
+			nearest_light = light
 	if nearest_distance < max_distance:
 		max_distance = nearest_distance	
 	return nearest_light
