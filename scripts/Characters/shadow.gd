@@ -19,6 +19,8 @@ var movement_direction = ""
 var tile_size = 64
 var last_player_before_death
 var possessable_object = null
+var possession_particles
+var possession_sound
 
 func _physics_process(_delta):
 	if !is_moving:
@@ -56,6 +58,8 @@ func _possessing_check():
 				if node.get_meta("possessable"):
 					label.visible = true
 					possessable_object = node
+					possession_particles = possessable_object.get_node("PossessionParticles")
+					possession_sound = possessable_object.get_node("PossessionSound")
 					return
 		label.visible = false
 		
@@ -81,11 +85,14 @@ func _process(_delta):
 
 func _start_possessing():
 	if possessable_object != null:
+		possession_particles.emitting = true
+		possession_sound.play()
 		is_possessing = true
 		possessable_object.is_possessed = true
 		label.visible = false
 		
 func _end_possessing():	
+	possession_particles.emitting = false
 	visible = true
 	possessable_object.is_possessed = false
 	possessable_object = null

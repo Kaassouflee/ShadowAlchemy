@@ -50,7 +50,6 @@ occluder = SubResource("OccluderPolygon2D_qywy1")
 [node name="PossessionParticles" type="CPUParticles2D" parent="."]
 position = Vector2(0, 34)
 scale = Vector2(37.04, 1)
-emitting = false
 amount = 150
 speed_scale = 0.5
 explosiveness = 0.13
