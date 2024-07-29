@@ -99,7 +99,6 @@ script = ExtResource("8_ym7uk")
 
 [node name="MemoryItem" parent="." instance=ExtResource("15_lyncd")]
 position = Vector2(672, 353)
-is_active_memory = false
 
 [node name="PotionLogic" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -167,7 +166,7 @@ offset_left = -64.0
 offset_top = -48.0
 offset_right = 92.0
 offset_bottom = -25.0
-text = "Press RMB to switch"
+text = "Press RMB or Y to switch"
 
 [node name="Possessables" type="Node" parent="."]
 
