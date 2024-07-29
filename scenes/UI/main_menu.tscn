@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bonoui8mwpr22"]
+[gd_scene load_steps=4 format=3 uid="uid://bonoui8mwpr22"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_42f7v"]
-[ext_resource type="Texture2D" uid="uid://yh37o73ygf70" path="res://assets/Backgrounds/kaassouffle.png" id="1_wy8x8"]
-
-[sub_resource type="SystemFont" id="SystemFont_kabqh"]
-font_names = PackedStringArray("Impact")
+[ext_resource type="Texture2D" uid="uid://cxnpc82nblcv2" path="res://assets/Backgrounds/main menu.png" id="2_w7bbc"]
 
 [sub_resource type="SystemFont" id="SystemFont_ixndr"]
 font_names = PackedStringArray("Impact")
@@ -23,15 +20,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -312.0
+offset_right = 328.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_wy8x8")
+texture = ExtResource("2_w7bbc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 88.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 12
@@ -45,16 +47,6 @@ theme_override_constants/separation = 60
 
 [node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 24
-theme_override_fonts/font = SubResource("SystemFont_kabqh")
-theme_override_font_sizes/font_size = 64
-text = "SHADOW OF WHAT I ONCE WAS"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
