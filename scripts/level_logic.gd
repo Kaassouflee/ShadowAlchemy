@@ -18,7 +18,6 @@ func _process(delta):
 	if Input.is_action_just_released("pause"):
 		pauseMenu()
 
-#func _ready():
 func pauseMenu():
 	if is_paused && !memory_item.is_active_memory:
 		resume_button.grab_focus()
