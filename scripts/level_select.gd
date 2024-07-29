@@ -60,14 +60,6 @@ func set_button_focus_neighbors():
 			if i >= grid.columns:
 				btn.focus_neighbor_top = children[i - grid.columns]
 				children[i - grid.columns].focus_neighbor_bottom = btn
-				
-	#if children.size() > 0:
-		#var child = children[0]
-		#if child is Control:
-			#child.focus_neighbor_top = back_to_main_menu_button
-		#else:
-			#print("Error: child is not a Control")
-
 
 func _on_back_to_main_menu_button_pressed():
 	get_tree().change_scene_to_file(main_menu)
