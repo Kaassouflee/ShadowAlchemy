@@ -1,6 +1,7 @@
 extends TextureButton
 
 @export_file var level_path
+@onready var level_button = $"."
 
 func _ready():
 	# Connect signals to methods
@@ -16,8 +17,12 @@ func _on_mouse_entered() -> void:
 	var label = get_node("Label")
 	if label:
 		label.hide()
+	if level_button.disabled == false:
+		level_button.texture_normal = load("res://assets/UI/PlayButton.png")
 
 func _on_mouse_exited() -> void:
 	var label = get_node("Label")
 	if label:
 		label.show()
+	if level_button.disabled == false:
+		level_button.texture_normal = load("res://assets/UI/EmptyButton.png")

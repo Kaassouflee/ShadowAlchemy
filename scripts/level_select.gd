@@ -14,6 +14,7 @@ var levels = {
 func _ready():
 	back_to_main_menu_button.grab_focus()
 	get_levels()
+	set_button_focus_neighbors()
 
 func get_levels() -> void:
 	var last_level_beat = GlobalProgression.last_level_beat
@@ -44,7 +45,6 @@ func create_lvl_button(lvl_path: String, index: int, level: String, is_unlocked:
 		btn.disabled = true
 	
 	grid.add_child(btn)
-	set_button_focus_neighbors()
 
 func set_button_focus_neighbors():
 	var children = grid.get_children()
@@ -53,14 +53,14 @@ func set_button_focus_neighbors():
 		if btn is Button:
 			if i == 0:
 				btn.focus_neighbor_left = back_to_main_menu_button
-				back_to_main_menu_button.focus_neighbor_right = children[i + 1]
+				back_to_main_menu_button.focus_neighbor_right = children[i]
 			if i > 0:
 				btn.focus_neighbor_left = children[i - 1]
 				children[i - 1].focus_neighbor_right = btn
 			if i >= grid.columns:
 				btn.focus_neighbor_top = children[i - grid.columns]
 				children[i - grid.columns].focus_neighbor_bottom = btn
-	
+				
 	#if children.size() > 0:
 		#var child = children[0]
 		#if child is Control:
