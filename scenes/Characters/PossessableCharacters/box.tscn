@@ -31,3 +31,14 @@ collide_with_areas = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_qywy1")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 32)
+scale = Vector2(37.04, 1)
+amount = 50
+speed_scale = 0.5
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, -150)
+radial_accel_min = 63.16
+radial_accel_max = 63.16
