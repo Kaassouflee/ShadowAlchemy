@@ -25,6 +25,7 @@ func _physics_process(_delta):
 		return
 	sprite.global_position = await sprite.global_position.move_toward(global_position, speed)
 	occluder.global_position = await occluder.global_position.move_toward(global_position, speed)
+	
 func _process(_delta):
 	if is_moving:
 		return
