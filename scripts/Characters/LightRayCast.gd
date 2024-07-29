@@ -29,7 +29,7 @@ func check_collision():
 		target_position = direction.normalized() * max_distance
 	
 func update_raycast(nearest_light):
-	if global_position.distance_to(nearest_light.global_position) > max_distance:
+	if global_position.distance_to(nearest_light.global_position) >= max_distance:
 		return
 	elif is_colliding():
 		var collider = get_collider()
