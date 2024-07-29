@@ -25,7 +25,7 @@ func _on_area_2d_area_entered(area):
 		ingredient_pickup.play()
 		
 		var ingredient_icon = ingredient_item.texture.diffuse_texture.get_load_path()
-		var ingredients_list = get_tree().root.get_node("Level/PotionUI/CanvasLayer/ItemList")
+		var ingredient_name = get_ingredient_name(ingredient_icon)
 		
 		ingredients_list.add_icon_item(load(ingredient_icon))
 		potion_logic.picked_up_ingredients.append(ingredient_name)
