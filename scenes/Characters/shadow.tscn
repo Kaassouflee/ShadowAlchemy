@@ -263,8 +263,8 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_lt837")
 color_ramp = SubResource("Gradient_pfooh")
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
