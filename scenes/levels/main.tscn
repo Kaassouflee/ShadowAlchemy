@@ -32,9 +32,6 @@ diffuse_texture = ExtResource("11_6tboe")
 normal_texture = ExtResource("12_5eqhb")
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_fpbu0"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_ewb7h"]
-diffuse_texture = ExtResource("11_6tboe")
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_ymr22"]
 diffuse_texture = ExtResource("11_uxlm4")
 normal_texture = ExtResource("12_0y2la")

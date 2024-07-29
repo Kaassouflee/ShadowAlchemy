@@ -36,18 +36,6 @@ func _on_area_2d_area_entered(area):
 			count = 0
 		ingredients_list.set_item_tooltip(count, ingredient_name)
 	
-	var ingredient_icon = ingredient_item.texture.diffuse_texture.get_load_path()
-	var ingredient_name = get_ingredient_name(ingredient_icon)
-	
-	ingredients_list.add_icon_item(load(ingredient_icon))
-	potion_logic.picked_up_ingredients.append(ingredient_name)
-	
-	# Sets tooltip 
-	var count = potion_logic.picked_up_ingredients.size() - 1
-	if count == -1:
-		count = 0
-	ingredients_list.set_item_tooltip(count, ingredient_name)
-	
 func get_ingredient_name(path: String) -> String:
 	var start = path.rfind("/")
 	var end = path.find(".png")
