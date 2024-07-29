@@ -219,4 +219,9 @@ shape = SubResource("RectangleShape2D_tia2a")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
+[node name="PotionRay" type="RayCast2D" parent="."]
+collision_mask = 2
+collide_with_areas = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="ready" from="." to="." method="_ready"]

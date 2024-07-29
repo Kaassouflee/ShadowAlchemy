@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxex5q2nxk7wu"]
+
+[sub_resource type="Curve" id="Curve_6o7i4"]
+min_value = -500.0
+max_value = 500.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.455319, -324.176), 0.0, 0.0, 0, 0, Vector2(0.86383, 456.044), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_f56rh"]
+
+[node name="PotionParticles" type="CPUParticles2D"]
+emitting = false
+amount = 300
+lifetime = 0.6
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.44
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 46.35
+gravity = Vector2(0, -280)
+orbit_velocity_curve = SubResource("Curve_6o7i4")
+scale_amount_min = 1.4
+scale_amount_max = 1.4
+color = Color(0, 1, 1, 1)
+color_ramp = SubResource("Gradient_f56rh")

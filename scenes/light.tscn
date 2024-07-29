@@ -1,24 +1,24 @@
 [gd_scene load_steps=6 format=3 uid="uid://cuq5r26worhtc"]
 
-[ext_resource type="Texture2D" uid="uid://cgwkjpok67nxn" path="res://assets/light_orb.png" id="1_0x22f"]
 [ext_resource type="Script" path="res://scripts/light.gd" id="1_ndteu"]
 [ext_resource type="Texture2D" uid="uid://bra4k0kg2xeoa" path="res://assets/light.png" id="2_m7tnb"]
-[ext_resource type="Shader" path="res://shaders/light.gdshader" id="3_y0q87"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxyou"]
-shader = ExtResource("3_y0q87")
-shader_parameter/brighter_color = Vector4(1, 0.8, 0, 1)
-shader_parameter/middle_color = Vector4(1, 0.56, 0, 1)
-shader_parameter/darker_color = Vector4(0.64, 0.2, 0.05, 1)
-shader_parameter/spread = 0.5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iulwr"]
+size = Vector2(34, 34)
+
+[sub_resource type="Curve" id="Curve_sckod"]
+max_value = 5.0
+_data = [Vector2(0.0212766, 3.40659), 0.0, 0.0, 0, 0, Vector2(0.672341, 0.67033), 0.0, 0.0, 0, 0, Vector2(0.957447, 0.164835), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_kya7h"]
+offsets = PackedFloat32Array(0, 0.516908, 0.690821, 1)
+colors = PackedColorArray(1, 0.811765, 0, 1, 0.843137, 0, 0, 1, 0.216512, 0.0381106, 0.0444089, 0.94902, 1, 1, 1, 0)
 
 [node name="Light" type="Node2D"]
 script = ExtResource("1_ndteu")
 
 [node name="LightSprite" type="Sprite2D" parent="."]
-modulate = Color(0.741176, 0.631373, 0.168627, 1)
-material = SubResource("ShaderMaterial_wxyou")
-texture = ExtResource("1_0x22f")
 
 [node name="SpriteLight" type="PointLight2D" parent="LightSprite"]
 shadow_enabled = true
@@ -30,3 +30,23 @@ metadata/max_distance = 0
 range_item_cull_mask = 2
 shadow_enabled = true
 texture = ExtResource("2_m7tnb")
+
+[node name="Area2D" type="Area2D" parent="LightSprite"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightSprite/Area2D"]
+shape = SubResource("RectangleShape2D_iulwr")
+
+[node name="LightParticles" type="CPUParticles2D" parent="."]
+amount = 4
+speed_scale = 0.6
+explosiveness = 0.44
+randomness = 0.2
+lifetime_randomness = 0.2
+gravity = Vector2(0, 50)
+initial_velocity_min = 63.34
+initial_velocity_max = 63.34
+scale_amount_min = 1.5
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_sckod")
+color_ramp = SubResource("Gradient_kya7h")
