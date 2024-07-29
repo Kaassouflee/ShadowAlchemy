@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var tile_map = %TileMap
 @onready var characters = %Characters
 @onready var current_memory = %LevelMemory
 @onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
