@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://nnjkpa1rm758"]
+[gd_scene load_steps=21 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_pexn3"]
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="2_bw3me"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://scenes/levels/main_lights.gd" id="15_77tfi"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="15_lyncd"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_qhylv"]
-[ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="17_1g4c5"]
 [ext_resource type="PackedScene" uid="uid://csqgu75gewuxw" path="res://scenes/sign.tscn" id="24_ve5sr"]
 [ext_resource type="Texture2D" uid="uid://cthxox6k8m1ky" path="res://assets/sign.png" id="25_e7sgn"]
 [ext_resource type="Texture2D" uid="uid://c1xncs06kitm3" path="res://assets/sign_n.png" id="26_28y7f"]
@@ -128,8 +127,6 @@ position = Vector2(549, 493)
 
 [node name="Light6" parent="Lights" instance=ExtResource("9_s4ew6")]
 position = Vector2(804, 496)
-
-[node name="PotionUI" parent="." instance=ExtResource("17_1g4c5")]
 
 [node name="Sign" parent="." instance=ExtResource("24_ve5sr")]
 position = Vector2(224, 416)

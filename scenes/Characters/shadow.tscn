@@ -304,14 +304,15 @@ sprite_frames = SubResource("SpriteFrames_f7f6d")
 animation = &"Left"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ShadowSprite"]
-offset_left = -25.0
-offset_top = -72.0
+z_index = 2
+offset_left = -33.0
+offset_top = -75.0
 offset_right = 25.0
-offset_bottom = -22.0
+offset_bottom = -26.0
 pivot_offset = Vector2(25, 50)
 size_flags_stretch_ratio = 0.0
 bbcode_enabled = true
-text = "[center]Press E[center]"
+text = "[center]Press E[center] or Y"
 scroll_active = false
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]

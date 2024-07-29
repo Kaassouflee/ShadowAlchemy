@@ -22,6 +22,11 @@ anchor_right = 0.5
 grow_horizontal = 2
 script = ExtResource("1_7t7mp")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -31,11 +36,14 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -8.0
-offset_top = 312.0
+offset_top = -1088.0
 offset_right = -8.0
 offset_bottom = 312.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.219501, 0.219501, 0.219501, 1)
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/ColorRect"]
 light_mask = 4
@@ -46,9 +54,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -600.0
+offset_left = -880.0
 offset_top = -664.0
-offset_right = 552.0
+offset_right = 856.0
 offset_bottom = -518.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -99,10 +107,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -448.0
-offset_top = -1328.0
-offset_right = 364.0
-offset_bottom = -768.0
+offset_left = -656.0
+offset_top = 80.0
+offset_right = 640.0
+offset_bottom = 640.0
 grow_horizontal = 2
 
 [node name="MemoryImage" type="TextureRect" parent="CanvasLayer/ColorRect/VBoxContainer"]
@@ -128,6 +136,7 @@ light_mask = 4
 visibility_layer = 4
 layout_mode = 2
 size_flags_vertical = 3
+bbcode_enabled = true
 script = ExtResource("1_knhlb")
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/GridContainer/Main menu" to="." method="_on_main_menu_pressed"]
