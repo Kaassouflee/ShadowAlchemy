@@ -13,10 +13,10 @@ func _on_area_2d_area_entered(area):
 	if label:
 		label.visible = true
 	if richLabel:
-		label.visible = true
+		richLabel.visible = true
 
 func _on_area_2d_area_exited(area):
 	if label:
 		label.visible = false
 	if richLabel:
-		label.visible = false
+		richLabel.visible = false
