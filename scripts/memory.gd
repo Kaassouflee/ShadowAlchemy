@@ -7,6 +7,7 @@ var MemoryUI
 var current_memory
 
 func _ready():
+	next_level.grab_focus()
 	current_memory = get_tree().root.get_node("Level/LevelMemory")
 	MemoryUI = get_tree().root.get_node("Memory")
 	if !current_memory || !current_memory.memory || !current_memory.memory["next_level"]:

@@ -72,6 +72,8 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../LevelSelectButton")
+focus_next = NodePath("../LevelSelectButton")
 theme_override_fonts/font = SubResource("SystemFont_ixndr")
 theme_override_font_sizes/font_size = 32
 text = "Start Game"
@@ -79,6 +81,8 @@ text = "Start Game"
 [node name="LevelSelectButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_previous = NodePath("../StartButton")
 theme_override_fonts/font = SubResource("SystemFont_ixndr")
 theme_override_font_sizes/font_size = 32
 text = "Level Select"
@@ -93,6 +97,8 @@ text = "Options"
 [node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
+focus_neighbor_top = NodePath("../LevelSelectButton")
+focus_previous = NodePath("../LevelSelectButton")
 theme_override_fonts/font = SubResource("SystemFont_ixndr")
 theme_override_font_sizes/font_size = 32
 text = "Exit Game"

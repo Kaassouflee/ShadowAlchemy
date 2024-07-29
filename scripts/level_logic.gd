@@ -1,9 +1,11 @@
 extends Node2D
 
+@onready var tile_map = %TileMap
 @onready var characters = %Characters
 @onready var current_memory = %LevelMemory
 @onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
 @onready var memory_item = $MemoryItem
+@onready var resume_button = $Camera2D/PauseMenu/CanvasLayer/MarginContainer/VBoxContainer/ResumeButton
 @export var current_level = 1
 var is_paused = false
 var last_player_before_pause = 1
@@ -18,6 +20,7 @@ func _process(delta):
 
 func pauseMenu():
 	if is_paused && !memory_item.is_active_memory:
+		resume_button.grab_focus()
 		pause_menu.show()
 		last_player_before_pause = characters.is_player
 		characters.is_player = 0

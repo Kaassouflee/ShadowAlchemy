@@ -29,13 +29,20 @@ func check_collision():
 		target_position = direction.normalized() * max_distance
 	
 func update_raycast(nearest_light):
-	if global_position.distance_to(nearest_light.global_position) > max_distance:
+	var distance_to_light = global_position.distance_to(nearest_light.global_position)
+	if distance_to_light > max_distance:
 		return
 	elif is_colliding():
 		var collider = get_collider()
-		# Check if the collider is a StaticBody2D
+		
 		if collider is TileMap:
-			return
+			var pos = get_collision_point()
+			var tile_coords = shadow.tile_map.local_to_map(pos)
+			tile_coords -= Vector2i(0, 1)
+			var tile_data: TileData = shadow.tile_map.get_cell_tile_data(1, tile_coords)
+			if tile_data != null:
+				if tile_data.get_custom_data("is_side_wall"):
+					killed_shadow = true
 	else:
 		killed_shadow = true
 		

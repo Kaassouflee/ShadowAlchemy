@@ -19,6 +19,7 @@ func handle_connection_signals():
 	exit_button.button_down.connect(on_exit_pressed)
 	options_button.button_down.connect(on_options_button_pressed)
 	options_menu.exit_options_menu.connect(on_exit_options_menu)
+	start_button.grab_focus()
 
 func on_start_pressed() -> void:
 	get_tree().change_scene_to_file(start_level)
