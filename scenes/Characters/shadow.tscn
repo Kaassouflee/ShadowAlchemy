@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7re7"]
 shader = ExtResource("2_u0w8p")
-shader_parameter/solid_color = null
+shader_parameter/solid_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0osrh"]
 atlas = ExtResource("2_jo8ej")
@@ -210,6 +210,17 @@ material = SubResource("ShaderMaterial_o7re7")
 sprite_frames = SubResource("SpriteFrames_f7f6d")
 animation = &"default_up"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="ShadowSprite"]
+offset_left = -25.0
+offset_top = -72.0
+offset_right = 25.0
+offset_bottom = -22.0
+pivot_offset = Vector2(25, 50)
+size_flags_stretch_ratio = 0.0
+bbcode_enabled = true
+text = "[center]Press E[center]"
+scroll_active = false
+
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kfavh")
 
@@ -226,5 +237,7 @@ panning_strength = 1.57
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
