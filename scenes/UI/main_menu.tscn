@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bonoui8mwpr22"]
+[gd_scene load_steps=6 format=3 uid="uid://bonoui8mwpr22"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_42f7v"]
 [ext_resource type="Texture2D" uid="uid://yh37o73ygf70" path="res://assets/Backgrounds/kaassouffle.png" id="1_wy8x8"]
+[ext_resource type="PackedScene" uid="uid://dhax5ttn3ccb3" path="res://scenes/UI/options_menu.tscn" id="3_ub0x8"]
 
 [sub_resource type="SystemFont" id="SystemFont_kabqh"]
 font_names = PackedStringArray("Impact")
@@ -62,7 +63,7 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -82,6 +83,13 @@ theme_override_fonts/font = SubResource("SystemFont_ixndr")
 theme_override_font_sizes/font_size = 32
 text = "Level Select"
 
+[node name="OptionsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ixndr")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
 [node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
@@ -89,4 +97,9 @@ theme_override_fonts/font = SubResource("SystemFont_ixndr")
 theme_override_font_sizes/font_size = 32
 text = "Exit Game"
 
+[node name="options_menu" parent="." instance=ExtResource("3_ub0x8")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
