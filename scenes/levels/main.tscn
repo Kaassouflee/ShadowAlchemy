@@ -99,6 +99,7 @@ script = ExtResource("8_ym7uk")
 
 [node name="MemoryItem" parent="." instance=ExtResource("15_lyncd")]
 position = Vector2(672, 353)
+is_active_memory = false
 
 [node name="PotionLogic" type="Node2D" parent="."]
 unique_name_in_owner = true
