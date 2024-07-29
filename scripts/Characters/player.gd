@@ -11,7 +11,6 @@ var is_moving = false
 var movement_direction = ""
 var movement_vector
 var tile_size = 64
-var ray_collider
 
 func _physics_process(_delta):
 	if !is_moving:

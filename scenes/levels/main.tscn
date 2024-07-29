@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://nnjkpa1rm758"]
+[gd_scene load_steps=34 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_pexn3"]
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="2_bw3me"]
@@ -26,11 +26,11 @@
 [ext_resource type="PackedScene" uid="uid://csqgu75gewuxw" path="res://scenes/sign.tscn" id="24_ve5sr"]
 [ext_resource type="Texture2D" uid="uid://cthxox6k8m1ky" path="res://assets/sign.png" id="25_e7sgn"]
 [ext_resource type="Texture2D" uid="uid://c1xncs06kitm3" path="res://assets/sign_n.png" id="26_28y7f"]
+[ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="27_a6bmx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ewb7h"]
 diffuse_texture = ExtResource("11_6tboe")
 normal_texture = ExtResource("12_5eqhb")
-[ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_fpbu0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ymr22"]
 diffuse_texture = ExtResource("11_uxlm4")
@@ -98,7 +98,7 @@ unique_name_in_owner = true
 script = ExtResource("8_ym7uk")
 
 [node name="MemoryItem" parent="." instance=ExtResource("15_lyncd")]
-position = Vector2(224, 352)
+position = Vector2(672, 353)
 
 [node name="PotionLogic" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -157,7 +157,7 @@ position = Vector2(544, 352)
 [node name="PotionUI" parent="." instance=ExtResource("17_1g4c5")]
 
 [node name="Sign" parent="." instance=ExtResource("24_ve5sr")]
-position = Vector2(160, 352)
+position = Vector2(232, 354)
 texture = SubResource("CanvasTexture_b6wtw")
 
 [node name="Label" type="Label" parent="Sign"]
@@ -167,7 +167,8 @@ offset_top = -48.0
 offset_right = 92.0
 offset_bottom = -25.0
 text = "Press RMB to switch"
+
 [node name="Possessables" type="Node" parent="."]
 
-[node name="Box" parent="Possessables" instance=ExtResource("22_fpbu0")]
-position = Vector2(672, 224)
+[node name="Box" parent="Possessables" instance=ExtResource("27_a6bmx")]
+position = Vector2(608, 224)

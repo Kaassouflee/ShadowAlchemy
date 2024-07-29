@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/sign.gd" id="2_0aabv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7r0q"]
-size = Vector2(48, 48)
+size = Vector2(128, 128)
 
 [node name="Sign" type="Sprite2D"]
 texture = ExtResource("1_v02tp")

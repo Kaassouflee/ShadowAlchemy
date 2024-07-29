@@ -16,22 +16,22 @@ var picked_up_ingredients = []
 var potion = null
 var ingredients_list
 var potion_list
-var use_potion
-var craft_potion
+var used_potion
+var crafted_potion
 var cell_position
 var target
 
 func _ready():
 	ingredients_list = get_tree().root.get_node("Level/PotionUI/CanvasLayer/ItemListBackground/ItemList")
 	potion_list = get_tree().root.get_node("Level/PotionUI/CanvasLayer/PotionListBackground/PotionList")
-	use_potion = get_tree().root.get_node("Level/PotionUI/UsePotion")
-	craft_potion = get_tree().root.get_node("Level/PotionUI/CraftPotion")
+	used_potion = get_tree().root.get_node("Level/PotionUI/UsePotion")
+	crafted_potion = get_tree().root.get_node("Level/PotionUI/CraftPotion")
 
 func _process(delta):
 	if picked_up_ingredients.size() == 3:
-		craftPotion()
+		craft_potion()
 	if potion && Input.is_action_just_pressed("trigger"):
-		usePotion(potion_recipes[get_key_by_name(potion)]["effect"])
+		use_potion(potion_recipes[get_key_by_name(potion)]["effect"])
 
 # Gets potion key based on name
 func get_key_by_name(potion_name: String) -> String:
@@ -52,10 +52,10 @@ func get_combination():
 	return combination
 
 # Crafts potion based on the recipes
-func craftPotion():
+func craft_potion():
 	var combination = get_combination()
 	if potion_recipes.has(combination):
-		craft_potion.play()
+		crafted_potion.play()
 		potion = potion_recipes[combination]["name"]
 		ingredients_list.clear()
 		picked_up_ingredients.clear()
@@ -76,42 +76,42 @@ func set_tile_metadata(key: String, value: Variant):
 		#TODO: Show it somewhere
 		print("Invalid tile cell position")
 
-func needsColliding(potion):
+func needs_colliding(potion):
 	return potion_raycast.is_colliding() && potion_recipes[get_key_by_name(potion)]["needs_collision"]
 
-func clearPotion():
+func clear_potion():
 	potion_list.clear()
 	potion = null
 	
-func usePotion(effect: String):
+func use_potion(effect: String):
 	match effect:
 		"freeze":
-			if needsColliding(potion):
+			if needs_colliding(potion):
 				freeze(effect)
 		"fire":
-			if needsColliding(potion):
+			if needs_colliding(potion):
 				fire(effect)
 		"darkness":
-			if needsColliding(potion):
+			if needs_colliding(potion):
 				darkness(effect)
 		"wall":
-			if !needsColliding(potion):
+			if !needs_colliding(potion):
 				wall(effect)
 		_:
 			print("Unknown effect")
 
 func freeze(effect):
-	use_potion.play()
+	used_potion.play()
 	set_tile_metadata("has_potion", effect)
-	clearPotion()
+	clear_potion()
 	
 func fire(effect):
-	use_potion.play()
+	used_potion.play()
 	set_tile_metadata("has_potion", effect)
-	clearPotion()
+	clear_potion()
 	
 func darkness(effect):
-	use_potion.play()
+	used_potion.play()
 	set_tile_metadata("has_potion", effect)
 	if target.get_meta("has_potion"):
 		if target.find_parent("LightSprite"):
@@ -125,10 +125,10 @@ func darkness(effect):
 			target.get_parent().get_node("SpriteLight").set_meta("max_distance", 0)
 			target.get_parent().get_node("SpriteLight").enabled = false
 			target.get_parent().get_node("ShadowLight").enabled = false
-		clearPotion()
+		clear_potion()
 	
 func wall(effect):	
-	use_potion.play()
+	used_potion.play()
 	#TODO: maybe look at what locations are valid? No placing in walls, but I guess it's the player's responsibilty
 	#TODO: find a way to place particles on the ground
 	if !potion_raycast.get_collider():
@@ -142,4 +142,4 @@ func wall(effect):
 		# Gets coordinates and places wall
 		var target = tilemap.map_to_local(target_tile)
 		tilemap.set_cell(0, Vector2i(target_tile), 1, Vector2i(1, 12))
-		clearPotion()
+		clear_potion()
