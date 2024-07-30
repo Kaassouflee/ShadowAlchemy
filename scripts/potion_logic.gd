@@ -141,5 +141,5 @@ func wall(effect):
 		)
 		# Gets coordinates and places wall
 		var target = tilemap.map_to_local(target_tile)
-		tilemap.set_cell(0, Vector2i(target_tile), 1, Vector2i(1, 12))
+		tilemap.set_cell(0, Vector2i(target_tile), 0, Vector2i(1, 4))
 		clear_potion()

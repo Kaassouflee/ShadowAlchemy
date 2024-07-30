@@ -299,16 +299,6 @@ range_item_cull_mask = 2
 shadow_enabled = true
 texture = ExtResource("3_aj7kj")
 
-[node name="RecipeLabel" type="Label" parent="AnimatedSprite2D"]
-visible = false
-offset_left = -106.0
-offset_top = -82.0
-offset_right = 113.0
-offset_bottom = -33.0
-text = "Wrong recipe..
-Restart the level to try again"
-horizontal_alignment = 1
-
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tia2a")
 
