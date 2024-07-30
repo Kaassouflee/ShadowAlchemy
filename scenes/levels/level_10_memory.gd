@@ -8,5 +8,5 @@ extends Node
 	\nAt each stop, they tried different drinks, shared stories, and made new memories. The group photo was taken at one of the cozier pubs, where they had found a large table in the center of the room. They had raised their glasses in a toast, celebrating their friendship and the good times they were having. The camera had caught them at the perfect moment, their smiles wide, eyes twinkling, and the warmth of their bond evident.
 	\nThey had played games, danced to tunes, and engaged in animated conversations, the laughter never ceasing. The pub crawl was more than just a night of drinks; it was a celebration of their friendship, a reminder of the joy they found in each other’s company.
 	\nHolding the photo now, she felt a wave of nostalgia and gratitude. It was a snapshot of pure joy, a testament to the fun they had and the connections they shared. The memories of that pub crawl would always bring a smile to her face, a cherished reminder of the nights spent with the best of friends, enjoying life to the fullest.",
-	"next_level": ""
+	"next_level": "../UI/ending"
 }

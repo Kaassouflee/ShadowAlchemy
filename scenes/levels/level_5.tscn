@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="3_vsr5m"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="4_npgx5"]
 [ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="5_mqv7b"]
-[ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="6_taf71"]
+[ext_resource type="AudioStream" uid="uid://drhif0gvqx1dr" path="res://sounds/music/Atmosphere music 3.ogg" id="6_gtd8u"]
 [ext_resource type="Script" path="res://scenes/levels/level_5_memory.gd" id="7_mdt76"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_gm4jt"]
 [ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_y8dce"]
@@ -62,7 +62,7 @@ position = Vector2(96, 160)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("6_taf71")
+stream = ExtResource("6_gtd8u")
 volume_db = -4.559
 autoplay = true
 
