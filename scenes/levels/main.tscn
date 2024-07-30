@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_efoud"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="3_556la"]
 [ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="4_cqiy6"]
-[ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="5_0yifg"]
+[ext_resource type="AudioStream" uid="uid://863nwco6ddk8" path="res://sounds/music/Atmosphere music 1.ogg" id="6_sq75q"]
 [ext_resource type="Script" path="res://scenes/levels/main_memory.gd" id="8_ym7uk"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_s4ew6"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_6cn3o"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_t2cf7"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="14_g0xvh"]
 [ext_resource type="Script" path="res://scenes/levels/main_lights.gd" id="15_77tfi"]
@@ -67,7 +67,7 @@ position = Vector2(100, 152)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("5_0yifg")
+stream = ExtResource("6_sq75q")
 volume_db = -4.559
 autoplay = true
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cnlma0g68lpjg"
+path="res://.godot/imported/Atmosphere music 2.ogg-458e2d7ae68f1d61ddff118d4704690a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/music/Atmosphere music 2.ogg"
+dest_files=["res://.godot/imported/Atmosphere music 2.ogg-458e2d7ae68f1d61ddff118d4704690a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=60.0
+beat_count=0
+bar_beats=4

@@ -298,7 +298,6 @@ colors = PackedColorArray(0, 0, 0, 1, 0.341463, 0.341463, 0.341463, 1, 1, 1, 1, 
 script = ExtResource("1_fgaap")
 
 [node name="ShadowSprite" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_o7re7")
 sprite_frames = SubResource("SpriteFrames_f7f6d")
 animation = &"Left"

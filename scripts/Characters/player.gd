@@ -80,6 +80,19 @@ func move(direction: Vector2):
 	global_position = tile_map.map_to_local(target_tile)
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
+func extract_number_from_level():
+	var current_level = get_tree().current_scene.scene_file_path.get_file().split(".")[0]
+	# Split the string by the underscore and gets the second number part and converts it to_int
+	if current_level && current_level != "main":
+		var level_number = current_level.split("_")[1].to_int()
+		return level_number
+	return null
 
 func _ready():
-	sprite_light.set_meta("max_distance", 95)
+	var level_number = extract_number_from_level()
+	# Increases light radius every level
+	if level_number:
+		sprite_light.set_meta("max_distance", 95 + level_number)
+	else:
+		sprite_light.set_meta("max_distance", 95)
+	

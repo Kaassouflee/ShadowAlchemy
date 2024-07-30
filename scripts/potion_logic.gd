@@ -8,6 +8,7 @@ var potion_recipes = {
 	"berry_herb_mushroom": {"name": "Darkness Potion", "effect": "darkness", "needs_collision": true},
 }
 @onready var player = $"../Characters/Player"
+@onready var recipe_label = $"../Characters/Player/AnimatedSprite2D/RecipeLabel"
 @onready var potion_raycast = $"../Characters/Player/PotionRay"
 @onready var tilemap = %TileMap
 var particles: PackedScene = preload("res://scenes/potion_particles.tscn")
@@ -62,9 +63,8 @@ func craft_potion():
 		potion_list.add_item(potion, load("res://assets/alchemy/potions/potion.png"), false)
 		potion_list.set_item_tooltip(0, potion)
 	else:
-		#TODO: show it somewhere
-		print("No known recipe for this combination of ingredients.")
-
+		recipe_label.show()
+		
 # Set metadata for a specific cell
 func set_tile_metadata(key: String, value: Variant):
 	target = potion_raycast.get_collider()
