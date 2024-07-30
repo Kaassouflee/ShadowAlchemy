@@ -138,19 +138,18 @@ offset_left = -88.0
 offset_top = -48.0
 offset_right = 102.0
 offset_bottom = -25.0
-text = "Press RMB or Y to switch"
+text = "Press RMB or Y to switch characters."
 
 [node name="Sign2" parent="." instance=ExtResource("15_q22vx")]
 position = Vector2(480, 417)
 texture = SubResource("CanvasTexture_b6wtw")
 
 [node name="Label" type="Label" parent="Sign2"]
-visible = false
-offset_left = -160.0
+offset_left = -136.0
 offset_top = -49.0
-offset_right = 165.0
+offset_right = 189.0
 offset_bottom = -26.0
-text = "Watch out for the light with your shadow.."
+text = "Be cautious of the light with shadow."
 
 [node name="Sign3" parent="." instance=ExtResource("15_q22vx")]
 position = Vector2(736, 416)
@@ -163,7 +162,7 @@ offset_top = -128.0
 offset_right = 182.0
 offset_bottom = -22.0
 bbcode_enabled = true
-text = "Collect a [b]memory[/b] with both characters to complete the level and slowly become [b]whole[/b] with your shadow again by remembering all the good times in your life."
+text = "[center]Collect a [b]memory[/b] with both characters to complete the level, gradually becoming [b]whole[/b] with your shadow by recalling all the good times in your life."
 fit_content = true
 
 [node name="Label" type="Label" parent="."]
