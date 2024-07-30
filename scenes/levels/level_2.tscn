@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://863nwco6ddk8" path="res://sounds/music/Atmosphere music 1.ogg" id="6_om0o5"]
 [ext_resource type="Script" path="res://scenes/levels/level_2_memory.gd" id="7_njtxl"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_7s3r1"]
-[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_06ced"]
+[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="12_06ced"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_i0joc"]
 [ext_resource type="PackedScene" uid="uid://csqgu75gewuxw" path="res://scenes/sign.tscn" id="13_mfaun"]
 [ext_resource type="Texture2D" uid="uid://cthxox6k8m1ky" path="res://assets/sign.png" id="14_01q4h"]
@@ -110,7 +110,7 @@ Like this box!"
 horizontal_alignment = 1
 
 [node name="Sign3" parent="." instance=ExtResource("13_mfaun")]
-position = Vector2(416, 160)
+position = Vector2(224, 152)
 texture = SubResource("CanvasTexture_te5cp")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Sign3"]
