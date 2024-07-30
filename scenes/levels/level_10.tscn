@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_qkpw8"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="11_1iifq"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="12_i0wat"]
-[ext_resource type="Script" path="res://scenes/levels/level_2_lights.gd" id="13_1kfao"]
+[ext_resource type="Script" path="res://scenes/levels/level_10_lights.gd" id="13_v4m8y"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_4qb6e"]
 [ext_resource type="Script" path="res://scripts/potion_logic.gd" id="15_lbqah"]
 [ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="16_1kvg4"]
@@ -124,7 +124,7 @@ offset_bottom = -24.0
 color = Color(1, 1, 1, 0)
 
 [node name="Lights" type="Node" parent="."]
-script = ExtResource("13_1kfao")
+script = ExtResource("13_v4m8y")
 
 [node name="Light" parent="Lights" instance=ExtResource("14_4qb6e")]
 position = Vector2(32, 352)
