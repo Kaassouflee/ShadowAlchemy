@@ -11,8 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_7s3r1"]
 [ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_06ced"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_i0joc"]
-[ext_resource type="Script" path="res://scenes/levels/level_2_lights.gd" id="14_lejri"]
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_4u6pt"]
+
+[sub_resource type="GDScript" id="GDScript_dyk2l"]
+script/source = "extends Node
+
+@onready var light = $Light
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	light.update_radius(1)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mtngo")
@@ -61,7 +74,7 @@ offset_right = 57.0
 offset_bottom = 5.0
 
 [node name="Lights" type="Node" parent="."]
-script = ExtResource("14_lejri")
+script = SubResource("GDScript_dyk2l")
 
 [node name="Light" parent="Lights" instance=ExtResource("9_7s3r1")]
 position = Vector2(800, 96)
