@@ -28,5 +28,4 @@ func pauseMenu():
 		pause_menu.hide()
 		characters.is_player = last_player_before_pause
 		Engine.time_scale = 1
-	
 	is_paused = !is_paused

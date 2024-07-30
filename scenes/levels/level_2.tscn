@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cljmhhx8iub81"]
+[gd_scene load_steps=19 format=3 uid="uid://cljmhhx8iub81"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_mtngo"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_15k8p"]
@@ -31,6 +31,10 @@ func _process(delta):
 "
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lt6uf"]
+diffuse_texture = ExtResource("14_01q4h")
+normal_texture = ExtResource("15_d68lq")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_te5cp"]
 diffuse_texture = ExtResource("14_01q4h")
 normal_texture = ExtResource("15_d68lq")
 
@@ -96,6 +100,7 @@ position = Vector2(224, 288)
 texture = SubResource("CanvasTexture_lt6uf")
 
 [node name="Label" type="Label" parent="Sign"]
+visible = false
 offset_left = -224.0
 offset_top = -80.0
 offset_right = 230.0
@@ -103,3 +108,19 @@ offset_bottom = -31.0
 text = "Shadow can cast shadows by moving objects. 
 Like this box!"
 horizontal_alignment = 1
+
+[node name="Sign3" parent="Sign" instance=ExtResource("13_mfaun")]
+position = Vector2(128, -128)
+texture = SubResource("CanvasTexture_te5cp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sign/Sign3"]
+visible = false
+z_index = 2
+offset_left = -168.0
+offset_top = -96.0
+offset_right = 216.0
+offset_bottom = -30.0
+bbcode_enabled = true
+text = "[center][img]res://assets/alchemy/ingredients/berry.png[/img] [img]res://assets/alchemy/ingredients/herb.png[/img] [img]res://assets/alchemy/ingredients/mushroom.png[/img] = Darkness
+"
+fit_content = true
