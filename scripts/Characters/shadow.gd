@@ -147,6 +147,8 @@ func reset_to_spawnpoint():
 		timer.one_shot = true
 		timer.start()
 		characters.is_player = 0
+		if (is_possessing):
+			_end_possessing()
 
 func _on_timer_timeout():
 	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)
