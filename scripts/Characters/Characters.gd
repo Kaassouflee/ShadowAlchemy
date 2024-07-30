@@ -1,6 +1,6 @@
 extends Node
 
-@export var is_player = 1 # Start as character (default)
+var is_player = 1 # Start as character (default)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("switch"):
