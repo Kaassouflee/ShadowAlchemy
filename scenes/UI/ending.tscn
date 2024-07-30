@@ -210,7 +210,7 @@ tracks/10/path = NodePath("CanvasLayer/AnimationPlayer/EndingParticles:emitting"
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(-0.1, 53.1),
+"times": PackedFloat32Array(1, 53.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -222,7 +222,7 @@ tracks/11/path = NodePath("CanvasLayer/AnimationPlayer/Godrays:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(-0.1, 53.6),
+"times": PackedFloat32Array(1, 53.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -915,7 +915,7 @@ position = Vector2(960, 600)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_on4sh")
 animation = &"Idle"
-frame_progress = 0.441652
+frame = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/AnimationPlayer/ShadowSprite"]
 position = Vector2(0, 24)
@@ -969,6 +969,7 @@ offset_top = -108.0
 offset_right = 167.0
 offset_bottom = -35.0
 bbcode_enabled = true
+text = "[center]And I must not forget, we must not forget.That we are human beings."
 
 [node name="EndingParticles" type="CPUParticles2D" parent="CanvasLayer/AnimationPlayer"]
 position = Vector2(960, 609)
@@ -985,10 +986,10 @@ color_ramp = SubResource("Gradient_w05ov")
 
 [node name="Godrays" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
 material = SubResource("ShaderMaterial_bv8lv")
-offset_left = -161.0
-offset_top = -147.0
-offset_right = 2120.0
-offset_bottom = 899.0
+offset_left = -3.0
+offset_top = -7.0
+offset_right = 2026.0
+offset_bottom = 1099.0
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_g330v")
