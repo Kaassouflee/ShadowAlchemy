@@ -110,6 +110,7 @@ func move(direction: Vector2i):
 	ray.target_position = direction * tile_size
 	ray.force_raycast_update()
 	if ray.is_colliding():
+		var collided = ray.get_collider()
 		match movement_direction:
 			"up":
 				animated_sprite.play("default_up")
@@ -119,7 +120,10 @@ func move(direction: Vector2i):
 				animated_sprite.play("default_left")
 			"right":
 				animated_sprite.play("default_right")
-		return
+		if !collided.has_meta("possessable"):
+			return
+		if !collided.get_meta("possessable"):		
+			return
 	# Move player
 	is_moving = true
 	global_position = tile_map.map_to_local(target_tile)
