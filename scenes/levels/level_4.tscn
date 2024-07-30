@@ -55,7 +55,7 @@ func _process(delta):
 	pass
 "
 
-[node name="Level2" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_5gt7a")
 
 [node name="TileMap" parent="." instance=ExtResource("2_6bwcv")]
