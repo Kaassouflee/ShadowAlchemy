@@ -12,7 +12,7 @@ func _ready():
 	enabled = true
 
 func _physics_process(_delta):
-	if nearest_light:
+	if nearest_light and !killed_shadow:
 		update_raycast(nearest_light)
 	if killed_shadow:
 		killed_shadow = false
@@ -42,6 +42,12 @@ func update_raycast(nearest_light):
 			var tile_data: TileData = shadow.tile_map.get_cell_tile_data(1, tile_coords)
 			if tile_data != null:
 				if tile_data.get_custom_data("is_side_wall"):
+					killed_shadow = true
+				if tile_data.get_custom_data("is_water"):
+					killed_shadow = true
+			tile_data = shadow.tile_map.get_cell_tile_data(0, tile_coords)
+			if tile_data != null:
+				if tile_data.get_custom_data("is_water"):
 					killed_shadow = true
 	else:
 		killed_shadow = true
