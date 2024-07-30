@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cojvsmr4qeir5"]
+[gd_scene load_steps=87 format=3 uid="uid://bh3egutt1d1d7"]
 
 [ext_resource type="Script" path="res://scripts/ending.gd" id="1_g0kg2"]
 [ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="2_rcnq5"]
@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://shaders/shadow.gdshader" id="4_ggfai"]
 [ext_resource type="Texture2D" uid="uid://yq0bmb5m57e4" path="res://assets/animations.png" id="5_l4ivk"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="6_8vn1k"]
-[ext_resource type="AudioStream" uid="uid://tdpcy7mu844d" path="res://sounds/music/Background music.ogg" id="7_g330v"]
+[ext_resource type="AudioStream" path="res://sounds/music/Background music.ogg" id="7_g330v"]
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_7buq6"]
 [ext_resource type="AudioStream" uid="uid://b43qoqjiwease" path="res://sounds/SFX/Possession_Sound.ogg" id="10_p7yvs"]
 
@@ -133,13 +133,18 @@ tracks/4/path = NodePath("CanvasLayer/AnimationPlayer/AnimatedSprite2D/PlayerTex
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 3, 4.1, 5.7, 8.7, 11.3, 13.9, 14.8, 16, 17.5, 19.3, 21, 22.2, 23.4, 25, 26.4, 29.2, 31, 33, 34.2, 35.8, 37.2, 38.9, 40.1, 41.7, 43.2, 45.6, 48.7, 50.1, 51.2, 52.1, 53.1, 54.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3, 4.1, 5.7, 8.7, 11.3, 13.9, 14.8, 16, 17.5, 19.3, 21, 22.2, 23.4, 25, 26.4, 29.2, 31, 33, 34.2, 35.8, 37.2, 38.9, 40.1, 41.7, 43.2, 45.6, 48.7, 50.1, 51.2, 52.1, 53.1, 54.2, 54.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["", "[center]You again..[/center]", "[center]Why can't you leave me alone?!.[/center]", "", "[center]Then why are we seperated?", "", "[center]I'm afraid, yes.", "[center]But doesn't that make me human?", "[center]You saw my... ehh.. our memories", "[center]That is humanity. To be afraid to lose that..", "[center]Please let me tell this", "[center]I've been taking some time to be still", "[center]I've been taking some time to be by myself", "[center]When you stand in an eye of the storm", "[center]I was made to be tested and twisted", "[center]Now that I stand on my own two feet", "[center]And you know me, my will is eternal", "[center]Face to face with a beast, I will rise.. You.. You are that beast", "[center]Some people will know me as [b]hope[b]", "[center]Some people know me as the voice that you hear when you loosen the noose on the rope", "[center]And you know how I know how I know that l'll prosper?
 ", "[center]'Cause I stand here beside you today", "[center]So cower at the woman l've become, when I sing from the top of my
 lungs", "[center]That I won't retire, l'll stand in your fire, inspire the weak to be
-strong", "[center]And when I am gone, I will rise, in the music that I left behind", "[center]We're a coin with two different sides", "", "[center]These memories that we relived and this view on life by me...", "", "[center]We are becoming whole again. Come.. join me", "", "[center]And I must not forget, we must not forget.That we are human beings.", ""]
+strong", "[center]And when I am gone, I will rise, in the music that I left behind", "[center]We're a coin with two different sides", "", "[center]These memories that we relived and this renewed view on my life..", "", "[center]We are becoming whole again. Come.. join me", "", "[center]And I must not forget, we must not forget.That we are human beings.", "", "[center]This game was brought to you by Team Kaassoufle as part of the PirateSoftware Gamejam 2024.
+Consisting of:
+MooneyBryce
+AssassinsBro
+Jelmur
+rednaeL"]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -210,7 +215,7 @@ tracks/10/path = NodePath("CanvasLayer/AnimationPlayer/EndingParticles:emitting"
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0.1, 53.1),
+"times": PackedFloat32Array(0, 53.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -222,7 +227,7 @@ tracks/11/path = NodePath("CanvasLayer/AnimationPlayer/Godrays:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0.1, 53.6),
+"times": PackedFloat32Array(0, 53.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -234,10 +239,10 @@ tracks/12/path = NodePath("CanvasLayer/AnimationPlayer/AnimatedSprite2D:frame")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.6, 1.4, 2.1, 2.8, 3.4, 4, 4.7, 5.4, 6, 6.6, 7, 7.4, 7.8, 8.2, 9.1, 9.7, 10.3, 10.9, 11.5, 12.1, 12.7, 13.1, 13.5, 19.5, 19.9, 20.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.6, 1.4, 2.1, 2.8, 3.4, 4, 4.7, 5.4, 6, 6.6, 7, 7.4, 7.8, 8.2, 9.1, 9.7, 10.3, 10.9, 11.5, 12.1, 12.7, 13.1, 13.5, 19.5, 19.9, 20.3, 21.5, 22.6, 23.6, 24.7, 25.7, 26.7, 27.8, 29, 30.2, 31.8, 33.7, 35.6, 37.8, 39.7, 41.6, 44.5, 45.3, 45.9, 46.7, 47.4, 48.4, 49.3, 50.2, 51.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1]
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -246,10 +251,10 @@ tracks/13/path = NodePath("CanvasLayer/AnimationPlayer/ShadowSprite:frame")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 3.4, 4.3, 4.7, 5.1, 5.5, 5.9, 6.8, 7.2, 7.9, 8.9, 9.6, 10.3, 10.7, 11.4, 12.6, 13.6, 14.5, 51.2, 51.7, 52.2, 52.8, 53, 53.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 3.4, 4.3, 4.7, 5.1, 5.5, 5.9, 6.8, 7.2, 7.9, 8.9, 9.6, 10.3, 10.7, 11.4, 12.6, 13.6, 14.5, 15.2, 17.3, 19.3, 22, 24.6, 27.1, 30.4, 33.3, 37, 40.8, 43.1, 46.1, 46.7, 47.3, 47.9, 48.5, 49, 49.6, 50.1, 50.6, 51.2, 51.7, 52.2, 52.8, 53, 53.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 1, 2, 2, 3, 2, 3, 0, 0, 1, 3, 1, 1, 2, 1, 0, 2, 0, 2, 0, 2, 0, 3, 2, 1, 0, 2, 2, 3, 1]
+"values": [1, 1, 2, 2, 3, 2, 3, 0, 0, 0, 3, 0, 1, 2, 1, 0, 2, 0, 2, 0, 2, 0, 3, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 2, 2, 3, 1]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -286,6 +291,42 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(),
 "update": 1,
 "values": []
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CanvasLayer/ColorRect/GridContainer/Main menu:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 54.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("CanvasLayer/ColorRect/GridContainer/Level select:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 54.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("CanvasLayer/ColorRect/GridContainer/Next level:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 54.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iplj8"]
@@ -774,7 +815,7 @@ shader_parameter/speed = 2.0
 shader_parameter/ray1_density = 12.0
 shader_parameter/ray2_density = 15.0
 shader_parameter/ray2_intensity = 0.607
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/color = Color(1, 0.878431, 0.576471, 0.8)
 shader_parameter/hdr = true
 shader_parameter/seed = 5.0
 
@@ -922,11 +963,12 @@ speed_scale = 0.5
 
 [node name="ShadowSprite" type="AnimatedSprite2D" parent="CanvasLayer/AnimationPlayer"]
 z_index = 1
-material = SubResource("ShaderMaterial_di8y4")
-position = Vector2(1201, 600)
+material = SubResource("CanvasItemMaterial_i07gq")
+position = Vector2(960, 600)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_on4sh")
-animation = &"default_left"
+animation = &"Idle"
+frame = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/AnimationPlayer/ShadowSprite"]
 position = Vector2(0, 24)
@@ -944,7 +986,7 @@ initial_velocity_min = 0.5
 initial_velocity_max = 0.5
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_eeqym")
-color_ramp = SubResource("Gradient_i5glb")
+color_ramp = SubResource("Gradient_yloh7")
 
 [node name="ShadowText" type="RichTextLabel" parent="CanvasLayer/AnimationPlayer/ShadowSprite"]
 z_index = 2
@@ -953,16 +995,14 @@ offset_top = -115.0
 offset_right = 167.0
 offset_bottom = -35.0
 bbcode_enabled = true
-text = "[center]Because you're afraid of me. To lose your friends, your lover, your humanity. To be alone..
-"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/AnimationPlayer"]
 light_mask = 4
 z_index = 1
-position = Vector2(757.661, 600)
+position = Vector2(960, 600)
 scale = Vector2(1.9375, 2)
 sprite_frames = SubResource("SpriteFrames_f86wh")
-animation = &"Right"
+animation = &"Idle"
 frame = 1
 
 [node name="RecipeLabel" type="Label" parent="CanvasLayer/AnimationPlayer/AnimatedSprite2D"]
@@ -977,15 +1017,22 @@ horizontal_alignment = 1
 
 [node name="PlayerText" type="RichTextLabel" parent="CanvasLayer/AnimationPlayer/AnimatedSprite2D"]
 z_index = 2
-offset_left = -166.0
-offset_top = -108.0
-offset_right = 167.0
-offset_bottom = -35.0
+offset_left = -242.0
+offset_top = -86.0
+offset_right = 250.0
+offset_bottom = 52.0
 bbcode_enabled = true
+text = "[center]This game was brought to you by Team Kaassoufle as part of the PirateSoftware Gamejam 2024.
+Consisting of:
+MooneyBryce
+AssassinsBro
+Jelmur
+rednaeL"
+fit_content = true
+scroll_following = true
 
 [node name="EndingParticles" type="CPUParticles2D" parent="CanvasLayer/AnimationPlayer"]
 position = Vector2(960, 609)
-emitting = false
 amount = 150
 emission_shape = 1
 emission_sphere_radius = 1.0
@@ -998,10 +1045,9 @@ scale_amount_curve = SubResource("Curve_ymaiq")
 color_ramp = SubResource("Gradient_w05ov")
 
 [node name="Godrays" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
-visible = false
 material = SubResource("ShaderMaterial_bv8lv")
 offset_left = -3.0
-offset_top = -7.0
+offset_top = -276.0
 offset_right = 2026.0
 offset_bottom = 1099.0
 
