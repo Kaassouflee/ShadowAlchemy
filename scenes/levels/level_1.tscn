@@ -47,7 +47,7 @@ shader_parameter/size = Vector2(0.005, 0.2)
 diffuse_texture = ExtResource("16_t7jn1")
 normal_texture = ExtResource("17_qd7re")
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_odw1v")
 
 [node name="TileMap" parent="." instance=ExtResource("2_aphao")]
