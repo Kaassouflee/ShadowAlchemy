@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://by7vf4i2ah721"]
+[gd_scene load_steps=21 format=3 uid="uid://nnjkpa1rm758"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_odw1v"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_aphao"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://863nwco6ddk8" path="res://sounds/music/Atmosphere music 1.ogg" id="6_8wsa7"]
 [ext_resource type="Script" path="res://scenes/levels/level_1_memory.gd" id="7_tku44"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_5i00p"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="9_6cgbt"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_6cgbt"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_5b338"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="11_1oi6o"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="12_2nrcc"]
