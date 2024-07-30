@@ -13,6 +13,10 @@ var levels = {
 	3: "level_4",
 	4: "level_5",
 	5: "level_6",
+	6: "level_7",
+	7: "level_8",
+	8: "level_9",
+	9: "level_10",
 }
 
 func _ready():
