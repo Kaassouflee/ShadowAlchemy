@@ -35,6 +35,7 @@ func _physics_process(_delta):
 func _process(_delta):
 	if is_moving:
 		return
+	animated_sprite.stop()
 	if (characters.is_player == 1):
 		if Input.is_action_pressed("up"):
 			movement_direction = "up"
@@ -48,8 +49,6 @@ func _process(_delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-		else:
-			animated_sprite.play("Idle")
 func move(direction: Vector2):
 	movement_vector = direction
 	# Get Current tile Vector2i

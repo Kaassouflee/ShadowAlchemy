@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://byy136decqre"]
 
-[ext_resource type="Texture2D" uid="uid://dbhc4ad62bjws" path="res://scenes/Gamejam Tileset.png" id="1_rug7p"]
+[ext_resource type="Texture2D" path="res://scenes/Gamejam Tileset.png" id="1_rug7p"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yc7bk"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)

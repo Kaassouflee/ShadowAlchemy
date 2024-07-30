@@ -8,5 +8,5 @@ extends Node
 	\nThere were moments when they lost themselves in the music, dancing and cheering, feeling the bass thrum through their bodies. The connection they felt with each other and the thousands of other fans was electric, a shared experience that transcended words.
 	\nAs the final notes of the encore faded and the stage lights dimmed, they stood there, breathless and exhilarated. The concert had been more than just a performance; it was a celebration of their friendship and a testament to the joy that music brought into their lives.
 	\nHolding the photo now, she felt a rush of nostalgia and gratitude. That night had been one of the happiest moments they had shared, a memory etched into her heart. It was a reminder of the power of music to bring people together and the incredible bond she had with her friends, one that would carry them through whatever came next.",
-	"next_level": ""
+	"next_level": "level_8"
 }
