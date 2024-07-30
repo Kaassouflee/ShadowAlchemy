@@ -65,7 +65,6 @@ func craft_potion():
 	else:
 		recipe_label.show()
 		
-
 # Set metadata for a specific cell
 func set_tile_metadata(key: String, value: Variant):
 	target = potion_raycast.get_collider()

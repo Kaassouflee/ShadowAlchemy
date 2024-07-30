@@ -90,6 +90,7 @@ func extract_number_from_level():
 
 func _ready():
 	var level_number = extract_number_from_level()
+	# Increases light radius every level
 	if level_number:
 		sprite_light.set_meta("max_distance", 95 + level_number)
 	else:
