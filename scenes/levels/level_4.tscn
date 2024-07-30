@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2nvnscpb5uvm"]
+[gd_scene load_steps=30 format=3 uid="uid://2nvnscpb5uvm"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_5gt7a"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_6bwcv"]
@@ -13,8 +13,16 @@
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="11_ut6iw"]
 [ext_resource type="Shader" path="res://shaders/rain.gdshader" id="12_aul6q"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_2vc4e"]
+[ext_resource type="PackedScene" uid="uid://csqgu75gewuxw" path="res://scenes/sign.tscn" id="16_qx6ek"]
+[ext_resource type="Texture2D" uid="uid://cthxox6k8m1ky" path="res://assets/sign.png" id="17_a75g7"]
+[ext_resource type="Script" path="res://scripts/potion_logic.gd" id="18_tlgtn"]
+[ext_resource type="Texture2D" uid="uid://c1xncs06kitm3" path="res://assets/sign_n.png" id="18_u3sac"]
+[ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="19_tgmuk"]
+[ext_resource type="Texture2D" uid="uid://cix2df5nke8eh" path="res://assets/alchemy/ingredients/herb.png" id="20_u7kje"]
 [ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="21_bmjiw"]
-[ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_pj8xn"]
+[ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="21_suks6"]
+[ext_resource type="Texture2D" uid="uid://chgsxjbrlr6vn" path="res://assets/alchemy/ingredients/flower.png" id="22_4me5q"]
+[ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="23_p676x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bq84"]
 shader = ExtResource("11_ut6iw")
@@ -48,20 +56,32 @@ script/source = "extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	light.update_radius(1)
+	light.update_radius(3)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 "
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_dixqy"]
+diffuse_texture = ExtResource("17_a75g7")
+normal_texture = ExtResource("18_u3sac")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_d7vlr"]
+diffuse_texture = ExtResource("20_u7kje")
+normal_texture = ExtResource("21_suks6")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rglw1"]
+diffuse_texture = ExtResource("22_4me5q")
+normal_texture = ExtResource("23_p676x")
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_5gt7a")
 
 [node name="TileMap" parent="." instance=ExtResource("2_6bwcv")]
 unique_name_in_owner = true
-layer_0/tile_data = PackedInt32Array(131073, 327680, 9, 196609, 327680, 9, 262145, 327680, 9, 327681, 327680, 9, 131084, 327680, 9, 131083, 327680, 9, 131082, 327680, 9, 131081, 327680, 9, 131080, 327680, 9, 131079, 327680, 9, 131078, 327680, 9, 131077, 327680, 9, 131076, 327680, 9, 131075, 327680, 9, 131074, 327680, 9, 196610, 327680, 9, 262146, 327680, 9, 327682, 327680, 9, 327689, 327680, 9, 327690, 327680, 9, 327691, 327680, 9, 327692, 327680, 9, 262153, 327680, 9, 262152, 327680, 9, 262151, 327680, 9, 262150, 327680, 9, 327685, 327680, 9, 327686, 327680, 9, 262149, 327680, 9, 327687, 327680, 9, 327688, 327680, 9, 262148, 327680, 9, 262147, 327680, 9, 327683, 327680, 9, 327684, 327680, 9, 196614, 327680, 9, 196613, 327680, 9, 196612, 327680, 9, 196611, 327680, 9, 262155, 327680, 9, 196620, 327680, 9, 196619, 327680, 9, 196618, 327680, 9, 196617, 327680, 9, 196616, 327680, 9, 196615, 327680, 9, 262154, 720896, 2)
-layer_1/tile_data = PackedInt32Array(393217, 458752, 10, 393218, 458752, 10, 393219, 458752, 10, 393220, 458752, 10, 393221, 458752, 10, 393222, 458752, 10, 393223, 458752, 10, 393224, 458752, 10, 393225, 458752, 10, 393226, 458752, 10, 393227, 458752, 10, 393228, 458752, 10, 65537, 131072, 7, 65538, 131072, 7, 65539, 131072, 7, 65540, 131072, 7, 65541, 131072, 7, 65542, 327680, 7, 65543, 131072, 7, 65544, 131072, 7, 65545, 131072, 7, 65546, 131072, 7, 65547, 131072, 7, 65548, 327680, 7, 1, 262144, 6, 2, 262144, 6, 3, 262144, 6, 4, 262144, 6, 5, 262144, 6, 6, 262144, 6, 7, 262144, 6, 8, 262144, 6, 9, 262144, 6, 10, 262144, 6, 11, 262144, 6, 12, 262144, 6, 13, 458752, 6, 0, 0, 6, 65536, 0, 7, 131072, 0, 7, 196608, 0, 7, 262144, 0, 7, 327680, 0, 7, 393216, 0, 10, 458752, 0, 11, 458765, 589824, 11, 458753, 524288, 11, 458754, 524288, 11, 458755, 524288, 11, 458756, 524288, 11, 458757, 524288, 11, 458758, 524288, 11, 458759, 524288, 11, 458760, 524288, 11, 458761, 524288, 11, 458762, 524288, 11, 458763, 524288, 11, 458764, 524288, 11, 65549, 589824, 9, 131085, 589824, 9, 196621, 589824, 9, 262157, 589824, 9, 327693, 589824, 9, 393229, 589824, 10)
+layer_0/tile_data = PackedInt32Array(131073, 327680, 9, 196609, 327680, 9, 262145, 327680, 9, 327681, 327680, 9, 131084, 327680, 9, 131083, 327680, 9, 131082, 327680, 9, 131081, 327680, 9, 131080, 327680, 9, 131079, 327680, 9, 131078, 327680, 9, 131077, 327680, 9, 131076, 327680, 9, 131075, 327680, 9, 131074, 327680, 9, 196610, 327680, 9, 262146, 327680, 9, 327682, 327680, 9, 327689, 327680, 9, 262153, 327680, 9, 262152, 327680, 9, 262151, 327680, 9, 262150, 327680, 9, 327685, 327680, 9, 327686, 327680, 9, 262149, 327680, 9, 327687, 327680, 9, 327688, 327680, 9, 262148, 327680, 9, 262147, 327680, 9, 327683, 327680, 9, 327684, 327680, 9, 196614, 327680, 9, 196613, 327680, 9, 196612, 327680, 9, 196611, 327680, 9, 196620, 327680, 9, 196619, 327680, 9, 196618, 327680, 9, 196617, 327680, 9, 196616, 327680, 9, 196615, 327680, 9)
+layer_1/tile_data = PackedInt32Array(393217, 458752, 10, 393218, 458752, 10, 393219, 458752, 10, 393220, 458752, 10, 393221, 458752, 10, 393222, 458752, 10, 393223, 458752, 10, 393224, 458752, 10, 393225, 458752, 10, 393226, 917504, 3, 65537, 131072, 7, 65538, 131072, 7, 65539, 131072, 7, 65540, 131072, 7, 65541, 131072, 7, 65542, 851968, 1, 65543, 131072, 7, 65544, 131072, 7, 65545, 327680, 7, 65546, 131072, 7, 65547, 131072, 7, 65548, 851968, 1, 1, 262144, 6, 2, 262144, 6, 3, 262144, 6, 4, 262144, 6, 5, 262144, 6, 6, 262144, 6, 7, 262144, 6, 8, 262144, 6, 9, 262144, 6, 10, 262144, 6, 11, 262144, 6, 12, 262144, 6, 13, 458752, 6, 0, 0, 6, 65536, 0, 7, 131072, 0, 7, 196608, 0, 7, 262144, 0, 7, 327680, 0, 7, 393216, 0, 10, 458752, 0, 11, 458753, 524288, 11, 458754, 524288, 11, 458755, 524288, 11, 458756, 524288, 11, 458757, 524288, 11, 458758, 524288, 11, 458759, 524288, 11, 458760, 524288, 11, 458761, 524288, 11, 458762, 524288, 11, 65549, 589824, 9, 131085, 589824, 9, 196621, 589824, 9, 262157, 917504, 3, 327693, 917504, 4, 327690, 917504, 1, 262154, 655360, 0, 262155, 786432, 0, 262156, 786432, 0, 327691, 720896, 1, 327692, 720896, 1)
 
 [node name="Characters" type="Node" parent="."]
 unique_name_in_owner = true
@@ -85,7 +105,7 @@ script = ExtResource("7_xqtj1")
 
 [node name="MemoryItem" parent="." instance=ExtResource("8_ua8sr")]
 unique_name_in_owner = true
-position = Vector2(288, 288)
+position = Vector2(608, 224)
 
 [node name="Spawnpoint" parent="." instance=ExtResource("9_50qf8")]
 unique_name_in_owner = true
@@ -120,14 +140,37 @@ color = Color(1, 1, 1, 0)
 script = SubResource("GDScript_dyk2l")
 
 [node name="Light" parent="Lights" instance=ExtResource("14_2vc4e")]
-position = Vector2(800, 96)
-
-[node name="Light2" parent="Lights" instance=ExtResource("14_2vc4e")]
-position = Vector2(416, 96)
+position = Vector2(608, 96)
 
 [node name="PotionUI" parent="." instance=ExtResource("21_bmjiw")]
 
-[node name="Possessables" type="Node" parent="."]
+[node name="Sign" parent="." instance=ExtResource("16_qx6ek")]
+position = Vector2(224, 288)
+texture = SubResource("CanvasTexture_dixqy")
 
-[node name="Box" parent="Possessables" instance=ExtResource("22_pj8xn")]
-position = Vector2(800, 288)
+[node name="RichTextLabel" type="RichTextLabel" parent="Sign"]
+z_index = 2
+offset_left = -176.0
+offset_top = -144.0
+offset_right = 208.0
+offset_bottom = -78.0
+bbcode_enabled = true
+text = "[center][img]res://assets/alchemy/ingredients/flower.png[/img] [img]res://assets/alchemy/ingredients/herb.png[/img] [img]res://assets/alchemy/ingredients/berry.png[/img] = Wall Potion
+Throw the potion with LMB or A to build a wall and cast shadows.
+"
+fit_content = true
+
+[node name="PotionLogic" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("18_tlgtn")
+
+[node name="IngredientItem" parent="PotionLogic" instance=ExtResource("19_tgmuk")]
+position = Vector2(352, 352)
+
+[node name="IngredientItem2" parent="PotionLogic" instance=ExtResource("19_tgmuk")]
+position = Vector2(544, 352)
+texture = SubResource("CanvasTexture_d7vlr")
+
+[node name="IngredientItem3" parent="PotionLogic" instance=ExtResource("19_tgmuk")]
+position = Vector2(352, 224)
+texture = SubResource("CanvasTexture_rglw1")
