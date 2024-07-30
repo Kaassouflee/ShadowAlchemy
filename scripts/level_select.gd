@@ -7,7 +7,7 @@ const LEVEL_BTN = preload("res://assets/level_button.tscn")
 
 # All the existing levels in the game
 var levels = {
-	0: "main",
+	0: "level_1",
 	1: "level_2",
 	2: "level_3",
 	3: "level_4",

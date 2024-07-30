@@ -83,7 +83,7 @@ func move(direction: Vector2):
 func extract_number_from_level():
 	var current_level = get_tree().current_scene.scene_file_path.get_file().split(".")[0]
 	# Split the string by the underscore and gets the second number part and converts it to_int
-	if current_level && current_level != "main":
+	if current_level:
 		var level_number = current_level.split("_")[1].to_int()
 		return level_number
 	return null

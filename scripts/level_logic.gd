@@ -5,7 +5,7 @@ extends Node2D
 @onready var pause_menu = $Camera2D/PauseMenu/CanvasLayer
 @onready var memory_item = $MemoryItem
 @onready var resume_button = $Camera2D/PauseMenu/CanvasLayer/MarginContainer/VBoxContainer/ResumeButton
-@export var current_level = 1
+@export var dcurrent_level = 1
 var is_paused = false
 var last_player_before_pause = 1
 

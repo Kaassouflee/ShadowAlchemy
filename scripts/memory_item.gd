@@ -29,7 +29,10 @@ func update_player_count():
 			player.get_node("AnimatedSprite2D/SpriteLight").enabled = false
 			player.get_node("AnimatedSprite2D/ShadowLight").enabled = false
 	elif picked_up_players.size() == 2:
-		GlobalProgression.last_level_beat = GlobalProgression.current_level
+		if !GlobalProgression.current_level || !GlobalProgression.last_level_beat:
+			GlobalProgression.last_level_beat = GlobalProgression.current_level
+		elif GlobalProgression.last_level_beat.split("_")[1].to_int() < GlobalProgression.current_level.split("_")[1].to_int():
+			GlobalProgression.last_level_beat = GlobalProgression.current_level
 		current_memory = get_tree().root.get_node("Level/LevelMemory")
 		memory_pickup.play()
 		characters.is_player = 0
