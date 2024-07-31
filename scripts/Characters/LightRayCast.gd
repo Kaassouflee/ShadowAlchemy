@@ -37,7 +37,6 @@ func update_raycast(nearest_light):
 		var collider = get_collider()
 		if collider is TileMap:
 			var pos = get_collision_point()
-			pos = pos.ceil()
 			var tile_coords = shadow.tile_map.local_to_map(pos)
 			var tile_data: TileData = shadow.tile_map.get_cell_tile_data(1, tile_coords)
 			if tile_data != null:
