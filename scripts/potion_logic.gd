@@ -11,6 +11,8 @@ var potion_recipes = {
 @onready var recipe_label = $"../Characters/Player/AnimatedSprite2D/RecipeLabel"
 @onready var potion_raycast = $"../Characters/Player/PotionRay"
 @onready var tilemap = %TileMap
+@onready var characters = %Characters
+
 var particles: PackedScene = preload("res://scenes/potion_particles.tscn")
 
 var picked_up_ingredients = []
@@ -32,7 +34,7 @@ func _ready():
 func _process(delta):
 	if picked_up_ingredients.size() == 3:
 		craft_potion()
-	if potion && Input.is_action_just_released("trigger") && usage_count == 0:
+	if potion && Input.is_action_just_released("trigger") && usage_count == 0 && characters.is_player == 1:
 		use_potion(potion_recipes[get_key_by_name(potion)]["effect"])
 
 # Gets potion key based on name

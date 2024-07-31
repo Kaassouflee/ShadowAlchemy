@@ -14,7 +14,6 @@ func _ready():
 	light_3.update_radius(2)
 	light_4.update_radius(2)
 	light_5.update_radius(1)
-	light_6.update_radius(2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
