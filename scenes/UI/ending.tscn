@@ -1011,7 +1011,7 @@ material = SubResource("ShaderMaterial_bv8lv")
 offset_left = -3.0
 offset_top = -276.0
 offset_right = 2026.0
-offset_bottom = 1099.0
+offset_bottom = 810.0
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_g330v")
