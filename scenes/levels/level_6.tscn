@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://05o4g460kmf6"]
+[gd_scene load_steps=27 format=3 uid="uid://05o4g460kmf6"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_u4w75"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_gsf7p"]
@@ -8,10 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://drrgkq3c71n86" path="res://sounds/music/Atmosphere music 4.ogg" id="6_aekao"]
 [ext_resource type="Script" path="res://scenes/levels/level_6_memory.gd" id="7_4cekx"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_g0w33"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="9_t0ppl"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_t0ppl"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_q0mi7"]
-[ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="11_v32oq"]
-[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="12_fa6xq"]
 [ext_resource type="Script" path="res://scenes/levels/level_6_lights.gd" id="13_b8skm"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_jlicd"]
 [ext_resource type="Script" path="res://scripts/potion_logic.gd" id="15_o0jos"]
@@ -24,31 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://chgsxjbrlr6vn" path="res://assets/alchemy/ingredients/flower.png" id="21_l1j64"]
 [ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="22_feoh0"]
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_kgb2r"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bq84"]
-shader = ExtResource("11_v32oq")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.372
-shader_parameter/cutoff = 0.026
-shader_parameter/falloff = 0.407
-shader_parameter/edge_fade = 0.15
-shader_parameter/speed = 2.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.406
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdr1k"]
-shader = ExtResource("12_fa6xq")
-shader_parameter/count = 300
-shader_parameter/slant = 0.2
-shader_parameter/speed = 50.0
-shader_parameter/blur = 0.0015
-shader_parameter/colour = Color(1, 1, 1, 1)
-shader_parameter/size = Vector2(0.005, 0.2)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_m43et"]
 diffuse_texture = ExtResource("17_wvlqg")
@@ -111,21 +84,6 @@ offset_left = 57.0
 offset_top = 5.0
 offset_right = 57.0
 offset_bottom = 5.0
-
-[node name="Godrays" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_0bq84")
-offset_left = -672.0
-offset_top = -248.0
-offset_right = -208.0
-offset_bottom = 120.0
-
-[node name="Rain" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_cdr1k")
-offset_left = -256.0
-offset_top = -232.0
-offset_right = 96.0
-offset_bottom = -24.0
-color = Color(1, 1, 1, 0)
 
 [node name="Lights" type="Node" parent="."]
 script = ExtResource("13_b8skm")
