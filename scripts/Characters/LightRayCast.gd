@@ -33,22 +33,31 @@ func update_raycast(nearest_light):
 	if distance_to_light > max_distance:
 		return
 	elif is_colliding():
+	
 		var collider = get_collider()
-		
 		if collider is TileMap:
 			var pos = get_collision_point()
+			pos = pos.ceil()
 			var tile_coords = shadow.tile_map.local_to_map(pos)
-			tile_coords -= Vector2i(0, 1)
 			var tile_data: TileData = shadow.tile_map.get_cell_tile_data(1, tile_coords)
 			if tile_data != null:
 				if tile_data.get_custom_data("is_side_wall"):
+					add_exception_rid(get_collider_rid())
+					force_raycast_update()
+				elif tile_data.get_custom_data("light_source"):
+					clear_exceptions()
 					killed_shadow = true
-				if tile_data.get_custom_data("is_water"):
-					killed_shadow = true
-			tile_data = shadow.tile_map.get_cell_tile_data(0, tile_coords)
-			if tile_data != null:
-				if tile_data.get_custom_data("is_water"):
-					killed_shadow = true
+				else:
+					clear_exceptions()
+			else:
+				tile_data = shadow.tile_map.get_cell_tile_data(0, tile_coords)
+				if tile_data != null:
+					if tile_data.get_custom_data("is_water"):
+						add_exception_rid(get_collider_rid())
+						force_raycast_update()
+					else:
+						add_exception_rid(get_collider_rid())
+						force_raycast_update()
 	else:
 		killed_shadow = true
 		

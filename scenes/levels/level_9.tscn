@@ -25,31 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_y3enj"]
 [ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="22_yojs3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bq84"]
-shader = ExtResource("11_8v3mm")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.372
-shader_parameter/cutoff = 0.026
-shader_parameter/falloff = 0.407
-shader_parameter/edge_fade = 0.15
-shader_parameter/speed = 2.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.406
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdr1k"]
-shader = ExtResource("12_d5mei")
-shader_parameter/count = 300
-shader_parameter/slant = 0.2
-shader_parameter/speed = 50.0
-shader_parameter/blur = 0.0015
-shader_parameter/colour = Color(1, 1, 1, 1)
-shader_parameter/size = Vector2(0.005, 0.2)
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_m43et"]
 diffuse_texture = ExtResource("17_ra88n")
 normal_texture = ExtResource("18_dyx24")
@@ -115,21 +90,6 @@ offset_left = 57.0
 offset_top = 5.0
 offset_right = 57.0
 offset_bottom = 5.0
-
-[node name="Godrays" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_0bq84")
-offset_left = -672.0
-offset_top = -248.0
-offset_right = -208.0
-offset_bottom = 120.0
-
-[node name="Rain" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_cdr1k")
-offset_left = -256.0
-offset_top = -232.0
-offset_right = 96.0
-offset_bottom = -24.0
-color = Color(1, 1, 1, 0)
 
 [node name="Lights" type="Node" parent="."]
 script = ExtResource("13_pudek")

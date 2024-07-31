@@ -9,7 +9,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	light.update_radius(1)
-	light_2.update_radius(2)
+	light_2.update_radius(3)
 	light_3.update_radius(3)
 	light_4.update_radius(3)
 	light_5.update_radius(2)
