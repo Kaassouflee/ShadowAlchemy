@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://shaders/shadow.gdshader" id="4_ggfai"]
 [ext_resource type="Texture2D" uid="uid://yq0bmb5m57e4" path="res://assets/animations.png" id="5_l4ivk"]
 [ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="6_8vn1k"]
-[ext_resource type="AudioStream" path="res://sounds/music/Background music.ogg" id="7_g330v"]
+[ext_resource type="AudioStream" uid="uid://tdpcy7mu844d" path="res://sounds/music/Background music.ogg" id="7_g330v"]
 [ext_resource type="AudioStream" uid="uid://bjosdnsm6fb7h" path="res://sounds/SFX/Pickup.ogg" id="9_7buq6"]
 [ext_resource type="AudioStream" uid="uid://b43qoqjiwease" path="res://sounds/SFX/Possession_Sound.ogg" id="10_p7yvs"]
 
@@ -133,10 +133,10 @@ tracks/4/path = NodePath("CanvasLayer/AnimationPlayer/AnimatedSprite2D/PlayerTex
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 3, 4.1, 5.7, 8.7, 11.3, 13.9, 14.8, 16, 17.5, 19.3, 21, 22.2, 23.4, 25, 26.4, 29.2, 31, 33, 34.2, 35.8, 37.2, 38.9, 40.1, 41.7, 43.2, 45.6, 48.7, 50.1, 51.2, 52.1, 53.1, 54.2, 54.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3, 4.1, 5.7, 8.7, 11.3, 13.9, 14.8, 16, 17.5, 19.3, 21.3, 23.4, 25, 26.4, 29.2, 31, 33, 34.2, 35.8, 37.2, 38.9, 40.1, 41.7, 43.2, 45.6, 48.7, 50.1, 51.2, 52.1, 53.1, 54.2, 54.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["", "[center]You again..[/center]", "[center]Why can't you leave me alone?!.[/center]", "", "[center]Then why are we seperated?", "", "[center]I'm afraid, yes.", "[center]But doesn't that make me human?", "[center]You saw my... ehh.. our memories", "[center]That is humanity. To be afraid to lose that..", "[center]Please let me tell this", "[center]I've been taking some time to be still", "[center]I've been taking some time to be by myself", "[center]When you stand in an eye of the storm", "[center]I was made to be tested and twisted", "[center]Now that I stand on my own two feet", "[center]And you know me, my will is eternal", "[center]Face to face with a beast, I will rise.. You.. You are that beast", "[center]Some people will know me as [b]hope[b]", "[center]Some people know me as the voice that you hear when you loosen the noose on the rope", "[center]And you know how I know how I know that l'll prosper?
+"values": ["", "[center]You again..[/center]", "[center]Why can't you leave me alone?!.[/center]", "", "[center]Then why are we seperated?", "", "[center]I'm afraid, yes.", "[center]But doesn't that make me human?", "[center]You saw my... ehh.. our memories", "[center]That is humanity. To be afraid to lose that..", "[center]Please let me tell this", "[center]I've been taking some time to be by myself", "[center]When you stand in an eye of the storm", "[center]I was made to be tested and twisted", "[center]Now that I stand on my own two feet", "[center]And you know me, my will is eternal", "[center]Face to face with a beast, I will rise.. You.. You are that beast", "[center]Some people will know me as [b]hope[b]", "[center]Some people know me as the voice that you hear when you loosen the noose on the rope", "[center]And you know how I know how I know that l'll prosper?
 ", "[center]'Cause I stand here beside you today", "[center]So cower at the woman l've become, when I sing from the top of my
 lungs", "[center]That I won't retire, l'll stand in your fire, inspire the weak to be
 strong", "[center]And when I am gone, I will rise, in the music that I left behind", "[center]We're a coin with two different sides", "", "[center]These memories that we relived and this renewed view on my life..", "", "[center]We are becoming whole again. Come.. join me", "", "[center]And I must not forget, we must not forget.That we are human beings.", "", "[center]This game was brought to you by Team Kaassoufle as part of the PirateSoftware Gamejam 2024.
@@ -886,6 +886,7 @@ focus_neighbor_left = NodePath("../Next level")
 focus_neighbor_right = NodePath("../Level select")
 focus_next = NodePath("../Level select")
 focus_previous = NodePath("../Next level")
+disabled = true
 text = "Back to menu"
 
 [node name="Level select" type="Button" parent="CanvasLayer/ColorRect/GridContainer"]
@@ -899,6 +900,7 @@ focus_neighbor_left = NodePath("../Main menu")
 focus_neighbor_right = NodePath("../Next level")
 focus_next = NodePath("../Next level")
 focus_previous = NodePath("../Main menu")
+disabled = true
 text = "Level select"
 
 [node name="Next level" type="Button" parent="CanvasLayer/ColorRect/GridContainer"]
@@ -912,6 +914,7 @@ focus_neighbor_left = NodePath("../Level select")
 focus_neighbor_right = NodePath("../Main menu")
 focus_next = NodePath("../Main menu")
 focus_previous = NodePath("../Level select")
+disabled = true
 text = "The End"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
@@ -963,11 +966,11 @@ speed_scale = 0.5
 
 [node name="ShadowSprite" type="AnimatedSprite2D" parent="CanvasLayer/AnimationPlayer"]
 z_index = 1
-material = SubResource("CanvasItemMaterial_i07gq")
-position = Vector2(960, 600)
+material = SubResource("ShaderMaterial_di8y4")
+position = Vector2(2252, 600)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_on4sh")
-animation = &"Idle"
+animation = &"Left"
 frame = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/AnimationPlayer/ShadowSprite"]
@@ -999,11 +1002,10 @@ bbcode_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/AnimationPlayer"]
 light_mask = 4
 z_index = 1
-position = Vector2(960, 600)
+position = Vector2(-96, 600)
 scale = Vector2(1.9375, 2)
 sprite_frames = SubResource("SpriteFrames_f86wh")
 animation = &"Idle"
-frame = 1
 
 [node name="RecipeLabel" type="Label" parent="CanvasLayer/AnimationPlayer/AnimatedSprite2D"]
 visible = false
@@ -1022,17 +1024,12 @@ offset_top = -86.0
 offset_right = 250.0
 offset_bottom = 52.0
 bbcode_enabled = true
-text = "[center]This game was brought to you by Team Kaassoufle as part of the PirateSoftware Gamejam 2024.
-Consisting of:
-MooneyBryce
-AssassinsBro
-Jelmur
-rednaeL"
 fit_content = true
 scroll_following = true
 
 [node name="EndingParticles" type="CPUParticles2D" parent="CanvasLayer/AnimationPlayer"]
 position = Vector2(960, 609)
+emitting = false
 amount = 150
 emission_shape = 1
 emission_sphere_radius = 1.0
@@ -1045,6 +1042,7 @@ scale_amount_curve = SubResource("Curve_ymaiq")
 color_ramp = SubResource("Gradient_w05ov")
 
 [node name="Godrays" type="ColorRect" parent="CanvasLayer/AnimationPlayer"]
+visible = false
 material = SubResource("ShaderMaterial_bv8lv")
 offset_left = -3.0
 offset_top = -276.0
