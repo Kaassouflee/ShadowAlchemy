@@ -8,8 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://drhif0gvqx1dr" path="res://sounds/music/Atmosphere music 3.ogg" id="6_o2xxh"]
 [ext_resource type="Script" path="res://scenes/levels/level_4_memory.gd" id="7_xqtj1"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_ua8sr"]
-[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_50qf8"]
+[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="9_50qf8"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_y7or5"]
+[ext_resource type="Script" path="res://scenes/levels/level_4_lights.gd" id="13_gn5je"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_2vc4e"]
 [ext_resource type="PackedScene" uid="uid://csqgu75gewuxw" path="res://scenes/sign.tscn" id="16_qx6ek"]
 [ext_resource type="Texture2D" uid="uid://cthxox6k8m1ky" path="res://assets/sign.png" id="17_a75g7"]
@@ -21,20 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="21_suks6"]
 [ext_resource type="Texture2D" uid="uid://chgsxjbrlr6vn" path="res://assets/alchemy/ingredients/flower.png" id="22_4me5q"]
 [ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="23_p676x"]
-
-[sub_resource type="GDScript" id="GDScript_dyk2l"]
-script/source = "extends Node
-
-@onready var light = $Light
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	light.update_radius(3)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_dixqy"]
 diffuse_texture = ExtResource("17_a75g7")
@@ -95,7 +82,7 @@ offset_right = 57.0
 offset_bottom = 5.0
 
 [node name="Lights" type="Node" parent="."]
-script = SubResource("GDScript_dyk2l")
+script = ExtResource("13_gn5je")
 
 [node name="Light" parent="Lights" instance=ExtResource("14_2vc4e")]
 position = Vector2(608, 96)
@@ -107,6 +94,7 @@ position = Vector2(224, 288)
 texture = SubResource("CanvasTexture_dixqy")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Sign"]
+visible = false
 z_index = 2
 offset_left = -176.0
 offset_top = -144.0
