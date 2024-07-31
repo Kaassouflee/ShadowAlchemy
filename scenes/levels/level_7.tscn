@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctdvpoosvtp5f"]
+[gd_scene load_steps=29 format=3 uid="uid://ctdvpoosvtp5f"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_7ibbm"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_qcwpf"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://chgsxjbrlr6vn" path="res://assets/alchemy/ingredients/flower.png" id="21_xnpw5"]
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_irdoq"]
 [ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="22_wt2g0"]
+[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="23_7vh0e"]
+[ext_resource type="AudioStream" uid="uid://cl6thuc7pua3i" path="res://sounds/SFX/Rain.ogg" id="24_5xntn"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_n4nqv"]
 diffuse_texture = ExtResource("17_oastf")
@@ -34,6 +36,15 @@ normal_texture = ExtResource("20_t00ga")
 [sub_resource type="CanvasTexture" id="CanvasTexture_qdymj"]
 diffuse_texture = ExtResource("21_xnpw5")
 normal_texture = ExtResource("22_wt2g0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_al81e"]
+shader = ExtResource("23_7vh0e")
+shader_parameter/count = 50
+shader_parameter/slant = 3.25988e-09
+shader_parameter/speed = 29.053
+shader_parameter/blur = 0.0025
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.004, 0.2)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7ibbm")
@@ -145,3 +156,20 @@ position = Vector2(96, 352)
 
 [node name="Box2" parent="Possessables" instance=ExtResource("22_irdoq")]
 position = Vector2(736, 416)
+
+[node name="Rain" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_al81e")
+offset_left = -104.0
+offset_top = -128.0
+offset_right = 1992.0
+offset_bottom = 1176.0
+color = Color(1, 1, 1, 0)
+
+[node name="RainSound" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2(496, 376)
+stream = ExtResource("24_5xntn")
+volume_db = -25.567
+pitch_scale = 0.96
+autoplay = true
+stream_paused = true

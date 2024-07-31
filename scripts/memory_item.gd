@@ -39,7 +39,6 @@ func update_player_count():
 		is_active_memory = true
 
 		var memoryUi = load("res://scenes/UI/memory.tscn").instantiate()
-		print(get_tree().root)
 		get_tree().root.add_child(memoryUi)
 		var base = memoryUi.get_node("CanvasLayer/ColorRect")
 

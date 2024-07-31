@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://2nvnscpb5uvm"]
+[gd_scene load_steps=29 format=3 uid="uid://2nvnscpb5uvm"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_5gt7a"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_6bwcv"]
@@ -21,7 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="21_bmjiw"]
 [ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="21_suks6"]
 [ext_resource type="Texture2D" uid="uid://chgsxjbrlr6vn" path="res://assets/alchemy/ingredients/flower.png" id="22_4me5q"]
+[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="23_661ei"]
 [ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="23_p676x"]
+[ext_resource type="AudioStream" uid="uid://cl6thuc7pua3i" path="res://sounds/SFX/Rain.ogg" id="24_eaeuq"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_dixqy"]
 diffuse_texture = ExtResource("17_a75g7")
@@ -34,6 +36,15 @@ normal_texture = ExtResource("21_suks6")
 [sub_resource type="CanvasTexture" id="CanvasTexture_rglw1"]
 diffuse_texture = ExtResource("22_4me5q")
 normal_texture = ExtResource("23_p676x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gwmk"]
+shader = ExtResource("23_661ei")
+shader_parameter/count = 500
+shader_parameter/slant = 0.1
+shader_parameter/speed = 29.052
+shader_parameter/blur = 0.0025
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.006, 0.2)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_5gt7a")
@@ -120,3 +131,19 @@ texture = SubResource("CanvasTexture_d7vlr")
 [node name="IngredientItem3" parent="PotionLogic" instance=ExtResource("19_tgmuk")]
 position = Vector2(352, 224)
 texture = SubResource("CanvasTexture_rglw1")
+
+[node name="Rain" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_7gwmk")
+offset_left = -496.0
+offset_top = -376.0
+offset_right = 1600.0
+offset_bottom = 928.0
+color = Color(1, 1, 1, 0)
+
+[node name="RainSound" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2(496, 376)
+stream = ExtResource("24_eaeuq")
+volume_db = -16.995
+pitch_scale = 0.68
+autoplay = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://k20ol46itsb0"]
+[gd_scene load_steps=26 format=3 uid="uid://k20ol46itsb0"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_plrfv"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_la172"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_kv1c3"]
 [ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_mivpk"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_sotdi"]
-[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="12_ix7tj"]
 [ext_resource type="Script" path="res://scenes/levels/level_8_lights.gd" id="13_5p4aq"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_xcdwo"]
 [ext_resource type="Script" path="res://scripts/potion_logic.gd" id="15_pxdie"]
@@ -23,16 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="20_3ttrq"]
 [ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="21_pvp0l"]
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_hoetw"]
-[ext_resource type="AudioStream" uid="uid://cl6thuc7pua3i" path="res://sounds/SFX/Rain.ogg" id="23_lq2m0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdr1k"]
-shader = ExtResource("12_ix7tj")
-shader_parameter/count = 300
-shader_parameter/slant = 0.2
-shader_parameter/speed = 50.0
-shader_parameter/blur = 0.0015
-shader_parameter/colour = Color(1, 1, 1, 1)
-shader_parameter/size = Vector2(0.005, 0.2)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_m43et"]
 diffuse_texture = ExtResource("17_isp40")
@@ -92,15 +81,6 @@ offset_top = 5.0
 offset_right = 57.0
 offset_bottom = 5.0
 
-[node name="Rain" type="ColorRect" parent="."]
-z_index = -5
-material = SubResource("ShaderMaterial_cdr1k")
-offset_left = -496.0
-offset_top = -376.0
-offset_right = 1600.0
-offset_bottom = 928.0
-color = Color(1, 1, 1, 0)
-
 [node name="Lights" type="Node" parent="."]
 script = ExtResource("13_5p4aq")
 
@@ -151,9 +131,3 @@ texture = SubResource("CanvasTexture_xcacy")
 
 [node name="Box" parent="Possessables" instance=ExtResource("22_hoetw")]
 position = Vector2(544, 416)
-
-[node name="RainSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("23_lq2m0")
-volume_db = -13.595
-pitch_scale = 0.68
-autoplay = true
