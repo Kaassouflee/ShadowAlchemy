@@ -32,7 +32,7 @@ func _ready():
 func _process(delta):
 	if picked_up_ingredients.size() == 3:
 		craft_potion()
-	if potion && Input.is_action_just_released("trigger"):
+	if potion && Input.is_action_just_released("trigger") && usage_count == 0:
 		use_potion(potion_recipes[get_key_by_name(potion)]["effect"])
 
 # Gets potion key based on name
@@ -73,7 +73,6 @@ func set_tile_metadata(key: String, value: Variant):
 	target = potion_raycast.get_collider()
 	if target:
 		target.set_meta(key, value)
-		clear_potion()
 	else:
 		#TODO: Show it somewhere
 		print("Invalid tile cell position")
@@ -82,48 +81,48 @@ func needs_colliding(potion):
 	return potion_raycast.is_colliding() && potion_recipes[get_key_by_name(potion)]["needs_collision"]
 
 func clear_potion():
+	if usage_count > 0:
+		potion_list.remove_item(0)
+		if potion_list.item_count > 0:
+			potion = potion_list.get_item_text(0)
+		else:	
+			potion = null
 	usage_count = 0
-	potion_list.remove_item(0)
-	if potion_list.item_count > 0:
-		var test = potion_list.get_item_text(0)
-		print(test)
-		potion = potion_list.get_item_text(0)
-	else:	
-		potion = null
 	
 func use_potion(effect: String):
-	if usage_count == 0:
-		usage_count = 1
-		match effect:
-			"freeze":
-				if needs_colliding(potion):
-					freeze(effect)
-			"fire":
-				if needs_colliding(potion):
-					fire(effect)
-			"darkness":
-				if needs_colliding(potion):
-					darkness(effect)
-			"wall":
-				if !needs_colliding(potion):
-					wall(effect)
-			_:
-				print("Unknown effect")
+	match effect:
+		"freeze":
+			if needs_colliding(potion):
+				freeze(effect)
+		"fire":
+			if needs_colliding(potion):
+				fire(effect)
+		"darkness":
+			if needs_colliding(potion):
+				darkness(effect)
+		"wall":
+			if !needs_colliding(potion):
+				wall(effect)
+		_:
+			print("Unknown effect")
 
 func freeze(effect):
+	usage_count =+ 1
 	used_potion.play()
 	set_tile_metadata("has_potion", effect)
 	clear_potion()
 	
 func fire(effect):
+	usage_count =+ 1
 	used_potion.play()
 	set_tile_metadata("has_potion", effect)
 	clear_potion()
 	
 func darkness(effect):
+	usage_count =+ 1
 	used_potion.play()
 	set_tile_metadata("has_potion", effect)
-	if target.get_meta("has_potion"):
+	if target.get_meta("has_potion") && usage_count == 1:
 		if target.find_parent("LightSprite"):
 			# Add particles
 			var particles_inst = particles.instantiate()
@@ -138,6 +137,7 @@ func darkness(effect):
 			clear_potion()
 	
 func wall(effect):	
+	usage_count =+ 1
 	used_potion.play()
 	#TODO: maybe look at what locations are valid? No placing in walls, but I guess it's the player's responsibilty
 	#TODO: find a way to place particles on the ground
