@@ -50,7 +50,7 @@ normal_texture = ExtResource("20_fi5fd")
 diffuse_texture = ExtResource("23_ud7of")
 normal_texture = ExtResource("24_u3awe")
 
-[node name="Level2" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_4n8dj")
 
 [node name="TileMap" parent="." instance=ExtResource("2_bbs6u")]
