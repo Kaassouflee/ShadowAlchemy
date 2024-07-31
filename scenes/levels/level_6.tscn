@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://drrgkq3c71n86" path="res://sounds/music/Atmosphere music 4.ogg" id="6_aekao"]
 [ext_resource type="Script" path="res://scenes/levels/level_6_memory.gd" id="7_4cekx"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_g0w33"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="9_t0ppl"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_t0ppl"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_q0mi7"]
 [ext_resource type="Script" path="res://scenes/levels/level_6_lights.gd" id="13_b8skm"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_jlicd"]

@@ -21,6 +21,7 @@ var used_potion
 var crafted_potion
 var cell_position
 var target
+var usage_count = 0
 
 func _ready():
 	ingredients_list = get_tree().root.get_node("Level/PotionUI/CanvasLayer/ItemListBackground/ItemList")
@@ -31,7 +32,7 @@ func _ready():
 func _process(delta):
 	if picked_up_ingredients.size() == 3:
 		craft_potion()
-	if potion && Input.is_action_just_pressed("trigger"):
+	if potion && Input.is_action_just_released("trigger"):
 		use_potion(potion_recipes[get_key_by_name(potion)]["effect"])
 
 # Gets potion key based on name
@@ -57,11 +58,13 @@ func craft_potion():
 	var combination = get_combination()
 	if potion_recipes.has(combination):
 		crafted_potion.play()
-		potion = potion_recipes[combination]["name"]
+		var new_potion = potion_recipes[combination]["name"]
 		ingredients_list.clear()
 		picked_up_ingredients.clear()
-		potion_list.add_item(potion, load("res://assets/alchemy/potions/potion.png"), false)
-		potion_list.set_item_tooltip(0, potion)
+		potion_list.add_item(new_potion, load("res://assets/alchemy/potions/potion.png"), false)
+		potion_list.set_item_tooltip(0, new_potion)
+		if potion_list.item_count == 1:
+			potion = new_potion
 	else:
 		recipe_label.show()
 		
@@ -70,8 +73,7 @@ func set_tile_metadata(key: String, value: Variant):
 	target = potion_raycast.get_collider()
 	if target:
 		target.set_meta(key, value)
-		potion = null
-		potion_list.clear()
+		clear_potion()
 	else:
 		#TODO: Show it somewhere
 		print("Invalid tile cell position")
@@ -80,25 +82,33 @@ func needs_colliding(potion):
 	return potion_raycast.is_colliding() && potion_recipes[get_key_by_name(potion)]["needs_collision"]
 
 func clear_potion():
-	potion_list.clear()
-	potion = null
+	usage_count = 0
+	potion_list.remove_item(0)
+	if potion_list.item_count > 0:
+		var test = potion_list.get_item_text(0)
+		print(test)
+		potion = potion_list.get_item_text(0)
+	else:	
+		potion = null
 	
 func use_potion(effect: String):
-	match effect:
-		"freeze":
-			if needs_colliding(potion):
-				freeze(effect)
-		"fire":
-			if needs_colliding(potion):
-				fire(effect)
-		"darkness":
-			if needs_colliding(potion):
-				darkness(effect)
-		"wall":
-			if !needs_colliding(potion):
-				wall(effect)
-		_:
-			print("Unknown effect")
+	if usage_count == 0:
+		usage_count = 1
+		match effect:
+			"freeze":
+				if needs_colliding(potion):
+					freeze(effect)
+			"fire":
+				if needs_colliding(potion):
+					fire(effect)
+			"darkness":
+				if needs_colliding(potion):
+					darkness(effect)
+			"wall":
+				if !needs_colliding(potion):
+					wall(effect)
+			_:
+				print("Unknown effect")
 
 func freeze(effect):
 	used_potion.play()
@@ -125,7 +135,7 @@ func darkness(effect):
 			target.get_parent().get_node("SpriteLight").set_meta("max_distance", 0)
 			target.get_parent().get_node("SpriteLight").enabled = false
 			target.get_parent().get_node("ShadowLight").enabled = false
-		clear_potion()
+			clear_potion()
 	
 func wall(effect):	
 	used_potion.play()
