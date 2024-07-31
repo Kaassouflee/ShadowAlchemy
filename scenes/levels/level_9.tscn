@@ -163,4 +163,4 @@ position = Vector2(1440, 352)
 [node name="Possessables" type="Node" parent="."]
 
 [node name="Box" parent="Possessables" instance=ExtResource("22_y3enj")]
-position = Vector2(544, 488)
+position = Vector2(544, 288)
