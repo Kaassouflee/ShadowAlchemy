@@ -35,6 +35,7 @@ func _physics_process(_delta):
 func _process(_delta):
 	if is_moving:
 		return
+	animated_sprite.stop()
 	if (characters.is_player == 1):
 		if Input.is_action_pressed("up"):
 			movement_direction = "up"
@@ -48,8 +49,6 @@ func _process(_delta):
 		elif Input.is_action_pressed("right"):
 			movement_direction = "right"
 			move(Vector2.RIGHT)
-		else:
-			animated_sprite.play("Idle")
 func move(direction: Vector2):
 	movement_vector = direction
 	# Get Current tile Vector2i
@@ -81,6 +80,19 @@ func move(direction: Vector2):
 	global_position = tile_map.map_to_local(target_tile)
 	animated_sprite.global_position = tile_map.map_to_local(current_tile)
 
+func extract_number_from_level():
+	var current_level = get_tree().current_scene.scene_file_path.get_file().split(".")[0]
+	# Split the string by the underscore and gets the second number part and converts it to_int
+	if current_level:
+		var level_number = current_level.split("_")[1].to_int()
+		return level_number
+	return null
 
 func _ready():
-	sprite_light.set_meta("max_distance", 95)
+	var level_number = extract_number_from_level()
+	# Increases light radius every level
+	if level_number:
+		sprite_light.set_meta("max_distance", 95 + level_number)
+	else:
+		sprite_light.set_meta("max_distance", 95)
+	

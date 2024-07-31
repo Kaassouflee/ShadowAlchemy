@@ -6,6 +6,7 @@ extends StaticBody2D
 @onready var tile_map = %TileMap
 @onready var sprite = $BoxSprite
 @onready var occluder = $LightOccluder2D
+@onready var possession_particles = $PossessionParticles
 
 var is_possessed = false
 var is_moving = false
@@ -16,6 +17,8 @@ var last_player_before_death
 var movement_direction = ""
 var tile_size = 64
 var speed = 4
+
+
 
 func _physics_process(_delta):
 	if !is_moving:
@@ -65,3 +68,7 @@ func move(direction: Vector2i):
 	sprite.global_position = tile_map.map_to_local(current_tile)
 	occluder.global_position = tile_map.map_to_local(current_tile)
 	
+
+
+func _ready():
+	possession_particles.emitting = true

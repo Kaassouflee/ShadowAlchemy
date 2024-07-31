@@ -1,0 +1,163 @@
+[gd_scene load_steps=28 format=3 uid="uid://c432jfhqte138"]
+
+[ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_td8ij"]
+[ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_tg7a3"]
+[ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="3_ei23k"]
+[ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="4_wfahr"]
+[ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="5_o3hw3"]
+[ext_resource type="AudioStream" uid="uid://cmjvap4l15qfw" path="res://sounds/music/Atmosphere music 6.ogg" id="6_egqw5"]
+[ext_resource type="Script" path="res://scenes/levels/level_9_memory.gd" id="7_27bgh"]
+[ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_a0ltc"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_vbpav"]
+[ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_c85d5"]
+[ext_resource type="Script" path="res://scenes/levels/level_9_lights.gd" id="13_pudek"]
+[ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_ltnwe"]
+[ext_resource type="Script" path="res://scripts/potion_logic.gd" id="15_xb5ax"]
+[ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="16_twf6y"]
+[ext_resource type="Texture2D" uid="uid://cix2df5nke8eh" path="res://assets/alchemy/ingredients/herb.png" id="17_ra88n"]
+[ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="18_dyx24"]
+[ext_resource type="Texture2D" uid="uid://c32dufyhh6unv" path="res://assets/alchemy/ingredients/mushroom.png" id="19_8uvwt"]
+[ext_resource type="Texture2D" uid="uid://btey3e1cch462" path="res://assets/alchemy/ingredients/mushroom_n.png" id="20_1o33q"]
+[ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="21_fnfs0"]
+[ext_resource type="Texture2D" uid="uid://chgsxjbrlr6vn" path="res://assets/alchemy/ingredients/flower.png" id="21_sk3eh"]
+[ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_y3enj"]
+[ext_resource type="Texture2D" uid="uid://1810e8ihuevv" path="res://assets/alchemy/ingredients/flower_n.png" id="22_yojs3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m43et"]
+diffuse_texture = ExtResource("17_ra88n")
+normal_texture = ExtResource("18_dyx24")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k03lr"]
+diffuse_texture = ExtResource("19_8uvwt")
+normal_texture = ExtResource("20_1o33q")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8irku"]
+diffuse_texture = ExtResource("17_ra88n")
+normal_texture = ExtResource("18_dyx24")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ho5b8"]
+diffuse_texture = ExtResource("21_sk3eh")
+normal_texture = ExtResource("22_yojs3")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dg0cb"]
+diffuse_texture = ExtResource("19_8uvwt")
+normal_texture = ExtResource("20_1o33q")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_td8ij")
+
+[node name="TileMap" parent="." instance=ExtResource("2_tg7a3")]
+unique_name_in_owner = true
+layer_0/tile_data = PackedInt32Array(131078, 1376256, 4, 131084, 1507328, 4, 131079, 1441792, 4, 131083, 1441792, 4, 196619, 786432, 2, 196615, 720896, 2, 196616, 1441792, 5, 196617, 1441792, 5, 196618, 1441792, 5, 196620, 393216, 9, 196614, 393216, 9, 262150, 327680, 9, 262151, 327680, 9, 262152, 327680, 9, 262153, 327680, 9, 262154, 327680, 9, 262155, 327680, 9, 262156, 327680, 9, 262157, 327680, 9, 262158, 327680, 9, 262159, 327680, 9, 131074, 327680, 8, 196610, 327680, 8, 262146, 327680, 8, 262144, 327680, 8, 262145, 327680, 8, 196611, 327680, 8, 262147, 327680, 8, 327683, 327680, 8, 393219, 327680, 8, 458755, 327680, 8, 524291, 327680, 8, 262148, 327680, 8, 262149, 327680, 8, 131080, 1507328, 4, 131082, 1376256, 4, 196624, 327680, 8, 262160, 327680, 8, 262161, 327680, 8, 262162, 327680, 8, 262163, 327680, 8, 262164, 327680, 9, 196627, 327680, 8, 262165, 327680, 9, 262166, 327680, 9, 196630, 327680, 9, 131094, 327680, 9, 327700, 393216, 8, 327701, 393216, 8, 327702, 393216, 8, 65538, 327680, 9, 327692, 393216, 8)
+layer_1/tile_data = PackedInt32Array(65542, 917504, 7, 65548, 983040, 7, 6, 262144, 6, 7, 262144, 6, 8, 458752, 6, 10, 0, 6, 11, 262144, 6, 12, 262144, 6, 65543, 65536, 7, 65545, 196608, 1, 13, 458752, 6, 65549, 589824, 8, 131085, 0, 10, 196621, 0, 11, 131086, 65536, 10, 131087, 917504, 3, 196622, 65536, 11, 196623, 589824, 11, 393222, 65536, 11, 393223, 65536, 11, 393224, 65536, 11, 393225, 65536, 11, 393226, 65536, 11, 393227, 0, 10, 393228, 196608, 6, 5, 0, 6, 65541, 0, 7, 196613, 589824, 11, 131077, 589824, 10, 131076, 458752, 7, 196612, 458752, 8, 458754, 0, 9, 524290, 0, 9, 589826, 0, 10, 655362, 0, 11, 655363, 65536, 11, 655364, 589824, 11, 589827, 65536, 10, 589828, 589824, 10, 524292, 589824, 9, 458756, 589824, 9, 393220, 589824, 9, 327684, 0, 6, 327685, 196608, 6, 393221, 131072, 11, 65539, 655360, 3, 3, 589824, 8, 2, 458752, 11, 1, 589824, 8, 65537, 589824, 9, 131073, 917504, 3, 196609, 917504, 4, 196608, 851968, 4, 262143, 655360, 2, 327679, 0, 8, 393215, 0, 10, 327680, 131072, 10, 327681, 131072, 10, 458751, 0, 11, 393216, 65536, 11, 393217, 65536, 11, 327682, 589824, 7, 393218, 589824, 9, 65540, 589824, 7, 131075, 458752, 8, 131081, 196608, 3, 65547, 65536, 7, 65544, 0, 10, 65546, 589824, 10, 196607, 655360, 0, 131072, 786432, 0, 327686, 720896, 0, 327687, 720896, 0, 327688, 720896, 0, 327689, 720896, 0, 327690, 720896, 0, 327691, 458752, 6, 327693, 0, 6, 327694, 720896, 0, 327695, 720896, 0, 65552, 720896, 0, 65555, 720896, 0, 65551, 655360, 0, 65553, 917504, 0, 65554, 655360, 0, 131090, 917504, 3, 131089, 655360, 3, 131088, 327680, 7, 131091, 327680, 7, 65556, 917504, 0, 131092, 655360, 3, 196625, 655360, 4, 196626, 917504, 4, 196628, 655360, 4, 196629, 589824, 11, 131093, 589824, 10, 65557, 589824, 8, 21, 0, 6, 22, 65536, 6, 23, 458752, 6, 65558, 196608, 7, 65559, 589824, 8, 327696, 65536, 10, 327697, 65536, 10, 327698, 65536, 10, 327699, 458752, 6, 327703, 589824, 9, 262167, 589824, 8, 196631, 589824, 8, 131095, 589824, 8, 393239, 589824, 10, 393238, 524288, 7, 393237, 524288, 7, 393236, 524288, 7, 393235, 458752, 7, 393234, 458752, 11, 393233, 458752, 11, 393232, 458752, 11, 393231, 458752, 11, 393230, 458752, 11, 393229, 589824, 10, 458775, 589824, 11, 458771, 0, 11, 458772, 65536, 11, 458773, 65536, 11, 458774, 65536, 11, -65533, 458752, 6, -65535, 0, 6, -65534, 262144, 6, 458765, 589824, 11, 458763, 0, 11, 458764, 458752, 11, 9, 196608, 0)
+
+[node name="Characters" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_ei23k")
+
+[node name="Player" parent="Characters" instance=ExtResource("4_wfahr")]
+position = Vector2(223, 544)
+
+[node name="Shadow" parent="Characters" instance=ExtResource("5_o3hw3")]
+position = Vector2(160, 85)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_egqw5")
+volume_db = -4.559
+autoplay = true
+
+[node name="LevelMemory" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_27bgh")
+
+[node name="MemoryItem" parent="." instance=ExtResource("8_a0ltc")]
+unique_name_in_owner = true
+position = Vector2(1440, 224)
+
+[node name="Spawnpoint" parent="." instance=ExtResource("9_vbpav")]
+unique_name_in_owner = true
+position = Vector2(160, 88)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 322)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("10_c85d5")]
+visible = false
+offset_left = 57.0
+offset_top = 5.0
+offset_right = 57.0
+offset_bottom = 5.0
+
+[node name="Lights" type="Node" parent="."]
+script = ExtResource("13_pudek")
+
+[node name="Light" parent="Lights" instance=ExtResource("14_ltnwe")]
+position = Vector2(736, 96)
+
+[node name="Light2" parent="Lights" instance=ExtResource("14_ltnwe")]
+position = Vector2(480, 96)
+
+[node name="Light3" parent="Lights" instance=ExtResource("14_ltnwe")]
+position = Vector2(1248, 160)
+
+[node name="Light4" parent="Lights" instance=ExtResource("14_ltnwe")]
+position = Vector2(1056, 160)
+
+[node name="Light5" parent="Lights" instance=ExtResource("14_ltnwe")]
+position = Vector2(1376, 288)
+
+[node name="PotionLogic" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("15_xb5ax")
+
+[node name="IngredientItem" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1312, 288)
+
+[node name="IngredientItem2" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1248, 224)
+texture = SubResource("CanvasTexture_m43et")
+
+[node name="IngredientItem3" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1056, 224)
+texture = SubResource("CanvasTexture_k03lr")
+
+[node name="IngredientItem4" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(424, 224)
+
+[node name="IngredientItem5" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(32, 288)
+texture = SubResource("CanvasTexture_8irku")
+
+[node name="IngredientItem6" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(223, 224)
+texture = SubResource("CanvasTexture_ho5b8")
+
+[node name="IngredientItem7" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1184, 288)
+
+[node name="IngredientItem8" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1120, 288)
+texture = SubResource("CanvasTexture_8irku")
+
+[node name="IngredientItem9" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1376, 288)
+texture = SubResource("CanvasTexture_dg0cb")
+
+[node name="IngredientItem10" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(792, 224)
+texture = SubResource("CanvasTexture_ho5b8")
+
+[node name="IngredientItem11" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1440, 160)
+texture = SubResource("CanvasTexture_m43et")
+
+[node name="IngredientItem12" parent="PotionLogic" instance=ExtResource("16_twf6y")]
+position = Vector2(1440, 352)
+
+[node name="PotionUI" parent="." instance=ExtResource("21_fnfs0")]
+
+[node name="Possessables" type="Node" parent="."]
+
+[node name="Box" parent="Possessables" instance=ExtResource("22_y3enj")]
+position = Vector2(544, 288)

@@ -71,3 +71,5 @@ color_ramp = SubResource("Gradient_qqph8")
 stream = ExtResource("3_g68fx")
 volume_db = 10.146
 pitch_scale = 0.66
+
+[connection signal="ready" from="PossessionParticles" to="." method="_ready"]

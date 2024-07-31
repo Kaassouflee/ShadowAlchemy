@@ -4,7 +4,7 @@ extends Control
 @onready var start_button = $MarginContainer/HBoxContainer/VBoxContainer/StartButton as Button
 @onready var exit_button = $MarginContainer/HBoxContainer/VBoxContainer/ExitButton as Button
 @onready var level_select_button = $MarginContainer/HBoxContainer/VBoxContainer/LevelSelectButton as Button
-@onready var start_level = "res://scenes/levels/main.tscn"
+@onready var start_level = "res://scenes/levels/level_1.tscn"
 @onready var level_selection = "res://scenes/UI/level_select.tscn"
 
 func _ready():

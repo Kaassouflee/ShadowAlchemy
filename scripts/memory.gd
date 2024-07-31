@@ -19,12 +19,13 @@ func _ready():
 	
 func _on_main_menu_pressed():
 	get_tree().change_scene_to_file(main_menu)
-	get_tree().root.remove_child(MemoryUI)
+	MemoryUI.queue_free()
 
 func _on_level_select_pressed():
 	get_tree().change_scene_to_file(level_selection)
-	get_tree().root.remove_child(MemoryUI)
-
+	MemoryUI.queue_free()
+	
 func _on_next_level_pressed():
 	get_tree().change_scene_to_file("res://scenes/levels/" + current_memory.memory["next_level"] + ".tscn")
-	get_tree().root.remove_child(MemoryUI)
+	MemoryUI.queue_free()
+	current_memory.queue_free()

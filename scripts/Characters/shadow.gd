@@ -66,6 +66,7 @@ func _possessing_check():
 func _process(_delta):
 	if is_moving or is_possessing:
 		return
+	animated_sprite.stop()
 	if (characters.is_player == 2):
 		if Input.is_action_pressed("up"):
 			movement_direction = "up"
@@ -81,8 +82,6 @@ func _process(_delta):
 			move(Vector2.RIGHT)
 		elif Input.is_action_just_released("trigger"):
 			_start_possessing()
-		else:
-			animated_sprite.play("Idle")
 
 func _start_possessing():
 	if possessable_object != null:
@@ -111,6 +110,7 @@ func move(direction: Vector2i):
 	ray.target_position = direction * tile_size
 	ray.force_raycast_update()
 	if ray.is_colliding():
+		var collided = ray.get_collider()
 		match movement_direction:
 			"up":
 				animated_sprite.play("default_up")
@@ -120,7 +120,10 @@ func move(direction: Vector2i):
 				animated_sprite.play("default_left")
 			"right":
 				animated_sprite.play("default_right")
-		return
+		if !collided.has_meta("possessable"):
+			return
+		if !collided.get_meta("possessable"):		
+			return
 	# Move player
 	is_moving = true
 	global_position = tile_map.map_to_local(target_tile)
@@ -144,6 +147,8 @@ func reset_to_spawnpoint():
 		timer.one_shot = true
 		timer.start()
 		characters.is_player = 0
+		if (is_possessing):
+			_end_possessing()
 
 func _on_timer_timeout():
 	var target_tile: Vector2i = tile_map.local_to_map(spawnpoint.global_position)

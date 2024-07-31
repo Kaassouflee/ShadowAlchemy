@@ -1,0 +1,173 @@
+[gd_scene load_steps=30 format=3 uid="uid://jtkjyk4q5sue"]
+
+[ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_4n8dj"]
+[ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_bbs6u"]
+[ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="3_edfr0"]
+[ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="4_whpxo"]
+[ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="5_2vq2c"]
+[ext_resource type="AudioStream" uid="uid://cnlma0g68lpjg" path="res://sounds/music/Atmosphere music 2.ogg" id="6_bklpa"]
+[ext_resource type="Script" path="res://scenes/levels/level_3_memory.gd" id="7_l26ik"]
+[ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="8_od7yf"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="9_wkepk"]
+[ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="10_m76mj"]
+[ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="14_6ox10"]
+[ext_resource type="Script" path="res://scripts/potion_logic.gd" id="15_m5w2t"]
+[ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="16_5k56a"]
+[ext_resource type="Texture2D" uid="uid://cix2df5nke8eh" path="res://assets/alchemy/ingredients/herb.png" id="17_qkqsy"]
+[ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="18_0x45t"]
+[ext_resource type="Texture2D" uid="uid://c32dufyhh6unv" path="res://assets/alchemy/ingredients/mushroom.png" id="19_8rvqh"]
+[ext_resource type="Texture2D" uid="uid://btey3e1cch462" path="res://assets/alchemy/ingredients/mushroom_n.png" id="20_fi5fd"]
+[ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="21_tvmqb"]
+[ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_2vrlk"]
+[ext_resource type="PackedScene" uid="uid://csqgu75gewuxw" path="res://scenes/sign.tscn" id="22_5pnwx"]
+[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="23_kgqe0"]
+[ext_resource type="Texture2D" uid="uid://cthxox6k8m1ky" path="res://assets/sign.png" id="23_ud7of"]
+[ext_resource type="AudioStream" uid="uid://cl6thuc7pua3i" path="res://sounds/SFX/Rain.ogg" id="24_as27n"]
+[ext_resource type="Texture2D" uid="uid://c1xncs06kitm3" path="res://assets/sign_n.png" id="24_u3awe"]
+
+[sub_resource type="GDScript" id="GDScript_dyk2l"]
+script/source = "extends Node
+
+@onready var light = $Light
+@onready var light_2 = $Light2
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	light.update_radius(2)
+	light_2.update_radius(1)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m43et"]
+diffuse_texture = ExtResource("17_qkqsy")
+normal_texture = ExtResource("18_0x45t")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k03lr"]
+diffuse_texture = ExtResource("19_8rvqh")
+normal_texture = ExtResource("20_fi5fd")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ih2kb"]
+diffuse_texture = ExtResource("23_ud7of")
+normal_texture = ExtResource("24_u3awe")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3g5e"]
+shader = ExtResource("23_kgqe0")
+shader_parameter/count = 500
+shader_parameter/slant = 0.1
+shader_parameter/speed = 39.397
+shader_parameter/blur = 0.0025
+shader_parameter/colour = Color(1, 1, 1, 1)
+shader_parameter/size = Vector2(0.006, 0.2)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_4n8dj")
+
+[node name="TileMap" parent="." instance=ExtResource("2_bbs6u")]
+unique_name_in_owner = true
+layer_0/tile_data = PackedInt32Array(327682, 851968, 2, 393218, 851968, 2, 458754, 851968, 2, 524290, 851968, 2, 262146, 851968, 2, 196610, 851968, 2, 131074, 851968, 2, 327681, 851968, 2, 327680, 786432, 2, 327683, 851968, 2, 327684, 851968, 2, 327685, 851968, 2, 327686, 851968, 2, 327687, 851968, 2, 327688, 458752, 9, 327689, 851968, 2, 327690, 851968, 2, 393215, 786432, 2, 393214, 786432, 2, 262149, 327680, 8)
+layer_1/tile_data = PackedInt32Array(262148, 786432, 10, 393227, 786432, 10, 589827, 786432, 10, 262145, 786432, 10, 262147, 851968, 10, 262150, 851968, 10, 589825, 851968, 10, 393219, 655360, 0, 65537, 655360, 0, 262155, 917504, 0, 393217, 917504, 0, 65539, 917504, 0, 393220, 851968, 0, 393221, 851968, 0, 393222, 851968, 0, 393223, 851968, 0, 393224, 851968, 0, 393225, 851968, 0, 393226, 851968, 0, 65538, 851968, 0, 262144, 851968, 0, 262154, 851968, 0, 327691, 655360, 1, 458755, 655360, 1, 524291, 655360, 1, 458753, 655360, 1, 524289, 655360, 1, 393216, 786432, 0, 589826, 786432, 0, 131073, 655360, 2, 196609, 655360, 2, 131075, 655360, 2, 196611, 655360, 2, 327679, 786432, 0, 458751, 786432, 0, 327678, 786432, 0, 458750, 786432, 0, 327677, 655360, 0, 458749, 655360, 3, 393213, 655360, 1, 262153, 786432, 0, 262152, 786432, 0, 262151, 786432, 0, 131077, 327680, 6, 131078, 458752, 6, 131076, 0, 6, 196612, 589824, 9, 196614, 589824, 9, 196613, 327680, 7)
+
+[node name="Characters" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_edfr0")
+
+[node name="Player" parent="Characters" instance=ExtResource("4_whpxo")]
+position = Vector2(-96, 352)
+
+[node name="Shadow" parent="Characters" instance=ExtResource("5_2vq2c")]
+position = Vector2(160, 544)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_bklpa")
+volume_db = -4.559
+autoplay = true
+
+[node name="LevelMemory" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_l26ik")
+
+[node name="MemoryItem" parent="." instance=ExtResource("8_od7yf")]
+unique_name_in_owner = true
+position = Vector2(672, 352)
+
+[node name="Spawnpoint" parent="." instance=ExtResource("9_wkepk")]
+unique_name_in_owner = true
+position = Vector2(160, 544)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 322)
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("10_m76mj")]
+visible = false
+offset_left = 57.0
+offset_top = 5.0
+offset_right = 57.0
+offset_bottom = 5.0
+
+[node name="Lights" type="Node" parent="."]
+script = SubResource("GDScript_dyk2l")
+
+[node name="Light" parent="Lights" instance=ExtResource("14_6ox10")]
+position = Vector2(352, 224)
+
+[node name="Light2" parent="Lights" instance=ExtResource("14_6ox10")]
+position = Vector2(544, 352)
+
+[node name="PotionLogic" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("15_m5w2t")
+
+[node name="IngredientItem" parent="PotionLogic" instance=ExtResource("16_5k56a")]
+position = Vector2(160, 288)
+
+[node name="IngredientItem2" parent="PotionLogic" instance=ExtResource("16_5k56a")]
+position = Vector2(160, 224)
+texture = SubResource("CanvasTexture_m43et")
+
+[node name="IngredientItem3" parent="PotionLogic" instance=ExtResource("16_5k56a")]
+position = Vector2(160, 160)
+texture = SubResource("CanvasTexture_k03lr")
+
+[node name="PotionUI" parent="." instance=ExtResource("21_tvmqb")]
+
+[node name="Possessables" type="Node" parent="."]
+
+[node name="Box" parent="Possessables" instance=ExtResource("22_2vrlk")]
+position = Vector2(160, 416)
+
+[node name="Sign3" parent="." instance=ExtResource("22_5pnwx")]
+position = Vector2(32, 352)
+texture = SubResource("CanvasTexture_ih2kb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sign3"]
+visible = false
+z_index = 2
+offset_left = -304.0
+offset_top = -176.0
+offset_right = 80.0
+offset_bottom = -66.0
+bbcode_enabled = true
+text = "[center][img]res://assets/alchemy/ingredients/berry.png[/img] [img]res://assets/alchemy/ingredients/herb.png[/img] [img]res://assets/alchemy/ingredients/mushroom.png[/img] = Darkness potion
+Throw potions with LMB or A.
+This one can turn a light off.
+"
+fit_content = true
+
+[node name="Rain" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_f3g5e")
+offset_left = -496.0
+offset_top = -376.0
+offset_right = 1600.0
+offset_bottom = 928.0
+color = Color(1, 1, 1, 0)
+
+[node name="RainSound" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2(496, 376)
+stream = ExtResource("24_as27n")
+volume_db = -12.916
+pitch_scale = 0.68
+autoplay = true

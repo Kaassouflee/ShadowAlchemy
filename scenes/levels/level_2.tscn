@@ -1,68 +1,44 @@
-[gd_scene load_steps=27 format=3 uid="uid://cljmhhx8iub81"]
+[gd_scene load_steps=21 format=3 uid="uid://cljmhhx8iub81"]
 
 [ext_resource type="Script" path="res://scripts/level_logic.gd" id="1_mtngo"]
 [ext_resource type="PackedScene" uid="uid://byy136decqre" path="res://scenes/tile_map.tscn" id="2_15k8p"]
 [ext_resource type="Script" path="res://scripts/Characters/Characters.gd" id="2_iqv6l"]
 [ext_resource type="PackedScene" uid="uid://b0wysm6c2nqgj" path="res://scenes/Characters/player.tscn" id="3_dcvpu"]
 [ext_resource type="PackedScene" uid="uid://bad5nytk5iv33" path="res://scenes/Characters/shadow.tscn" id="4_ytqsy"]
-[ext_resource type="AudioStream" uid="uid://dypqcaajjr6b4" path="res://sounds/music/Atmosphere music.ogg" id="5_p6kcv"]
 [ext_resource type="PackedScene" uid="uid://cy0rdwr1vqbh" path="res://scenes/memory_item.tscn" id="6_fuxxc"]
+[ext_resource type="AudioStream" uid="uid://863nwco6ddk8" path="res://sounds/music/Atmosphere music 1.ogg" id="6_om0o5"]
 [ext_resource type="Script" path="res://scenes/levels/level_2_memory.gd" id="7_njtxl"]
 [ext_resource type="PackedScene" uid="uid://cuq5r26worhtc" path="res://scenes/light.tscn" id="9_7s3r1"]
-[ext_resource type="PackedScene" uid="uid://di76etlbhuure" path="res://scenes/Characters/spawnpoint.tscn" id="12_06ced"]
+[ext_resource type="Script" path="res://scenes/levels/level_2_lights.gd" id="11_o7u4r"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/spawnpoint.tscn" id="12_06ced"]
 [ext_resource type="PackedScene" uid="uid://cfc0erykqg0dd" path="res://scenes/UI/pause_menu.tscn" id="13_i0joc"]
-[ext_resource type="Shader" path="res://shaders/godrays.gdshader" id="14_irnwe"]
-[ext_resource type="Script" path="res://scenes/levels/level_2_lights.gd" id="14_lejri"]
-[ext_resource type="PackedScene" uid="uid://dc0hojvx42pl5" path="res://scenes/ingredient_item.tscn" id="15_462e0"]
-[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="15_dow4e"]
-[ext_resource type="Script" path="res://scripts/potion_logic.gd" id="16_imn26"]
-[ext_resource type="Texture2D" uid="uid://cix2df5nke8eh" path="res://assets/alchemy/ingredients/herb.png" id="16_tba0o"]
-[ext_resource type="Texture2D" uid="uid://cexkm4xiejjak" path="res://assets/alchemy/ingredients/herb_n.png" id="17_27d8h"]
-[ext_resource type="Texture2D" uid="uid://c32dufyhh6unv" path="res://assets/alchemy/ingredients/mushroom.png" id="18_riwoi"]
-[ext_resource type="Texture2D" uid="uid://btey3e1cch462" path="res://assets/alchemy/ingredients/mushroom_n.png" id="19_w6dw8"]
-[ext_resource type="PackedScene" uid="uid://dx2o1vai6jl20" path="res://scenes/UI/potion_ui.tscn" id="20_0gjv2"]
+[ext_resource type="PackedScene" uid="uid://csqgu75gewuxw" path="res://scenes/sign.tscn" id="13_mfaun"]
+[ext_resource type="Texture2D" uid="uid://cthxox6k8m1ky" path="res://assets/sign.png" id="14_01q4h"]
+[ext_resource type="Texture2D" uid="uid://c1xncs06kitm3" path="res://assets/sign_n.png" id="15_d68lq"]
+[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="17_o8tdx"]
+[ext_resource type="AudioStream" uid="uid://cl6thuc7pua3i" path="res://sounds/SFX/Rain.ogg" id="18_f138f"]
 [ext_resource type="PackedScene" uid="uid://cmbnro68tdb7l" path="res://scenes/Characters/PossessableCharacters/box.tscn" id="22_4u6pt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bq84"]
-shader = ExtResource("14_irnwe")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.372
-shader_parameter/cutoff = 0.026
-shader_parameter/falloff = 0.407
-shader_parameter/edge_fade = 0.15
-shader_parameter/speed = 2.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.406
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
+[sub_resource type="CanvasTexture" id="CanvasTexture_lt6uf"]
+diffuse_texture = ExtResource("14_01q4h")
+normal_texture = ExtResource("15_d68lq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdr1k"]
-shader = ExtResource("15_dow4e")
-shader_parameter/count = 300
-shader_parameter/slant = 0.2
-shader_parameter/speed = 50.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_82wdr"]
+shader = ExtResource("17_o8tdx")
+shader_parameter/count = 500
+shader_parameter/slant = 0.1
+shader_parameter/speed = 46.897
 shader_parameter/blur = 0.0015
 shader_parameter/colour = Color(1, 1, 1, 1)
-shader_parameter/size = Vector2(0.005, 0.2)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_m43et"]
-diffuse_texture = ExtResource("16_tba0o")
-normal_texture = ExtResource("17_27d8h")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_k03lr"]
-diffuse_texture = ExtResource("18_riwoi")
-normal_texture = ExtResource("19_w6dw8")
+shader_parameter/size = Vector2(0.006, 0.2)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mtngo")
 
 [node name="TileMap" parent="." instance=ExtResource("2_15k8p")]
 unique_name_in_owner = true
-layer_0/tile_data = PackedInt32Array(131073, 851969, 10, 196609, 851969, 10, 262145, 851969, 10, 327681, 851969, 10, 393217, 851969, 10, 458753, 851969, 10, 458754, 851969, 10, 458755, 851969, 10, 458756, 851969, 10, 458757, 851969, 10, 458758, 851969, 10, 458759, 851969, 10, 458760, 851969, 10, 458761, 851969, 10, 458762, 851969, 10, 458763, 851969, 10, 458764, 851969, 10, 458765, 851969, 10, 458766, 851969, 10, 458767, 851969, 10, 458768, 851969, 10, 393232, 851969, 10, 327696, 851969, 10, 262160, 851969, 10, 196624, 851969, 10, 131088, 851969, 10, 131087, 851969, 10, 131086, 851969, 10, 131085, 851969, 10, 131084, 851969, 10, 131083, 851969, 10, 131082, 851969, 10, 131081, 851969, 10, 131080, 851969, 10, 131079, 851969, 10, 131078, 851969, 10, 131077, 851969, 10, 131076, 851969, 10, 131075, 851969, 10, 131074, 851969, 10, 196610, 851969, 10, 262146, 851969, 10, 327682, 851969, 10, 393218, 851969, 10, 393219, 851969, 10, 393220, 851969, 10, 393221, 851969, 10, 393222, 851969, 10, 393223, 851969, 10, 393224, 851969, 10, 393225, 851969, 10, 393226, 851969, 10, 393227, 851969, 10, 393228, 851969, 10, 393229, 851969, 10, 393230, 851969, 10, 393231, 851969, 10, 327689, 851969, 10, 327690, 851969, 10, 327691, 851969, 10, 327692, 851969, 10, 262154, 851969, 10, 262153, 851969, 10, 262152, 851969, 10, 262151, 851969, 10, 262150, 851969, 10, 327685, 851969, 10, 327686, 851969, 10, 262149, 851969, 10, 327687, 851969, 10, 327688, 851969, 10, 262148, 851969, 10, 262147, 851969, 10, 327683, 851969, 10, 327684, 851969, 10, 196614, 851969, 10, 196613, 851969, 10, 196612, 851969, 10, 196611, 851969, 10, 262155, 851969, 10, 262156, 851969, 10, 196620, 851969, 10, 196619, 851969, 10, 196618, 851969, 10, 196617, 851969, 10, 196616, 851969, 10, 196615, 851969, 10, 262157, 851969, 10, 262158, 851969, 10, 327693, 851969, 10, 327694, 851969, 10, 327695, 851969, 10, 262159, 851969, 10, 196623, 851969, 10, 196622, 851969, 10, 196621, 851969, 10)
-layer_1/tile_data = PackedInt32Array(1, 720897, 8, 2, 720897, 8, 3, 720897, 8, 4, 720897, 8, 5, 720897, 8, 6, 720897, 8, 7, 720897, 8, 8, 720897, 8, 9, 720897, 8, 10, 720897, 8, 11, 720897, 8, 12, 720897, 8, 13, 720897, 8, 14, 720897, 8, 15, 720897, 8, 16, 720897, 8, 17, 917505, 8, 0, 655361, 8, 65536, 655361, 9, 131072, 655361, 9, 196608, 655361, 9, 262144, 655361, 9, 327680, 655361, 9, 393216, 655361, 9, 458752, 655361, 9, 65553, 655361, 9, 131089, 655361, 9, 196625, 655361, 9, 262161, 655361, 9, 327697, 655361, 9, 393233, 655361, 9, 458769, 655361, 9, 524289, 720897, 8, 524290, 720897, 8, 524291, 720897, 8, 524292, 720897, 8, 524293, 720897, 8, 524294, 720897, 8, 524295, 720897, 8, 524296, 720897, 8, 524297, 720897, 8, 524298, 720897, 8, 524299, 720897, 8, 524300, 720897, 8, 524301, 720897, 8, 524302, 720897, 8, 524303, 720897, 8, 524304, 720897, 8, 524305, 917505, 11, 524288, 655361, 11, 589825, 720897, 12, 589826, 720897, 12, 589827, 720897, 12, 589828, 720897, 12, 589829, 720897, 12, 589830, 720897, 12, 589831, 720897, 12, 589832, 720897, 12, 589833, 720897, 12, 589834, 720897, 12, 589835, 720897, 12, 589836, 720897, 12, 589837, 720897, 12, 589838, 720897, 12, 589839, 720897, 12, 589840, 720897, 12, 65551, 720897, 12, 65550, 720897, 12, 65549, 720897, 12, 65548, 720897, 15, 65538, 131073, 19, 65552, 917505, 12, 65537, 655361, 12, 589824, 655361, 12, 589841, 917505, 12, 65539, 131073, 19, 65540, 131073, 19, 65541, 131073, 19, 65542, 131073, 19, 65543, 131073, 19, 65544, 131073, 19, 65545, 131073, 19, 65546, 131073, 19, 65547, 131073, 19)
+layer_0/tile_data = PackedInt32Array(131073, 327680, 8, 196609, 327680, 8, 262145, 327680, 8, 327681, 327680, 8, 131086, 327680, 8, 131085, 327680, 8, 131084, 327680, 8, 131083, 327680, 8, 131082, 327680, 8, 131081, 327680, 8, 131080, 327680, 8, 131079, 327680, 8, 131078, 327680, 8, 131077, 327680, 8, 131076, 327680, 8, 131075, 327680, 8, 131074, 327680, 8, 196610, 327680, 8, 262146, 327680, 8, 327682, 327680, 8, 262151, 327680, 8, 262150, 327680, 8, 327685, 327680, 8, 327686, 327680, 8, 262149, 327680, 8, 327687, 327680, 8, 262148, 327680, 8, 262147, 327680, 8, 327683, 327680, 8, 327684, 327680, 8, 196614, 327680, 8, 196613, 327680, 8, 196612, 327680, 8, 196611, 327680, 8, 196615, 327680, 8, 196616, 327680, 8, 196617, 327680, 8, 196618, 327680, 8, 196619, 327680, 8, 196620, 327680, 8, 196621, 327680, 8, 196622, 327680, 8)
+layer_1/tile_data = PackedInt32Array(1, 196608, 6, 2, 196608, 6, 3, 196608, 6, 4, 196608, 6, 5, 196608, 6, 6, 196608, 6, 7, 196608, 6, 8, 196608, 6, 9, 196608, 6, 10, 196608, 6, 11, 196608, 6, 12, 196608, 6, 13, 196608, 6, 14, 196608, 6, 0, 0, 6, 65536, 0, 8, 131072, 0, 8, 196608, 0, 8, 262144, 0, 8, 327680, 0, 8, 393216, 0, 10, 65550, 131072, 7, 65549, 131072, 7, 65548, 327680, 7, 65538, 131072, 7, 65537, 131072, 7, 65539, 131072, 7, 65540, 131072, 7, 65541, 131072, 7, 65542, 131072, 7, 65543, 131072, 7, 65544, 131072, 7, 65545, 131072, 7, 65546, 131072, 7, 65547, 131072, 7, 327688, 0, 8, 393224, 589824, 10, 262153, 786432, 3, 262154, 458752, 10, 262155, 458752, 10, 262156, 458752, 10, 262157, 458752, 10, 262158, 458752, 10, 262152, 655360, 0, 15, 458752, 6, 262159, 589824, 10, 65551, 589824, 9, 131087, 589824, 9, 196623, 589824, 9, 327695, 589824, 11, 327689, 655360, 4, 327690, 524288, 11, 327691, 524288, 11, 327692, 524288, 11, 327693, 524288, 11, 327694, 524288, 11, 393217, 65536, 10, 393218, 65536, 10, 393219, 65536, 10, 393220, 65536, 10, 393221, 917504, 3, 393222, 655360, 3, 393223, 65536, 10, 458760, 589824, 11, 458752, 0, 11, 458753, 131072, 11, 458754, 131072, 11, 458755, 131072, 11, 458756, 131072, 11, 458757, 917504, 4, 458758, 655360, 4, 458759, 131072, 11, 262150, 917504, 0, 327686, 917504, 1, 262149, 655360, 0, 327685, 655360, 1)
 
 [node name="Characters" type="Node" parent="."]
 unique_name_in_owner = true
@@ -76,7 +52,7 @@ position = Vector2(96, 160)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("5_p6kcv")
+stream = ExtResource("6_om0o5")
 volume_db = -4.559
 autoplay = true
 
@@ -86,7 +62,7 @@ script = ExtResource("7_njtxl")
 
 [node name="MemoryItem" parent="." instance=ExtResource("6_fuxxc")]
 unique_name_in_owner = true
-position = Vector2(1056, 480)
+position = Vector2(856, 224)
 
 [node name="Spawnpoint" parent="." instance=ExtResource("12_06ced")]
 unique_name_in_owner = true
@@ -102,45 +78,44 @@ offset_top = 5.0
 offset_right = 57.0
 offset_bottom = 5.0
 
-[node name="Godrays" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_0bq84")
-offset_left = -672.0
-offset_top = -248.0
-offset_right = -208.0
-offset_bottom = 120.0
-
-[node name="Rain" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_cdr1k")
-offset_left = -256.0
-offset_top = -232.0
-offset_right = 96.0
-offset_bottom = -24.0
-color = Color(1, 1, 1, 0)
-
 [node name="Lights" type="Node" parent="."]
-script = ExtResource("14_lejri")
+script = ExtResource("11_o7u4r")
 
 [node name="Light" parent="Lights" instance=ExtResource("9_7s3r1")]
 position = Vector2(800, 96)
 
-[node name="PotionLogic" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("16_imn26")
-
-[node name="IngredientItem" parent="PotionLogic" instance=ExtResource("15_462e0")]
-position = Vector2(352, 352)
-
-[node name="IngredientItem2" parent="PotionLogic" instance=ExtResource("15_462e0")]
-position = Vector2(416, 352)
-texture = SubResource("CanvasTexture_m43et")
-
-[node name="IngredientItem3" parent="PotionLogic" instance=ExtResource("15_462e0")]
-position = Vector2(480, 352)
-texture = SubResource("CanvasTexture_k03lr")
-
-[node name="PotionUI" parent="." instance=ExtResource("20_0gjv2")]
-
 [node name="Possessables" type="Node" parent="."]
 
 [node name="Box" parent="Possessables" instance=ExtResource("22_4u6pt")]
-position = Vector2(800, 288)
+position = Vector2(480, 288)
+
+[node name="Sign" parent="." instance=ExtResource("13_mfaun")]
+position = Vector2(224, 160)
+texture = SubResource("CanvasTexture_lt6uf")
+
+[node name="Label" type="Label" parent="Sign"]
+visible = false
+offset_left = -232.0
+offset_top = -120.0
+offset_right = 222.0
+offset_bottom = -45.0
+text = "Shadow can cast shadows by moving objects. 
+You can move objects by possessing them with E or A. Like this box!
+Shadow can also pass through these boxes by the way."
+horizontal_alignment = 1
+
+[node name="Rain" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_82wdr")
+offset_left = -496.0
+offset_top = -376.0
+offset_right = 1600.0
+offset_bottom = 928.0
+color = Color(1, 1, 1, 0)
+
+[node name="RainSound" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2(496, 376)
+stream = ExtResource("18_f138f")
+volume_db = -10.877
+pitch_scale = 0.68
+autoplay = true
